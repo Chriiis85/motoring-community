@@ -130,16 +130,7 @@ export default function StandingsClient({ driverStandings, constructorStandings,
                             unoptimized
                           />
                         </div>
-                        <div className="w-full md:w-[80%] h-full flex items-center justify-center mt-2 md:mt-0">
-                          <Image
-                            src={`/images/Drivers/${surnameHelmet}.png`}
-                            alt="Driver Helmet"
-                            width={100}
-                            height={100}
-                            className="w-[30%] md:w-[50px] object-contain"
-                            unoptimized
-                          />
-                        </div>
+                        
                       </div>
                       <div className="w-[90%] h-auto md:h-[70%] flex flex-col md:flex-row items-start md:items-center justify-center font-[family-name:var(--font-f1-bold)] text-sm sm:text-base md:text-[1.1em] gap-4 md:gap-0 mt-4 md:mt-0">
                         <div className="w-full md:w-1/2 h-full flex flex-col items-start justify-start gap-[10%] md:mt-[5%]">

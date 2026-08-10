@@ -33,9 +33,9 @@ export default function RegisterPage() {
           } as React.CSSProperties}
         />
         
-        <section className="relative z-10 w-[90%] md:w-[70%] h-[670px] lg:h-[75vh] min-h-[600px] flex flex-row bg-white border-2 border-black rounded-[15px] shadow-[0_5px_15px_rgba(0,0,0,0.35)]">
+        <section className="relative z-10 w-[90%] md:w-[70%] min-h-[600px] flex flex-row bg-white border-2 border-black rounded-[15px] shadow-[0_5px_15px_rgba(0,0,0,0.35)]">
           {/* FOTO DEL FORMULARIO */}
-          <article className="hidden md:block relative w-[40%] h-full rounded-l-[11px] border-r-2 border-black overflow-hidden group">
+          <article className="hidden md:flex relative w-[40%] min-h-[600px] rounded-l-[11px] border-r-2 border-black overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-b from-black/25 to-black/25 z-10" />
             <Image
               src="/images/Register-img.jpg"
@@ -47,10 +47,10 @@ export default function RegisterPage() {
           </article>
 
           {/* FORMULARIO PARA EL REGISTRO */}
-          <article className="w-full md:w-[60%] h-full flex items-center justify-center">
+          <article className="w-full md:w-[60%] flex items-center justify-center py-8">
             <form 
               onSubmit={handleRegister} 
-              className="w-full h-full px-[5%] py-[3%] flex flex-col items-center justify-center gap-[3%] md:gap-4"
+              className="w-full px-[5%] py-[2%] flex flex-col items-center justify-center gap-3"
             >
               <div className="w-[90%] md:w-[80%] bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-3 mb-2 rounded shadow-sm text-sm md:text-base text-center" role="alert">
                 <p className="font-bold">⚠️ Aviso / Warning</p>

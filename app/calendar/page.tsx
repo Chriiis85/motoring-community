@@ -37,10 +37,9 @@ export default async function CalendarPage() {
       <Header
         variant="page"
         pageTitle={t('calendarTitle')}
-        backgroundImage="https://media.formula1.com/image/upload/t_16by9South/f_auto/q_auto/v1709223321/fom-website/2023/Bahrain/Bahrain_2024_03.jpg"
+        backgroundImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ2FSs_yYHn2hXM7rtVhaGMr0_KAInpOcy1Lof38NJyh_7UzOk1iM8sOo&s=10"
       />
       
-      <main className="flex-grow w-full">
       <section className="next-race" aria-labelledby="next-race-title">
         <div className="next-race-container">
           <div className="row">
@@ -78,7 +77,8 @@ export default async function CalendarPage() {
         </div>
       </section>
 
-      <section className="calendar-season-container" aria-labelledby="calendar-title">
+      <main className="main">
+        <section className="calendar-season-container" aria-labelledby="calendar-title">
         <article className="calendar-season">
           {races.map((race: Race, i: number) => {
             const raceName = race.raceName;

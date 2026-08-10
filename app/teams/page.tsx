@@ -29,7 +29,7 @@ export default async function TeamsPage() {
       <Header
         variant="page"
         pageTitle={"Formula One 2026 Constructors"}
-        backgroundImage="https://es.motorsport.com/v2/img/custom/f1_2026/f1_2026_concept.jpg"
+        backgroundImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6F_iECgXD5jvNFdu8sc-DjM_hPCE4e92D1Ng8iZe3r5L3vIxa-IN2e6E&s=10"
       />
       <main className="main">
         <article className="teams-container">

@@ -18,11 +18,20 @@
 
 body {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
-  font-family: "Bebas Neue";
+  font-family: "F1Title";
   background-color: #f3f3f3;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 5%;
+  font-family: "F1Regular";
 }
 
 h1 {

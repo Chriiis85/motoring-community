@@ -6,7 +6,7 @@ export default function HeroSlideshow() {
     <section className="main">
       {/* Main Group Content */}
       <article className="main-group">
-        <div className="main-group1">
+        <div className="main-group1 margin-top-10">
           <div className="main-title font-['F1Title']">
             <h1>Welcome to</h1>
             <h1>Motoring Community!</h1>
