@@ -1,0 +1,278 @@
+/*--------------------------------------------------------------IMPORT FONTS-------------------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@font-face {
+  font-family: "F1Title";
+  src: url("/fonts/Formula1-Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "F1Regular";
+  src: url("/fonts/Formula1-Regular-1.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "F1RegularBold";
+  src: url("/fonts/Formula1-Bold-4.ttf") format("truetype");
+}
+
+:root {
+  --RedBull: #3671c6;
+  --Ferrari: #dc0000;
+  --McLaren: #ff8000;
+  --Mercedes: #00d2be;
+  --AstonMartin: #229971;
+  --RBF1Team: #6692ff;
+  --HaasF1Team: #b6babd;
+  --Williams: #00a0de;
+  --Sauber: #52e252;
+  --AlpineF1Team: #ff87bc;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  /*font-family: "Bebas Neue";*/
+  font-family: "F1Regular";
+  background-color: #ffffff;
+}
+
+h1 {
+  margin: 0;
+}
+/*----------------------------------------------------------------------UPBTN------------------------------------------------------------------*/
+.up-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #222222;
+  color: black;
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.up-button > img {
+  width: 100%;
+}
+
+.up-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+/*----------------------------------------------------------------------MAIN------------------------------------------------------------------*/
+.main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 5%;
+  font-family: "F1Regular";
+}
+
+.drivers-title-container {
+  width: 80%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  border: solid 10px #222222;
+  color: #222222;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-right: none;
+  padding: 1%;
+}
+
+.drivers-title-container {
+  font-family: "F1Title";
+  font-size: 3em;
+}
+
+.card-driver-container {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10%;
+}
+
+.card-driver{
+  width: 400px;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-family: "F1Title";
+  border-radius: 5px;
+  margin-bottom: 10%;
+  border: 2px solid black;
+  background-position: center;
+  background-size: 300%;
+  transition: 0.3s;
+}
+
+.card-driver:hover, .card-driver:focus{
+  transform: scale(1.05);
+}
+
+.card-driver-info{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20%;
+  flex-direction: column;
+  text-align: center;
+}
+
+.driverNumber{
+  width: 100%;
+  height: 10%;
+  padding-left: 5%;
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 2em;
+  gap: 5%;
+  color: white;
+}
+
+.driverNumber>h1{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+
+}
+
+.driver-data{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10%;
+  margin-top: 20px;
+}
+
+.driverHelmet{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+.driverHelmet>img{
+  width: 100px;
+}
+
+.driverFlag{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  padding-left: 60px;
+}
+
+.driverFlag>img{
+  width: 60px;
+  border-radius: 10px;
+}
+
+.driverTeam{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  padding-left: 55px;
+}
+
+.driverTeam>img{
+  width: 70px;
+  border-radius: 10px;
+}
+
+.card-driver-name{
+  width: 100%;
+  height: 20%;
+  z-index: 99;
+  text-transform: uppercase;
+}
+
+.card-driver-name>.name{
+  font-size: 1.5em;
+  color: white;
+  padding-left: 30px;
+}
+
+.card-driver-name>.surname{
+  font-size: 2.75em;
+  color: white;
+  padding-left: 30px;
+}
+
+.driver-image{
+  position: absolute;
+  z-index: 99;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 300px;
+  height: 300px;
+  margin-left: 150px;
+  margin-top: 200px;
+}
+
+.driver-image>img{
+  width: 130%;
+  opacity: 0.9;
+}
+
+/*--------------------------------------------------------------------RESPONSIVE-------------------------------------------------------------*/
+@media (max-width: 600px) {
+  .card-driver{
+    width: 300px;
+    height: 400px;
+    margin-right: 20px;
+  }
+  .driverNumber{
+    font-size: 1.5em;
+  }
+  .driverHelmet>img{
+    width: 70px;
+  }
+  .driverFlag>img{
+    width: 40px;
+    margin-left: -5px;
+    border-radius: 5px;
+  }
+  .card-driver-name > .name{
+    font-size: 1.2em;  
+  }
+  .card-driver-name > .surname{
+    font-size: 1.7em;  
+  }
+  .driver-image{
+    margin: 0;
+    margin-top: 100px;
+    margin-left: 40px;
+  }
+  .driver-image > img{
+    width: 300px;
+  }
+}

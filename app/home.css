@@ -1,0 +1,1289 @@
+/*--------------------------------------------------------------IMPORT FONTS-------------------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,400i,600,600i");
+@font-face {
+  font-family: "F1Title";
+  src: url("/fonts/Formula1-Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "F1Regular";
+  src: url("/fonts/Formula1-Regular-1.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "F1RegularBold";
+  src: url("/fonts/Formula1-Bold-4.ttf") format("truetype");
+}
+
+
+
+
+
+
+
+.hidden {
+  display: none;
+}
+
+.up-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #222222;
+  color: black;
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.up-button > img {
+  width: 100%;
+}
+
+.up-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.up-button:focus {
+  cursor: pointer;
+  border: 5px solid white;
+}
+/*---------------------------------------------------------MAIN PAGE--------------------------------------------------------------------------*/
+.main {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #222222;
+}
+/*------------------------------------------------------------SLIDER-------------------------------------------------------------------------*/
+.slider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: blur(3px);
+}
+
+.slideshow {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  z-index: 1;
+}
+
+.slideshow li span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  color: transparent;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: none;
+  opacity: 0;
+  z-index: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-animation: imageAnimation 24s linear infinite 0s;
+  -moz-animation: imageAnimation 24s linear infinite 0s;
+  animation: imageAnimation 24s linear infinite 0s;
+}
+
+.slideshow li:nth-child(1) span {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(https://media.revistagq.com/photos/620e38dcc789a63cc825a53f/16:9/w_2560%2Cc_limit/drive-to-survive-4-netflix-fecha.jpeg);
+}
+
+.slideshow li:nth-child(2) span {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(https://f1chronicle.com/wp-content/uploads/2022/05/220062-emilia-romagna-gp-2022-race-scaled-1920x1080.jpg);
+  -webkit-animation-delay: 6s;
+  -moz-animation-delay: 6s;
+  animation-delay: 6s;
+}
+
+.slideshow li:nth-child(3) span {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(https://i.redd.it/8mmfuvapzyr71.jpg);
+  -webkit-animation-delay: 12s;
+  -moz-animation-delay: 12s;
+  animation-delay: 12s;
+}
+
+.slideshow li:nth-child(4) span {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url(https://images.daznservices.com/di/library/DAZN_News/ff/b5/2023-03-03-alonso-aston-martin-f1-formula-1_wzn823p6f5hv1nnscf81hhaol.jpg?t=-1415982858);
+  -webkit-animation-delay: 18s;
+  -moz-animation-delay: 18s;
+  animation-delay: 18s;
+}
+
+/*ANIMACIONES PARA PASAR LAS IMAGENES*/
+@-webkit-keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    -webkit-animation-timing-function: ease-in;
+  }
+  12.5% {
+    opacity: 1;
+    -webkit-animation-timing-function: ease-out;
+  }
+  25% {
+    opacity: 1;
+  }
+  37.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    -moz-animation-timing-function: ease-in;
+  }
+  12.5% {
+    opacity: 1;
+    -moz-animation-timing-function: ease-out;
+  }
+  25% {
+    opacity: 1;
+  }
+  37.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    -webkit-animation-timing-function: ease-in;
+    -moz-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  12.5% {
+    opacity: 1;
+    -webkit-animation-timing-function: ease-out;
+    -moz-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  25% {
+    opacity: 1;
+  }
+  37.5% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*--------------------------------------------------MAIN GROUP CONTAINERS PRINCIPAL SECTION--------------------------------------------------*/
+.main-group {
+  position: absolute;
+  z-index: 97;
+  width: 85%;
+  height: 70%;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.main-group1 {
+  width: 100%;
+  height: 65%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.main-title {
+  width: 60%;
+  height: 100%;
+  padding: 3%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  font-family: "Bebas Neue";
+  font-size: 5em;
+}
+
+.main-devices {
+  width: 700px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-devices > img {
+  width: 600px;
+  margin-top: 20%;
+  filter: brightness(0.8);
+}
+
+.main-group2 {
+  width: 100%;
+  height: 35%;
+  color: white;
+  font-family: "Bebas Neue";
+  font-size: 1.5em;
+  padding-left: 3%;
+  font-style: italic;
+}
+
+/*---------------------------------------------------------NEXT RACE--------------------------------------------------------------------------*/
+.next-race-container {
+  width: 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: "F1Regular";
+}
+
+@media (min-width: 576px) {
+  .next-race-container {
+    max-width: 576px;
+  }
+}
+
+@media (min-width: 768px) {
+  .next-race-container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .next-race-container {
+    max-width: 986px;
+  }
+}
+
+@media (min-width: 1360px) {
+  .next-race-container {
+    max-width: 1320px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.col-md-5,
+.col-md-7,
+.col-lg-4,
+.col-lg-8,
+.col-xl-3,
+.col-xl-9 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+@media (min-width: 768px) {
+  .col-md-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+  }
+
+  .col-md-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .col-lg-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+
+  .col-lg-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%;
+  }
+}
+
+@media (min-width: 1360px) {
+  .col-xl-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .col-xl-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+}
+
+.misc--label {
+  font-family: "F1Regular";
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.5px;
+  font-weight: normal;
+}
+
+.f1--xxs {
+  font-family: "F1Regular";
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.5px;
+  font-weight: normal;
+}
+
+.f1-uppercase {
+  text-transform: uppercase;
+}
+
+
+
+@media (max-width: 1023px) {
+  
+}
+
+@media (max-width: 767px) {
+  
+}
+
+.next-race {
+  background-color: #000000;
+  padding: 10px 0;
+  border-bottom: 1px solid #38383f;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+@media (min-width: 1024px) {
+  .next-race {
+    padding: 20px 0;
+  }
+}
+
+.next-race .next-race-clock {
+  display: table;
+  width: 100%;
+  margin-top: 2px;
+}
+
+@media (min-width: 768px) {
+  .next-race .next-race-clock {
+    margin-top: 0;
+  }
+}
+
+.next-race .next-race-clock .countdown-clock {
+  display: table-cell;
+  padding: 10px;
+  background-color: #1f1f27;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  vertical-align: middle;
+}
+
+.next-race .next-race-clock .countdown-clock .title-bar {
+  padding: 5px;
+  background-color: #38383f;
+  color: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  max-width: 165px;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.next-race .next-race-clock .countdown-clock .clock {
+  display: table;
+  margin: 0 auto;
+  white-space: nowrap;
+  font-feature-settings: "tnum";
+}
+
+.next-race .next-race-clock .countdown-clock .clock .countdown-text {
+  font-family: "F1Regular";
+  font-size: 22px;
+  line-height: 26px;
+}
+
+span {
+  font-size: 1em;
+}
+
+.countdown-text {
+  margin-top: 0px;
+}
+
+@media (min-width: 768px) {
+  .next-race .next-race-clock .countdown-clock .clock .countdown-text {
+    font-size: 32px;
+    line-height: 36px;
+  }
+}
+
+@media (min-width: 768px) {
+  .next-race .next-race-clock .countdown-clock .clock .countdown-text {
+    font-family: "F1Regular";
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width: 768px) and (min-width: 768px) {
+  .next-race .next-race-clock .countdown-clock .clock .countdown-text {
+    font-size: 25px;
+    line-height: 30px;
+  }
+}
+
+@media (min-width: 1360px) {
+  .next-race .next-race-clock .countdown-clock .clock .countdown-text {
+    font-family: "F1Regular";
+    font-size: 22px;
+    line-height: 26px;
+  }
+}
+
+@media (min-width: 1360px) and (min-width: 768px) {
+  .next-race .next-race-clock .countdown-clock .clock .countdown-text {
+    font-size: 32px;
+    line-height: 36px;
+  }
+}
+
+.next-race .next-race-clock .countdown-clock .clock .days,
+.next-race .next-race-clock .countdown-clock .clock .hours,
+.next-race .next-race-clock .countdown-clock .clock .minutes,
+.next-race .next-race-clock .countdown-clock .clock .seconds {
+  display: table-cell;
+  color: #ffffff;
+  padding: 0 10px;
+  text-align: center;
+  border-left: 1px solid #38383f;
+}
+
+.next-race .next-race-clock .countdown-clock .clock .days:first-child {
+  border-left: 0;
+}
+
+.next-race .next-race-clock .countdown-clock .clock .days > span,
+.next-race .next-race-clock .countdown-clock .clock .hours > span,
+.next-race .next-race-clock .countdown-clock .clock .minutes > span,
+.next-race .next-race-clock .countdown-clock .clock .seconds > span {
+  display: block;
+  color: #949498;
+}
+
+.next-race .next-race-clock .countdown-clock .clock .days p,
+.next-race .next-race-clock .countdown-clock .clock .hours p,
+.next-race .next-race-clock .countdown-clock .clock .minutes p,
+.next-race .next-race-clock .countdown-clock .clock .seconds p {
+  margin-bottom: 0;
+}
+
+.next-race .next-race-clock .countdown-clock .clock .days {
+  padding-left: 0;
+}
+
+.next-race .next-race-clock .countdown-clock .clock .seconds {
+  padding-right: 0;
+}
+
+.next-race
+  .next-race-clock
+  .countdown-clock
+  .clock
+  .days:not(.d-none)
+  + .hours
+  + .minutes {
+  padding-right: 0;
+}
+
+.next-race .next-race-clock .round {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px 10px 8px;
+  background-color: #38383f;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-left: 2px solid #000000;
+}
+
+.next-race .next-race-clock .round .round-container {
+  width: 70px;
+  height: 70px;
+  margin: auto;
+}
+
+.next-race-date {
+  margin-bottom: 10px;
+  color: white;
+}
+
+.next-race-date > p {
+  margin: 0;
+  font-size: 1.25em;
+}
+
+.next-race-info {
+  display: flex;
+}
+
+.next-race-info .next-race-next-race-circuit-imagecontainer {
+  border-top: solid 1px #38383f;
+  border-right: solid 1px #38383f;
+  border-top-right-radius: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.next-race-info .next-race-text-container {
+  border-top: solid 1px #38383f;
+  color: white;
+  text-transform: uppercase;
+  width: 100%;
+  padding-top: 12px;
+}
+
+@media (min-width: 768px) {
+  .next-race-info .next-race-text-container {
+    padding-top: 15px;
+  }
+}
+
+@media (min-width: 1360px) {
+  .next-race-info .next-race-text-container {
+    padding-top: 20px;
+  }
+}
+
+.next-race-title {
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .next-race-title {
+    margin-bottom: 0;
+    height: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .next-race-title {
+    display: table;
+    width: 100%;
+  }
+}
+
+.next-race-text-container .next-race-text {
+  display: inline-block;
+  font-family: "F1Regular";
+  font-size: 16px;
+  line-height: 18px;
+}
+
+@media (min-width: 768px) {
+  .next-race-text-container .next-race-text {
+    font-size: 17px;
+    line-height: 23px;
+  }
+}
+
+@media (min-width: 768px) {
+  .next-race-text-container .next-race-text {
+    font-family: "F1Regular";
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width: 768px) and (min-width: 768px) {
+  .next-race-text-container .next-race-text {
+    font-size: 25px;
+    line-height: 30px;
+  }
+}
+
+@media (min-width: 1360px) {
+  .next-race-text-container .next-race-text {
+    font-family: "F1Regular";
+    font-size: 22px;
+    line-height: 26px;
+  }
+}
+
+@media (min-width: 1360px) and (min-width: 768px) {
+  .next-race-text-container .next-race-text {
+    font-size: 32px;
+    line-height: 36px;
+  }
+}
+
+.next-race-next-race-circuit-imagecontainer {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.next-race-next-race-circuit-imagecontainer img {
+  width: 40px;
+}
+
+@media (min-width: 768px) {
+  .next-race-next-race-circuit-imagecontainer {
+    width: 70px;
+    margin-right: 15px;
+  }
+
+  .next-race-next-race-circuit-imagecontainer img {
+    width: 50px;
+  }
+}
+
+@media (min-width: 1360px) {
+  .next-race-next-race-circuit-imagecontainer {
+    width: 100px;
+  }
+
+  .next-race-next-race-circuit-imagecontainer img {
+    width: 75px;
+  }
+}
+
+.minutes {
+  padding-right: 100px;
+}
+
+#round {
+  border-left: 5px solid black;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 0px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 0px;
+  background-color: #38383f;
+  margin-right: 5%;
+}
+
+#round-title {
+  background-color: #1f1f27;
+}
+
+#round-text {
+  padding-left: 10%;
+}
+
+/*-----------------------------------------------------------------------NOTICES-------------------------------------------------------------*/
+.latest-news-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.latest-news-container > 
+
+.latest-news-container > p {
+  margin: 0;
+  width: 25%;
+  font-size: 1.25em;
+  font-family: "F1RegularBold";
+  margin-bottom: 2%;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-bottom: 2px solid red;
+}
+
+.latest-news-container > p > img {
+  width: 5%;
+  margin-bottom: 1.5%;
+  margin-left: 1%;
+  transform: rotate(270deg);
+}
+
+.latest-news-container > p:hover {
+  cursor: pointer;
+  transform: scale(0.96);
+}
+
+.latest-news {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "F1Regular";
+  flex-direction: column;
+}
+
+.latest-news-notice {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.latest-news-notice1 {
+  position: relative;
+  width: 45%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  transition: 0.3s ease; /* Smooth transition */
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 1)
+    ),
+    url(https://media.revistagq.com/photos/620e38dcc789a63cc825a53f/16:9/w_2560%2Cc_limit/drive-to-survive-4-netflix-fecha.jpeg);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.latest-news-notice1-info {
+  width: 90%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  margin-bottom: 1%;
+}
+
+.latest-news-notice1-info > 
+
+.latest-news-notice1-info > p {
+  font-size: 1.25em;
+}
+
+.latest-news-notice1:hover {
+  cursor: pointer;
+  transform: scale(0.97);
+  overflow: hidden;
+}
+
+.latest-news-notice1:focus {
+  cursor: pointer;
+  transform: scale(0.97);
+  overflow: hidden;
+}
+
+.latest-news-notice2 {
+  width: 50%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.latest-news-notice3 {
+  width: 100%;
+  height: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  transition: 0.3s ease; /* Smooth transition */
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 1)
+    ),
+    url(https://media.revistagq.com/photos/620e38dcc789a63cc825a53f/16:9/w_2560%2Cc_limit/drive-to-survive-4-netflix-fecha.jpeg);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.latest-news-notice3:hover {
+  cursor: pointer;
+  transform: scale(0.97);
+  overflow: hidden;
+}
+
+.latest-news-notice3:focus {
+  cursor: pointer;
+  transform: scale(0.97);
+  overflow: hidden;
+}
+
+.latest-news-notice3-info {
+  width: 90%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  margin-bottom: 1%;
+}
+
+.latest-news-notice3-info > 
+
+.latest-news-notice3-info > p {
+  font-size: 1em;
+}
+.latest-news-notice4 {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.latest-news-notice5 {
+  width: 47%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  transition: 0.3s ease; /* Smooth transition */
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 1)
+    ),
+    url(https://media.revistagq.com/photos/620e38dcc789a63cc825a53f/16:9/w_2560%2Cc_limit/drive-to-survive-4-netflix-fecha.jpeg);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.latest-news-notice5:hover {
+  cursor: pointer;
+  transform: scale(0.97);
+  overflow: hidden;
+}
+
+.latest-news-notice5:focus {
+  cursor: pointer;
+  transform: scale(0.97);
+  overflow: hidden;
+}
+
+.latest-news-notice6 {
+  width: 47%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  transition: 0.3s ease; /* Smooth transition */
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 1)
+    ),
+    url(https://media.revistagq.com/photos/620e38dcc789a63cc825a53f/16:9/w_2560%2Cc_limit/drive-to-survive-4-netflix-fecha.jpeg);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.latest-news-notice6:hover {
+  cursor: pointer;
+  transform: scale(0.97);
+}
+
+.latest-news-notice6:focus {
+  cursor: pointer;
+  transform: scale(0.97);
+}
+
+.latest-news-notice4-info {
+  width: 90%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  margin-bottom: 1%;
+}
+
+.latest-news-notice4-info > 
+
+.latest-news-notice4-info > p {
+  font-size: 1em;
+}
+
+/*------------------------------------------------------ABOUT THE WEBPAGE---------------------------------------------------------------------*/
+
+.about {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+  width: 100%;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  color: white;
+  border-top: 1px solid gray;
+}
+
+.show {
+  opacity: 1;
+}
+
+.about-us > 
+
+.about-us {
+  width: 60%;
+  height: 100%;
+  font-size: 1em;
+  font-family: "Open Sans", sans-serif;
+}
+
+.about-image {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 5px solid #222222;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.ecestaticos.com/GmybLEEqNXeHlXczyzpIegwHZwg=/0x0:2272x1454/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F9b6%2Fd85%2Fe5f%2F9b6d85e5fc0e2eab3a31d978e7fb6208.jpg");
+  background-size: cover;
+  background-position: center;
+  background-color: #128c7e;
+}
+
+.about-image-container {
+  z-index: 1;
+  width: 75%;
+  height: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-image-container > img {
+  width: 100%;
+  border: 5px solid #222222;
+}
+
+.about-title {
+  color: #222222;
+  font-size: 2em;
+  margin: 5%;
+  margin-top: 4%;
+}
+
+.about-content {
+  color: #222222;
+  text-align: justify;
+  font-size: 1em;
+  margin: 5%;
+  margin-bottom: -1%;
+}
+
+.about-content2 {
+  color: #222222;
+  text-align: justify;
+  font-size: 0.8em;
+  margin: 5%;
+}
+
+/*---------------------------------------------------------------RESPONSIVE-------------------------------------------------------------------*/
+@media (max-width: 1700px) {
+  .main-title {
+    font-size: 3.5em;
+  }
+  .main-devices > img {
+    width: 80%;
+  }
+  .main-group2 > h2 {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 1350px) {
+  #next-race-date {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 1300px) {
+  .latest-news-notice1-info > 
+  .latest-news-notice1-info > p {
+    font-size: 1em;
+  }
+
+  .latest-news-notice3-info > 
+  .latest-news-notice3-info > p {
+    font-size: 1em;
+  }
+
+  .latest-news-notice4-info > 
+  .latest-news-notice4-info > p {
+    font-size: 0.75em;
+  }
+
+  .main-devices {
+    width: 400px;
+  }
+
+  .main-devices > img {
+    width: 400px;
+  }
+
+  .main-title {
+    font-size: 4em;
+  }
+  .about {
+    min-height: 1200px;
+    flex-direction: column;
+  }
+  .about-us {
+    width: 90%;
+    height: 100%;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  .about-image {
+    width: 90%;
+    height: 100%;
+    margin-top: 5%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .main-title {
+    font-size: 3.5em;
+  }
+  .main-group2 {
+    font-size: 1.25em;
+  }
+}
+
+@media (max-width: 1025px) {
+  .slider {
+    margin-top: -10%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .latest-news-notice {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
+
+  .latest-news-notice1 {
+    width: 90%;
+    height: 300px;
+    margin-bottom: 3%;
+  }
+
+  .latest-news-notice2 {
+    width: 90%;
+    height: 600px;
+    margin-bottom: 3%;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-group1 {
+    flex-direction: column;
+  }
+
+  .main-title {
+    width: 100%;
+    text-align: center;
+    font-size: 2.5em;
+  }
+
+  .main-group2 {
+    text-align: center;
+  }
+  .main-devices {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    margin-top: -30px;
+  }
+  .main-devices > img {
+    margin: 0;
+    width: 50%;
+  }
+  .main-group2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 800px) {
+  .next-race {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+  .latest-news-notice1-info > 
+
+  .latest-news-notice1-info > p {
+    font-size: 1em;
+  }
+
+  .latest-news-notice3-info > 
+  .latest-news-notice3-info > p {
+    font-size: 1em;
+  }
+
+  .latest-news-notice4-info > 
+
+  .latest-news-notice4-info > p {
+    font-size: 0.75em;
+  }
+
+  .latest-news-notice2 {
+    height: 900px;
+  }
+
+  .latest-news-notice3 {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 3%;
+  }
+
+  .latest-news-notice4 {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .latest-news-notice5 {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 3%;
+  }
+
+  .latest-news-notice6 {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .latest-news-notice1-info > 
+  .latest-news-notice1-info > p {
+    font-size: 0.75em;
+  }
+
+  .latest-news-notice3-info > 
+  .latest-news-notice3-info > p {
+    font-size: 0.75em;
+  }
+
+  .latest-news-notice4-info > 
+  .latest-news-notice4-info > p {
+    font-size: 0.75em;
+  }
+  .latest-news-container > 
+  .latest-news-container > p {
+    font-size: 1em;
+  }
+
+  .main-title {
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
+  }
+  .main-devices {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    padding-top: -10%;
+  }
+  .main-devices > img {
+    margin: 0;
+    width: 70%;
+  }
+  .main-group2 {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 500px) {
+  .latest-news-notice1-info > 
+  .latest-news-notice1-info > p {
+    font-size: 0.75em;
+  }
+  .latest-news-notice3-info > 
+  .latest-news-notice3-info > p {
+    font-size: 0.75em;
+  }
+  .latest-news-notice4-info > 
+  .latest-news-notice5-info > p {
+    font-size: 0.75em;
+  }
+
+  .slider {
+    margin-top: -20%;
+  }
+}
+@media (max-width: 400px) {
+  .about {
+    min-height: 1400px;
+  }
+}

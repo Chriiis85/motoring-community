@@ -1,0 +1,260 @@
+/*--------------------------------------------------------------IMPORT FONTS-------------------------------------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@font-face {
+  font-family: "F1Title";
+  src: url("/fonts/Formula1-Black.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "F1Regular";
+  src: url("/fonts/Formula1-Regular-1.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "F1RegularBold";
+  src: url("/fonts/Formula1-Bold-4.ttf") format("truetype");
+}
+
+/*COLORS FOR THE TEAMS*/
+:root {
+--RedBull: #3671c6;
+--Ferrari: #dc0000;
+--McLaren: #ff8000;
+--Mercedes: #00d2be;
+--AstonMartin: #229971;
+--RBF1Team: #6692ff;
+--HaasF1Team: #b6babd;
+--Williams: #00a0de;
+--Audi: #ff2d00;
+--AlpineF1Team: #ff87bc;
+--CadillacF1Team: #aaaaad;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #ffffff;
+}
+
+h1 {
+  margin: 0;
+}
+
+:root {
+  --aston-martin: #2d826d;
+  --ferrari: #dc0000;
+}
+
+/*----------------------------------------------------------------------MAIN------------------------------------------------------------------*/
+.main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2%;
+}
+
+.teams-container {
+  width: 90%;
+  height: 30%;
+  margin-top: 2%;
+  margin-bottom: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: row;
+  color: #222222;
+}
+
+.team-card-container {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 7%;
+  flex-direction: column;
+  border: solid 5px var(--aston-martin);
+  border-top-right-radius: 25px;
+  border-left: none;
+  border-bottom: none;
+  padding: 1%;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  margin-bottom: 3%;
+  background-color: white;
+  margin-left: 3%;
+  margin-right: 3%;
+  transition: 0.3s;
+  background-position: center;
+  background-size: 300%;
+  margin-top: 50px;
+}
+
+.team-card-container:hover, .team-card-container:focus {
+  transform: scale(1.05);
+}
+
+.team-card-title {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  border-bottom: 2px solid black;
+}
+
+.team-card-title > img {
+  width: 70px;
+  padding-right: 5%;
+}
+
+.team-card-title > h1 {
+  padding-left: 5%;
+  font-size: 2em;
+  font-family: "F1Title";
+}
+
+.team-card-driver {
+  width: 450px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+  border-bottom-left-radius: 10px;
+  border: 2px solid black;
+  border-top: none;
+  border-right: none;
+  margin-left: 3%;
+}
+
+.team-card-driver > h1 {
+  width: 300px;
+  font-size: 1.5em;
+  font-family: "F1RegularBold";
+}
+
+.team-card-driver > img {
+  width: 80px;
+}
+
+.team-card-car {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid black;
+  --color: #e1e1e1;
+  background-color: #ffffff;
+  background-image: linear-gradient(
+      0deg,
+      transparent 24%,
+      var(--color) 25%,
+      var(--color) 26%,
+      transparent 27%,
+      transparent 74%,
+      var(--color) 75%,
+      var(--color) 76%,
+      transparent 77%,
+      transparent
+    ),
+    linear-gradient(
+      90deg,
+      transparent 24%,
+      var(--color) 25%,
+      var(--color) 26%,
+      transparent 27%,
+      transparent 74%,
+      var(--color) 75%,
+      var(--color) 76%,
+      transparent 77%,
+      transparent
+    );
+  background-size: 80px 80px;
+}
+
+.team-card-car > img {
+  width: 95%;
+}
+
+.up-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #222222;
+  color: black;
+  border: 2px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.up-button > img {
+  width: 100%;
+}
+
+.up-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+/*-----------------------------------------------------------------RESPONSIVE-----------------------------------------------------------------*/
+@media (max-width: 600px) {
+  .team-card-container {
+    width: 400px;
+  }
+
+  .team-card-title {
+    width: 400px;
+  }
+
+  .team-card-car {
+    width: 400px;
+  }
+
+  .team-card-driver {
+    width: 350px;
+    gap: 0%;
+  }
+
+  .team-card-driver > h1 {
+    width: 250px;
+    font-size: 1.25em;
+  }
+}
+
+@media (max-width: 475px) {
+  .team-card-container {
+    width: 90%;
+  }
+
+  .team-card-title {
+    width: 95%;
+  }
+
+  .team-card-car {
+    width: 95%;
+  }
+
+  .team-card-driver {
+    width: 95%;
+    gap: -5%;
+  }
+
+  .team-card-driver > h1 {
+    width: 90%;
+    font-size: 1em;
+    padding-left: 3%;
+  }
+}
