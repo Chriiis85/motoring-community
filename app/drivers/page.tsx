@@ -54,13 +54,19 @@ export default async function DriversPage() {
                   </div>
                   <div className="driver-data">
                     <div className="driverHelmet">
-                      <FallbackImage 
-                        src={`/images/helmets/${familyName}.png`} 
-                        fallbackSrc="/images/transparent.svg" 
-                        alt="Driver Helmet" 
-                      />
+                      <div 
+                        className="w-[40px] h-[40px] md:w-[60px] md:h-[60px] rounded-full flex items-center justify-center flex-shrink-0"
+                        style={{ backgroundColor: `var(--${team})` }}
+                      >
+                        <FallbackImage 
+                          src={`/images/Teams/${team}.png`} 
+                          fallbackSrc="/images/transparent.svg" 
+                          alt={`${team} Logo`}
+                          style={{ width: '70%', height: '70%', objectFit: 'contain' }}
+                        />
+                      </div>
                     </div>
-                    <div className="driverFlag" style={{ paddingLeft: '40px' }}>
+                    <div className="driverFlag">
                       <FallbackImage 
                         src={`https://media.formula1.com/content/dam/fom-website/flags/${nacionalidadAPais(nationality)}.jpg`} 
                         fallbackSrc="/images/transparent.svg" 

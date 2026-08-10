@@ -60,7 +60,7 @@ export default function NewsPage() {
       <Header
         variant="page"
         pageTitle="F1 Latest News"
-        backgroundImage="https://media.formula1.com/image/upload/t_16by9South/f_auto/q_auto/v1708453472/fom-website/2023/Bahrain/Bahrain_Testing_Day2.jpg"
+        backgroundImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk5GbJoGeA2Tg0ts8w5duFeSfneOHy8eHHEAOSuazCCTuxfbrPR5zrMjo&s=10"
       />
       <main className="flex-grow w-full py-12 px-4 md:px-8 text-white">
         <div className="max-w-[1400px] mx-auto">

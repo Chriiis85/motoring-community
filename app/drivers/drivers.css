@@ -97,17 +97,20 @@ h1 {
 
 .card-driver-container {
   width: 95%;
+  max-width: 1500px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10%;
+  gap: 80px;
 }
 
 .card-driver{
-  width: 400px;
-  height: 500px;
+  width: 100%;
+  max-width: 400px;
+  min-height: 500px;
+  height: auto;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -137,25 +140,35 @@ h1 {
 
 .driverNumber{
   width: 100%;
-  height: 10%;
-  padding-left: 5%;
   padding-top: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: row;
   font-size: 2em;
-  gap: 5%;
   color: white;
 }
 
-.driverNumber>h1{
-  width: 100%;
+.driverNumber>h1:nth-child(1){
+  width: 120px;
+  margin-left: 20px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding-left: 20px;
+  justify-content: center;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
+.driverNumber>h1:nth-child(2){
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 40px;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .driver-data{
@@ -165,28 +178,18 @@ h1 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 10%;
+  gap: 15px;
   margin-top: 20px;
 }
 
-.driverHelmet{
-  width: 100%;
+.driverHelmet, .driverFlag {
+  width: 120px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding-left: 20px;
-}
-
-.driverHelmet>img{
-  width: 100px;
-}
-
-.driverFlag{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content:flex-start;
-  padding-left: 60px;
+  justify-content: center;
+  padding-left: 0;
+  margin-left: 20px;
+  align-self: flex-start;
 }
 
 .driverFlag>img{
@@ -212,18 +215,27 @@ h1 {
   height: 20%;
   z-index: 99;
   text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
 }
 
 .card-driver-name>.name{
   font-size: 1.5em;
   color: white;
-  padding-left: 30px;
+  padding-left: 0;
+  margin: 0;
 }
 
 .card-driver-name>.surname{
   font-size: 2.75em;
   color: white;
-  padding-left: 30px;
+  padding-left: 0;
+  margin: 0;
+  line-height: 1;
 }
 
 .driver-image{
@@ -232,23 +244,39 @@ h1 {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  width: 300px;
-  height: 300px;
-  margin-left: 150px;
-  margin-top: 200px;
+  width: 75%;
+  max-width: 380px;
+  height: auto;
+  aspect-ratio: 1;
+  margin-left: auto;
+  bottom: -10px;
+  right: -30px;
 }
 
 .driver-image>img{
-  width: 130%;
+  width: 100%;
+  max-width: 130%;
   opacity: 0.9;
 }
 
 /*--------------------------------------------------------------------RESPONSIVE-------------------------------------------------------------*/
+@media (max-width: 768px) {
+  .card-driver { max-width: 350px; }
+  .card-driver-name > .surname { font-size: 2em; }
+  .driver-image { 
+    bottom: -10px; 
+    width: 80%;
+    right: -20px;
+  }
+}
+
 @media (max-width: 600px) {
   .card-driver{
-    width: 300px;
-    height: 400px;
-    margin-right: 20px;
+    width: 100%;
+    max-width: 320px;
+    min-height: 400px;
+    margin-right: 0;
+    margin-left: 0;
   }
   .driverNumber{
     font-size: 1.5em;
@@ -268,11 +296,12 @@ h1 {
     font-size: 1.7em;  
   }
   .driver-image{
-    margin: 0;
-    margin-top: 100px;
-    margin-left: 40px;
+    bottom: -10px;
+    width: 85%;
+    max-width: none;
+    right: -25px;
   }
   .driver-image > img{
-    width: 300px;
+    width: 100%;
   }
 }

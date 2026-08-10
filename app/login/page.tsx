@@ -37,12 +37,10 @@ export default function LoginPage() {
           {/* FOTO DEL FORMULARIO */}
           <article className="hidden md:block relative w-[40%] h-full rounded-l-[11px] border-r-2 border-black overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-b from-black/25 to-black/25 z-10" />
-            <Image
+            <img
               src="/images/Login-img.jpg"
               alt="Login Image"
-              fill
-              className="object-cover"
-              priority
+              className="absolute inset-0 w-full h-full object-cover z-0"
             />
           </article>
 

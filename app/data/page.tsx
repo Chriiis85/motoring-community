@@ -10,7 +10,7 @@ export default async function DataPage() {
       <Header
         variant="page"
         pageTitle={"HISTORIC DATA"}
-        backgroundImage="https://media.formula1.com/image/upload/content/dam/fom-website/manual/Misc/2022-Pre-Season/Day1/GettyImages-1383808805.jpg"
+        backgroundImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgblDkkDGp9qUwT1QmDysK2nf19xuvP-Fo5KjORf37UBYZnuVVVxiiKqQ&s=1024x1024"
       />
       <HistoricData />
       <ScrollToTop />

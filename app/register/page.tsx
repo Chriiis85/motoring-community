@@ -37,12 +37,10 @@ export default function RegisterPage() {
           {/* FOTO DEL FORMULARIO */}
           <article className="hidden md:flex relative w-[40%] min-h-[600px] rounded-l-[11px] border-r-2 border-black overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-b from-black/25 to-black/25 z-10" />
-            <Image
+            <img
               src="/images/Register-img.jpg"
               alt="Register Image"
-              fill
-              className="object-cover"
-              priority
+              className="absolute inset-0 w-full h-full object-cover z-0"
             />
           </article>
 
