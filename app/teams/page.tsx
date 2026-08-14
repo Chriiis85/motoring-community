@@ -29,9 +29,9 @@ export default async function TeamsPage() {
       <Header
         variant="page"
         pageTitle={"Formula One 2026 Constructors"}
-        backgroundImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6F_iECgXD5jvNFdu8sc-DjM_hPCE4e92D1Ng8iZe3r5L3vIxa-IN2e6E&s=10"
+        backgroundImage="/images/Register-img.jpg"
       />
-      <main className="main">
+      <main className="teams-main">
         <article className="teams-container">
           {constructors.map((teamStanding: ConstructorStanding) => {
             const team = teamStanding.Constructor;

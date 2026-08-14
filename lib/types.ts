@@ -147,6 +147,47 @@ export function nationalityToCountry(nationality: string): string {
   return map[nationality] || nationality;
 }
 
+// Nationality to country code mapping (ISO 3166-1 alpha-2) for flag APIs
+export function nationalityToCountryCode(nationality: string): string {
+  const map: Record<string, string> = {
+    British: "GB",
+    Spanish: "ES",
+    Dutch: "NL",
+    Mexican: "MX",
+    Monegasque: "MC",
+    Finnish: "FI",
+    Australian: "AU",
+    Canadian: "CA",
+    French: "FR",
+    German: "DE",
+    Japanese: "JP",
+    Chinese: "CN",
+    Thai: "TH",
+    Danish: "DK",
+    American: "US",
+    Italian: "IT",
+    Austrian: "AT",
+    Swiss: "CH",
+    Brazilian: "BR",
+    Belgian: "BE",
+    Polish: "PL",
+    "New Zealander": "NZ",
+    Argentine: "AR",
+    Colombian: "CO",
+    Indian: "IN",
+    Indonesian: "ID",
+    Irish: "IE",
+    Malaysian: "MY",
+    Portuguese: "PT",
+    Russian: "RU",
+    Saudi: "SA",
+    "South African": "ZA",
+    Swedish: "SE",
+    Venezuelan: "VE",
+  };
+  return map[nationality] || "UN";
+}
+
 // Calculate age from date of birth
 export function calculateAge(dateOfBirth: string): number {
   const today = new Date();

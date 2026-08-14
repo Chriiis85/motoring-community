@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function HeroSlideshow() {
   return (
-    <section className="main">
+    <section className="home-main">
       {/* Main Group Content */}
       <article className="main-group">
         <div className="main-group1 margin-top-10">

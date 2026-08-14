@@ -68,7 +68,7 @@ h1 {
   transform: scale(1.1);
 }
 /*----------------------------------------------------------------------MAIN------------------------------------------------------------------*/
-.main {
+.drivers-main {
   width: 100%;
   display: flex;
   align-items: center;
@@ -103,7 +103,8 @@ h1 {
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 80px;
+  gap: 5%;
+  margin: 0 auto;
 }
 
 .card-driver{
@@ -120,6 +121,7 @@ h1 {
   border: 2px solid black;
   background-position: center;
   background-size: 300%;
+  background-repeat: no-repeat;
   transition: 0.3s;
 }
 
@@ -256,7 +258,7 @@ h1 {
 .driver-image>img{
   width: 100%;
   max-width: 130%;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 /*--------------------------------------------------------------------RESPONSIVE-------------------------------------------------------------*/

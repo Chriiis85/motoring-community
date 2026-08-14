@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { DriverStanding, ConstructorStanding, getTeamColor, CONSTRUCTOR_IMAGE_MAP, nationalityToCountry, calculateAge } from "@/lib/types";
+import { DriverStanding, ConstructorStanding, getTeamColor, CONSTRUCTOR_IMAGE_MAP, nationalityToCountry, nationalityToCountryCode, calculateAge } from "@/lib/types";
 
 interface StandingsClientProps {
   driverStandings: DriverStanding[];
@@ -122,11 +122,11 @@ export default function StandingsClient({ driverStandings, constructorStandings,
                         <div className="w-full md:w-[30%] h-full flex items-center justify-center text-xl sm:text-2xl md:text-3xl mt-2 md:mt-0">
                           <h1>{driver.Driver.permanentNumber}</h1>
                           <Image
-                            src={`https://media.formula1.com/d_default_fallback_image.png/content/dam/fom-website/flags/${nationalityToCountry(driver.Driver.nationality).replace(/\s/g, '_')}.jpg`}
-                            alt="Country Flag"
+                            src={`https://flagcdn.com/w80/${nationalityToCountryCode(driver.Driver.nationality).toLowerCase()}.png`}
+                            alt={`${driver.Driver.nationality} Flag`}
                             width={60}
                             height={40}
-                            className="w-[40%] ml-[25%] rounded-[3px] mb-[1%]"
+                            className="w-[30%] ml-[25%] rounded-[3px] mb-[1%]"
                             unoptimized
                           />
                         </div>
@@ -229,8 +229,8 @@ export default function StandingsClient({ driverStandings, constructorStandings,
                         <div className="w-full md:w-[30%] h-full flex items-center justify-center text-xl sm:text-2xl md:text-3xl mt-2 md:mt-0">
                           <h1></h1>
                           <Image
-                            src={`https://media.formula1.com/d_default_fallback_image.png/content/dam/fom-website/flags/${nationalityToCountry(team.Constructor.nationality).replace(/\s/g, '_')}.jpg`}
-                            alt="Country Flag"
+                            src={`https://flagcdn.com/w80/${nationalityToCountryCode(team.Constructor.nationality).toLowerCase()}.png`}
+                            alt={`${team.Constructor.nationality} Flag`}
                             width={60}
                             height={40}
                             className="w-[50%] md:w-[30px] ml-[15%] rounded-[3px] mb-[1%]"

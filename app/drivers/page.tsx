@@ -1,7 +1,7 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { getDriverStandings } from "@/lib/f1-api";
-import { DriverStanding } from "@/lib/types";
+import { DriverStanding, nationalityToCountryCode } from "@/lib/types";
 import FallbackImage from "@/components/ui/FallbackImage";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 import "./drivers.css"; // Import the exact original CSS
@@ -14,9 +14,9 @@ export default async function DriversPage() {
       <Header
         variant="page"
         pageTitle={"Formula One 2026 Drivers"}
-        backgroundImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7ou89rAp8HQCvhx5lyZL3wyTQFIDwG8YFRVrHNBYRtXLers8zl2tzZZk&s=1024"
+        backgroundImage="/images/Login-img.jpg"
       />
-      <main className="main" aria-labelledby="main-title">
+      <main className="drivers-main" aria-labelledby="main-title">
         <article className="card-driver-container">
           {standings.map((driverStanding: DriverStanding, i: number) => {
             const team = driverStanding.Constructors[0]?.name.replace(/\s+/g, "") || "Unknown";
@@ -36,7 +36,7 @@ export default async function DriversPage() {
                   position: 'relative',
                   overflow: 'hidden',
                   boxShadow: `0 0 2px black, 0 0 10px black, 0 0 20px var(--${team}), 0 0 30px var(--${team}), 0 0 40px var(--${team}), 0 0 50px var(--${team})`,
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/helmets/${familyName}.png')`
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/Helmets/${encodeURI(familyName)}.png')`
                 }}
               >
                 <div className="driver-image">
@@ -68,7 +68,7 @@ export default async function DriversPage() {
                     </div>
                     <div className="driverFlag">
                       <FallbackImage 
-                        src={`https://media.formula1.com/content/dam/fom-website/flags/${nacionalidadAPais(nationality)}.jpg`} 
+                        src={`https://flagcdn.com/w80/${nationalityToCountryCode(nationality).toLowerCase()}.png`} 
                         fallbackSrc="/images/transparent.svg" 
                         alt="Country Flag" 
                       />

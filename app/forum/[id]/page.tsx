@@ -48,10 +48,16 @@ export default function ForumPostDetail({ params }: { params: Promise<{ id: stri
     };
 
     return (
-        <div className="min-h-screen flex flex-col font-['Open_Sans'] overflow-x-hidden">
+        <div className="min-h-screen flex flex-col overflow-x-hidden">
             <Header />
-            <main className="flex-grow w-full min-h-[60vh] flex flex-col items-center py-10 bg-[#f3f3f3] conic-mesh-bg">
+            <main className="flex-grow w-full min-h-[60vh] flex flex-col items-center pt-[150px] md:pt-[180px] pb-10 bg-[#f3f3f3] conic-mesh-bg">
                 
+                {/* Alert Message */}
+                <div className="w-[90%] max-w-5xl bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-6 rounded shadow-sm text-center" role="alert">
+                  <p className="font-bold">⚠️ Aviso / Warning</p>
+                  <p>Esta sección es solo una demostración visual y actualmente no tiene funcionalidad real.</p>
+                </div>
+
                 {/* Info Bar */}
                 <div className="w-[90%] flex flex-row items-center justify-between text-center text-white mb-6">
                     <h1 className="text-xl md:text-2xl font-bold text-black drop-shadow-md bg-white/80 px-4 py-2 rounded">Theme Name: {resolvedParams.id ? `Discussion ${resolvedParams.id}` : '2024 Spanish GP Discussion'}</h1>
@@ -91,7 +97,7 @@ export default function ForumPostDetail({ params }: { params: Promise<{ id: stri
                 
                 {/* Reply Form */}
                 <div className="w-[90%] bg-white p-6 rounded-lg mt-8 mb-4 shadow-lg border-2 border-black">
-                    <h2 className="text-2xl font-bold mb-4 font-['Bebas_Neue'] tracking-wider">Leave a Reply</h2>
+                    <h2 className="text-2xl font-bold mb-4 font-[family-name:var(--font-f1-title)] tracking-wider">Leave a Reply</h2>
                     <form onSubmit={handleReplySubmit} className="flex flex-col gap-4">
                         <textarea 
                             className="w-full h-[150px] border-[3px] border-black rounded-[5px] p-[12px] text-base resize-none focus:outline-none focus:shadow-[0_0_3px_3px_#00b9ff] hover:shadow-[0_0_3px_3px_#00b9ff] transition-shadow duration-200 text-[#282828]"

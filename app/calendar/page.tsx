@@ -77,7 +77,7 @@ export default async function CalendarPage() {
         </div>
       </section>
 
-      <main className="main">
+      <main className="calendar-main">
         <section className="calendar-season-container" aria-labelledby="calendar-title">
         <article className="calendar-season">
           {races.map((race: Race, i: number) => {

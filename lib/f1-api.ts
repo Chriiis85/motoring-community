@@ -4,11 +4,19 @@
 const BASE_URL = "https://api.jolpi.ca/ergast/f1";
 
 async function fetchF1Data(endpoint: string) {
-  const res = await fetch(`${BASE_URL}${endpoint}`, {
-    next: { revalidate: 3600 }, // Cache for 1 hour
-  });
-  if (!res.ok) throw new Error(`F1 API error: ${res.status}`);
-  return res.json();
+  try {
+    const res = await fetch(`${BASE_URL}${endpoint}`, {
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    });
+    if (!res.ok) {
+      console.warn(`F1 API error: ${res.status}`);
+      return { MRData: { StandingsTable: { StandingsLists: [] }, RaceTable: { Races: [] } } };
+    }
+    return res.json();
+  } catch (error) {
+    console.error("Fetch F1 Data failed:", error);
+    return { MRData: { StandingsTable: { StandingsLists: [] }, RaceTable: { Races: [] } } };
+  }
 }
 
 export async function getDriverStandings(year: string | number = "current") {
