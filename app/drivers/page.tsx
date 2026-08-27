@@ -17,7 +17,13 @@ export default async function DriversPage() {
         backgroundImage="/images/Login-img.jpg"
       />
       <main className="drivers-main" aria-labelledby="main-title">
-        <article className="card-driver-container">
+        {standings.length === 0 ? (
+          <div className="py-20 px-4 text-center text-gray-700 dark:text-gray-300 font-['F1Regular']">
+            <p className="text-xl sm:text-2xl font-bold">⚠️ No se han podido cargar los pilotos en este momento.</p>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-2">Por favor, comprueba tu conexión a Internet o inténtalo de nuevo en unos minutos.</p>
+          </div>
+        ) : (
+          <article className="card-driver-container">
           {standings.map((driverStanding: DriverStanding, i: number) => {
             const team = driverStanding.Constructors[0]?.name.replace(/\s+/g, "") || "Unknown";
             const familyName = driverStanding.Driver.familyName;
@@ -83,6 +89,7 @@ export default async function DriversPage() {
             );
           })}
         </article>
+        )}
       </main>
       <ScrollToTop />
       <Footer />

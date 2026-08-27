@@ -1,21 +1,4 @@
-/*--------------------------------------------------------------IMPORT FONTS-------------------------------------------------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Titillium+Web:400,400i,600,600i");
-@font-face {
-  font-family: "F1Title";
-  src: url("/fonts/Formula1-Black.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "F1Regular";
-  src: url("/fonts/Formula1-Regular-1.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "F1RegularBold";
-  src: url("/fonts/Formula1-Bold-4.ttf") format("truetype");
-}
+/* Main Page Styles - Fonts centralized in globals.css with swap */
 
 
 
@@ -23,9 +6,7 @@
 
 
 
-.hidden {
-  display: none;
-}
+
 
 .up-button {
   position: fixed;
@@ -1016,6 +997,10 @@ span {
   margin-top: 4%;
 }
 
+.dark .about-title {
+  color: #ffffff;
+}
+
 .about-content {
   color: #222222;
   text-align: justify;
@@ -1024,11 +1009,19 @@ span {
   margin-bottom: -1%;
 }
 
+.dark .about-content {
+  color: #e5e5e5;
+}
+
 .about-content2 {
   color: #222222;
   text-align: justify;
   font-size: 0.8em;
   margin: 5%;
+}
+
+.dark .about-content2 {
+  color: #e5e5e5;
 }
 
 /*---------------------------------------------------------------RESPONSIVE-------------------------------------------------------------------*/

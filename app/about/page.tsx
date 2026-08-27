@@ -1,28 +1,27 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
-import Image from "next/image";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#f3f3f3]">
+    <div className="min-h-screen flex flex-col bg-[#f3f3f3] dark:bg-[#121212] transition-colors duration-300">
       <Header
         variant="page"
         pageTitle="About Formula One 2026"
         backgroundImage="https://www.f1-fansite.com/wp-content/uploads/2023/06/SI202306040579.jpg"
       />
       <main className="flex-grow w-full py-10 px-4 md:px-8 conic-mesh-bg">
-        <article className="max-w-4xl mx-auto bg-white p-8 md:p-12 border-2 border-black rounded-[15px] shadow-[0_5px_15px_rgba(0,0,0,0.35)] font-medium text-lg leading-relaxed text-[#282828]">
-          <h1 className="text-3xl md:text-5xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider">About Formula One</h1>
+        <article className="max-w-4xl mx-auto bg-white dark:bg-[#1a1a1a] p-8 md:p-12 border-2 border-black dark:border-gray-700 rounded-[15px] shadow-[0_5px_15px_rgba(0,0,0,0.35)] font-medium text-lg leading-relaxed text-[#282828] dark:text-gray-100 transition-colors duration-300">
+          <h1 className="text-3xl md:text-5xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">About Formula One</h1>
           <p className="mb-6">
             Formula One, commonly known as Formula 1 or F1, is the highest class
             of international racing for open-wheel single-seater formula racing
-            cars sanctioned by the Fédération Internationale de l'Automobile
+            cars sanctioned by the Fédération Internationale de l&apos;Automobile
             (FIA). The FIA Formula One World Championship has been one of the
-            world's premier forms of racing since its inaugural running in 1950.
+            world&apos;s premier forms of racing since its inaugural running in 1950.
             The word formula in the name refers to the set of rules all
-            participants' cars must follow. A Formula One season consists of a
+            participants&apos; cars must follow. A Formula One season consists of a
             series of races, known as Grands Prix. Grands Prix take place in
             multiple countries and continents on either purpose-built circuits or
             closed public roads.
@@ -35,7 +34,7 @@ export default function AboutPage() {
             one tracks, the highest grade rating the FIA issues for tracks.
           </p>
 
-          <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider">The Constructors</h1>
+          <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">The Constructors</h1>
           <p className="mb-6">
             A Formula One constructor is the entity credited for designing the
             chassis and the engine. If both are designed by the same company, that
@@ -49,10 +48,10 @@ export default function AboutPage() {
           <p className="mb-8">
             Since 1981, Formula One teams have been required to build the chassis
             in which they compete, and consequently the distinction between the
-            terms "team" and "constructor" became less pronounced, though engines
+            terms &quot;team&quot; and &quot;constructor&quot; became less pronounced, though engines
             may still be produced by a different entity. This requirement
             distinguishes the sport from series such as the IndyCar Series which
-            allows teams to purchase chassis, and "spec series" such as Formula 2
+            allows teams to purchase chassis, and &quot;spec series&quot; such as Formula 2
             which require all cars be kept to an identical specification. It also
             effectively prohibits privateers, which were common even in Formula
             One well into the 1970s.
@@ -60,14 +59,13 @@ export default function AboutPage() {
           
           <div className="flex justify-center mb-12">
             <Link href="/teams">
-              <button className="bg-[#222] text-white px-8 py-4 font-[family-name:var(--font-f1-bold)] text-xl rounded hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(0,0,0,0.5)] transition-all duration-300">
+              <button className="bg-[#222] dark:bg-[#00b9ff] text-white dark:text-black font-bold px-8 py-4 font-[family-name:var(--font-f1-bold)] text-xl rounded hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(0,185,255,0.4)] transition-all duration-300">
                 View all Teams
               </button>
-
             </Link>
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider">The Drivers</h1>
+          <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">The Drivers</h1>
           <p className="mb-6">
             Every team in Formula One must run two cars in every session in a
             Grand Prix weekend, and every team may use up to four drivers in a
@@ -92,13 +90,13 @@ export default function AboutPage() {
 
           <div className="flex justify-center mb-12">
             <Link href="/drivers">
-              <button className="bg-[#222] text-white px-8 py-4 font-[family-name:var(--font-f1-bold)] text-xl rounded hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(0,0,0,0.5)] transition-all duration-300">
+              <button className="bg-[#222] dark:bg-[#00b9ff] text-white dark:text-black font-bold px-8 py-4 font-[family-name:var(--font-f1-bold)] text-xl rounded hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(0,185,255,0.4)] transition-all duration-300">
                 View all Drivers
               </button>
             </Link>
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider">The Race Calendar</h1>
+          <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">The Race Calendar</h1>
           <p className="mb-6">
             Every year, several Grand Prix races are organized in different parts
             of the world. In the 2026 season, the number is 24 Grand Prix races,
@@ -125,7 +123,7 @@ export default function AboutPage() {
 
           <div className="flex justify-center mb-4">
             <Link href="/calendar">
-              <button className="bg-[#222] text-white px-8 py-4 font-[family-name:var(--font-f1-bold)] text-xl rounded hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(0,0,0,0.5)] transition-all duration-300">
+              <button className="bg-[#222] dark:bg-[#00b9ff] text-white dark:text-black font-bold px-8 py-4 font-[family-name:var(--font-f1-bold)] text-xl rounded hover:-translate-y-1 hover:shadow-[0_5px_15px_rgba(0,185,255,0.4)] transition-all duration-300">
                 View the Calendar
               </button>
             </Link>

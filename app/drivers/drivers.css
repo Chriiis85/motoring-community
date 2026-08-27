@@ -1,20 +1,4 @@
-/*--------------------------------------------------------------IMPORT FONTS-------------------------------------------------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-@font-face {
-  font-family: "F1Title";
-  src: url("/fonts/Formula1-Black.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "F1Regular";
-  src: url("/fonts/Formula1-Regular-1.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "F1RegularBold";
-  src: url("/fonts/Formula1-Bold-4.ttf") format("truetype");
-}
+/* Drivers Page Styles */
 
 :root {
   --RedBull: #3671c6;

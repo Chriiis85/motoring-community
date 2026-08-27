@@ -72,8 +72,23 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
     return (
       <div className="min-h-screen flex flex-col font-['F1Regular'] bg-[#1a1a1a]">
         <Header variant="main" />
-        <main className="flex-grow flex items-center justify-center">
-          <h2 className="text-2xl text-white font-['F1Regular']">Loading Article...</h2>
+        <main className="flex-grow w-full py-12 px-4 md:px-8 text-white relative z-10 pt-20">
+          <article className="max-w-[1000px] mx-auto bg-[#222] p-8 md:p-16 rounded-xl border-t-4 border-t-[#00b9ff]/40 shadow-2xl animate-pulse">
+            <div className="w-28 h-4 bg-gray-700 rounded mb-8"></div>
+            <div className="flex flex-col items-center mb-10 gap-4">
+              <div className="w-24 h-6 bg-gray-700 rounded"></div>
+              <div className="w-4/5 h-10 md:h-14 bg-gray-700 rounded"></div>
+              <div className="w-2/3 h-8 bg-gray-700/60 rounded"></div>
+              <div className="w-48 h-4 bg-gray-700/40 rounded mt-4"></div>
+            </div>
+            <div className="space-y-4 pt-6">
+              <div className="w-full h-5 bg-gray-700/70 rounded"></div>
+              <div className="w-full h-5 bg-gray-700/70 rounded"></div>
+              <div className="w-5/6 h-5 bg-gray-700/60 rounded"></div>
+              <div className="w-full h-5 bg-gray-700/50 rounded pt-4"></div>
+              <div className="w-3/4 h-5 bg-gray-700/50 rounded"></div>
+            </div>
+          </article>
         </main>
         <Footer />
       </div>

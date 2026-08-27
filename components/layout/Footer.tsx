@@ -1,9 +1,9 @@
 'use client';
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import "./footer.css"; // Import the exact original CSS with custom modal styles added
+import "./footer.css";
 
-type ModalType = "none" | "privacy" | "data" | "cookies" | "faq";
+type ModalType = "none" | "legal" | "privacy" | "data" | "cookies" | "faq";
 
 export default function Footer() {
   const [activeModal, setActiveModal] = useState<ModalType>("none");
@@ -44,7 +44,7 @@ export default function Footer() {
         <section className="footer-top">
           <article className="footer-top-col1">
             <div>
-              <h1>Motoring Community</h1>
+              <h1 className="font-['F1Title']">Motoring Community</h1>
             </div>
             {/* REDES SOCIALES CONTENEDOR */}
             <div className="social-buttons">
@@ -53,7 +53,7 @@ export default function Footer() {
                   <path d="M9.464 17.178a4.506 4.506 0 0 1-2.013.317 4.29 4.29 0 0 1-2.007-.317.746.746 0 0 1-.277-.587c0-.22-.008-.798-.012-1.567-2.564.557-3.105-1.236-3.105-1.236a2.44 2.44 0 0 0-1.024-1.348c-.836-.572.063-.56.063-.56a1.937 1.937 0 0 1 1.412.95 1.962 1.962 0 0 0 2.682.765 1.971 1.971 0 0 1 .586-1.233c-2.046-.232-4.198-1.023-4.198-4.554a3.566 3.566 0 0 1 .948-2.474 3.313 3.313 0 0 1 .091-2.438s.773-.248 2.534.945a8.727 8.727 0 0 1 4.615 0c1.76-1.193 2.532-.945 2.532-.945a3.31 3.31 0 0 1 .092 2.438 3.562 3.562 0 0 1 .947 2.474c0 3.54-2.155 4.32-4.208 4.548a2.195 2.195 0 0 1 .625 1.706c0 1.232-.011 2.227-.011 2.529a.694.694 0 0 1-.272.587z"></path>
                 </svg>
               </a>
-              <a target="_blank" title="Go to Chris LinkedIn Page" href="https://www.linkedin.com/in/christian-moreno-díaz-109024292/" className="social-button linkedin" aria-label="LinkedIn" rel="noopener noreferrer">
+              <a target="_blank" title="Go to Chris LinkedIn Page" href="https://www.linkedin.com/in/christian-moreno-d%C3%ADaz-109024292/" className="social-button linkedin" aria-label="LinkedIn" rel="noopener noreferrer">
                 <svg viewBox="0 -2 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M746,305 L736.2754,305 L736.2754,290.9384 C736.2754,287.257796 734.754233,284.74515 731.409219,284.74515 C728.850659,284.74515 727.427799,286.440738 726.765522,288.074854 C726.517168,288.661395 726.555974,289.478453 726.555974,290.295511 L726.555974,305 L716.921919,305 C716.921919,305 717.046096,280.091247 716.921919,277.827047 L726.555974,277.827047 L726.555974,282.091631 C727.125118,280.226996 730.203669,277.565794 735.116416,277.565794 C741.21143,277.565794 746,281.474355 746,289.890824 L746,305 L746,305 Z M707.17921,274.428187 L707.117121,274.428187 C704.0127,274.428187 702,272.350964 702,269.717936 C702,267.033681 704.072201,265 707.238711,265 C710.402634,265 712.348071,267.028559 712.41016,269.710252 C712.41016,272.34328 710.402634,274.428187 707.17921,274.428187 L707.17921,274.428187 L707.17921,274.428187 Z M703.109831,277.827047 L711.685795,277.827047 L711.685795,305 L703.109831,305 L703.109831,277.827047 L703.109831,277.827047 Z" transform="translate(-702.000000, -265.000000)"></path>
                 </svg>
@@ -61,114 +61,178 @@ export default function Footer() {
             </div>
             <p>&quot;The home of all the race fans, where we can meet together.&quot;</p>
           </article>
+          
           {/* CONTENEDORES PARA LOS MENUS Y SECCIONES */}
           <article className="footer-top-col2">
-            <h1>Menu</h1>
+            <h1 className="font-['F1Title']">Menu</h1>
             <div className="footer-top-col2-bar"></div>
             <Link title="Go to Main Page" href="/">Main Page</Link>
             <Link title="Go to About F1 Page" href="/about">About Formula One</Link>
-            <Link title="Go to ForumPage" href="/forum">Motoring Community Forum</Link>
+            <Link title="Go to Drivers Page" href="/drivers">Season Drivers</Link>
+            <Link title="Go to Standings Page" href="/standings">Season Standings</Link>
+            <Link title="Go to Forum Page" href="/forum">Motoring Community Forum</Link>
           </article>
+
           <article className="footer-top-col2">
-            <h1>Privacy Policy</h1>
+            <h1 className="font-['F1Title']">Legal &amp; Privacy</h1>
             <div className="footer-top-col2-bar"></div>
-            <a title="Go to Footer Section" href="#footer" onClick={(e) => openModal(e, "privacy")}>Privacy Policy</a>
-            <a title="Go to Footer Section" href="#footer" onClick={(e) => openModal(e, "data")}>Data Usage</a>
-            <a title="Go to Footer Section" href="#footer" onClick={(e) => openModal(e, "cookies")}>Cookies Usage</a>
+            <a title="Aviso Legal" href="#footer" onClick={(e) => openModal(e, "legal")}>Aviso Legal &amp; Disclaimer</a>
+            <a title="Política de Privacidad" href="#footer" onClick={(e) => openModal(e, "privacy")}>Política de Privacidad</a>
+            <a title="Uso de Datos" href="#footer" onClick={(e) => openModal(e, "data")}>Uso de Datos &amp; APIs</a>
+            <a title="Política de Cookies" href="#footer" onClick={(e) => openModal(e, "cookies")}>Política de Cookies</a>
           </article>
+
           <article className="footer-top-col2">
-            <h1>Get Help</h1>
+            <h1 className="font-['F1Title']">Get Help</h1>
             <div className="footer-top-col2-bar"></div>
-            <a title="Go to Footer Section" href="#footer" onClick={(e) => openModal(e, "faq")}>F&amp;Q</a>
-            <Link title="Go to About F1 Page" href="/about">Learn More</Link>
+            <a title="Preguntas Frecuentes" href="#footer" onClick={(e) => openModal(e, "faq")}>F&amp;Q (Preguntas)</a>
+            <Link title="Learn More" href="/about">Learn More</Link>
           </article>
         </section>
+
         <section className="footer-bot">
           <p>
-            WEBPAGE MADE BY CHRISTIAN MORENO DIAZ - ALL RIGHTS RESERVED 2026®™
+            MOTORING COMMUNITY © 2026 — Web comunitaria y educativa sin ánimo de lucro creada por Christian Moreno Díaz.
           </p>
         </section>
       </footer>
 
-      {/* MODALES */}
+      {/* MODALES LEGALES */}
       {activeModal !== "none" && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="close-btn" onClick={closeModal} aria-label="Close modal">&times;</button>
+        <div className="modal-overlay" onClick={closeModal} role="dialog" aria-modal="true">
+          <div className="modal-content max-w-2xl max-h-[85vh] overflow-y-auto p-6 sm:p-8" onClick={(e) => e.stopPropagation()}>
+            <button className="close-btn" onClick={closeModal} aria-label="Cerrar modal">&times;</button>
             
-            {activeModal === "cookies" && (
-              <div>
-                <h1>Cookie Policy</h1>
-                <p>Our website uses cookies to enhance user experience and to help us understand how our site is used. Cookies are
-                  small text files that are stored on your device when you visit our website.
-                  By using our website, you consent to the use of cookies in accordance with this policy. If you do not accept the use
-                  of these cookies, please disable cookies by following the instructions provided by your Internet browser.</p>
+            {/* AVISO LEGAL */}
+            {activeModal === "legal" && (
+              <div className="space-y-4 font-['F1Regular']">
+                <h1 className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2">Aviso Legal y Términos de Uso</h1>
+                
+                <h2 className="text-lg font-bold font-['F1Title'] text-[#00b9ff]">1. Identificación y Finalidad</h2>
+                <p>
+                  <strong>Motoring Community</strong> es un proyecto web comunitario, divulgativo y educativo creado con fines no lucrativos por Christian Moreno Díaz. Su objetivo es centralizar información pública sobre el Campeonato Mundial de Fórmula 1 y ofrecer un punto de encuentro a los aficionados al motor.
+                </p>
 
-                <h1>Third-Party Cookies</h1>
-                <p>In some special cases, we also use cookies provided by trusted third parties. The following section details which
-                  third-party cookies you may encounter through this site.</p>
-                <p>We hope this cookie policy has clarified things for you and, as mentioned above, if there is something you are not
-                  sure whether you need or not, it is usually safer to leave cookies enabled in case you interact with one of the
-                  features you use on our site.
-                  However, if you are still looking for more information, you can contact us through one of our preferred contact
-                  methods.</p>
+                <h2 className="text-lg font-bold font-['F1Title'] text-[#00b9ff]">2. Exención de Responsabilidad sobre Marcas (Disclaimer F1)</h2>
+                <p>
+                  Esta web <strong>no es un sitio web oficial de la Fórmula 1 ni está afiliada, patrocinada, respaldada ni asociada en modo alguno con Formula One Licensing B.V., Formula One Management (FOM), la FIA (Federación Internacional del Automóvil) ni ninguna de sus escuderías o filiales</strong>.
+                </p>
+                <p>
+                  Las marcas, nombres comerciales, logotipos, imágenes de escuderías y pilotos son marcas registradas de sus respectivos titulares y se utilizan únicamente con fines descriptivos, divulgativos e informativos bajo el uso legítimo (<em>fair use</em>).
+                </p>
+
+                <h2 className="text-lg font-bold font-['F1Title'] text-[#00b9ff]">3. Fuentes de Datos y Créditos</h2>
+                <p>
+                  Los datos estadísticos, clasificaciones y calendarios se obtienen de fuentes públicas como <strong>Ergast Developer API / Jolpica F1</strong> y las noticias a través de <strong>NewsAPI</strong>. Las banderas de nacionalidad proceden de <strong>FlagCDN</strong>.
+                </p>
               </div>
             )}
 
+            {/* POLÍTICA DE PRIVACIDAD */}
             {activeModal === "privacy" && (
-              <div>
-                <h1>Privacy Policy</h1>
-                <p>At Motoring Community, we are committed to protecting the privacy of our users and ensuring that their personal
-                  information remains confidential and secure. This policy describes how we collect, use, and protect the information
-                  we obtain through our online services.</p>
+              <div className="space-y-4 font-['F1Regular']">
+                <h1 className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2">Política de Privacidad (RGPD)</h1>
+                
+                <h2 className="text-lg font-bold font-['F1Title'] text-[#00b9ff]">1. Responsable del Tratamiento</h2>
+                <p>
+                  En cumplimiento del Reglamento General de Protección de Datos (RGPD UE 2016/679) y la LOPDGDD 3/2018, se informa de que los datos tratados a través de esta web son gestionados bajo los más estrictos estándares de privacidad.
+                </p>
+
+                <h2 className="text-lg font-bold font-['F1Title'] text-[#00b9ff]">2. Datos que recopilamos</h2>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>Preferencias locales:</strong> Configuración del tema (modo claro/oscuro) almacenada exclusivamente en tu navegador (LocalStorage).</li>
+                  <li><strong>Formularios de Demostración:</strong> Los formularios de Login y Registro son simulaciones cliente que no almacenan contraseñas en servidores externos sin tu consentimiento expreso.</li>
+                  <li><strong>Foro y Comunidad:</strong> Publicaciones voluntarias en los hilos del foro.</li>
+                </ul>
+
+                <h2 className="text-lg font-bold font-['F1Title'] text-[#00b9ff]">3. Derechos del Usuario (ARCO)</h2>
+                <p>
+                  Puedes ejercer en cualquier momento tus derechos de <strong>Acceso, Rectificación, Supresión, Oposición, Limitación del tratamiento y Portabilidad</strong> de tus datos contactando a través de los canales de la comunidad en GitHub o LinkedIn.
+                </p>
               </div>
             )}
 
+            {/* USO DE DATOS & APIS */}
             {activeModal === "data" && (
-              <div>
-                <h2>Data Usage</h2>
-                <p>At Motoring Community, we take the privacy of our users and the protection of their personal data very seriously.
-                  This policy describes how we collect, use, and protect the information we obtain through our online services.</p>
+              <div className="space-y-4 font-['F1Regular']">
+                <h1 className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2">Uso de Datos &amp; Servicios de Terceros</h1>
+                
+                <h2 className="text-lg font-bold font-['F1Title'] text-[#00b9ff]">1. Integraciones de Datos en Tiempo Real</h2>
+                <p>
+                  Para ofrecer clasificaciones, biografías y telemetría actualizada, esta web realiza peticiones seguras (HTTPS) a proveedores externos reconocidos:
+                </p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>Ergast / Jolpica API:</strong> Consulta de clasificaciones de pilotos, constructores y circuitos históricos.</li>
+                  <li><strong>News API:</strong> Agregación de noticias recientes de la Fórmula 1.</li>
+                  <li><strong>FlagCDN:</strong> Visualización de banderas nacionales en formato SVG/PNG optimizado.</li>
+                </ul>
+
+                <h2 className="text-lg font-bold font-['F1Title'] text-[#00b9ff]">2. Seguridad de los Datos</h2>
+                <p>
+                  Toda la comunicación web se realiza bajo cifrado SSL/TLS de alta seguridad y estrictas políticas de cabeceras HTTP (<em>Permissions-Policy</em>, <em>X-Frame-Options</em>, <em>Content-Type-Options</em>).
+                </p>
               </div>
             )}
 
+            {/* POLÍTICA DE COOKIES */}
+            {activeModal === "cookies" && (
+              <div className="space-y-4 font-['F1Regular']">
+                <h1 className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2">Política de Cookies</h1>
+                
+                <h2 className="text-lg font-bold font-['F1Title'] text-[#00b9ff]">1. ¿Qué son las Cookies?</h2>
+                <p>
+                  Las cookies y el almacenamiento local (<em>LocalStorage</em>) son pequeños ficheros que los sitios web colocan en tu dispositivo para recordar información sobre tu visita, como tu preferencia de tema o sesión.
+                </p>
+
+                <h2 className="text-lg font-bold font-['F1Title'] text-[#00b9ff]">2. Tipos de Cookies que utilizamos</h2>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>Cookies Técnicas y Esenciales:</strong> Necesarias para recordar si prefieres el <em>Modo Claro</em> o <em>Modo Oscuro</em> y tu consentimiento de cookies.</li>
+                  <li><strong>Servicios Externos:</strong> Fuentes de Google Fonts e imágenes optimizadas alojadas en CDNs seguras.</li>
+                </ul>
+
+                <h2 className="text-lg font-bold font-['F1Title'] text-[#00b9ff]">3. Cómo gestionar o deshabilitar Cookies</h2>
+                <p>
+                  Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo mediante la configuración de las opciones de tu navegador:
+                </p>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li><strong>Google Chrome:</strong> Configuración &gt; Privacidad y seguridad &gt; Cookies.</li>
+                  <li><strong>Mozilla Firefox:</strong> Ajustes &gt; Privacidad y seguridad &gt; Cookies y datos del sitio.</li>
+                  <li><strong>Safari:</strong> Preferencias &gt; Privacidad.</li>
+                  <li><strong>Microsoft Edge:</strong> Configuración &gt; Cookies y permisos del sitio.</li>
+                </ul>
+              </div>
+            )}
+
+            {/* PREGUNTAS FRECUENTES (FAQ) */}
             {activeModal === "faq" && (
-              <div>
-                <h2>Frecuently Asked Questions (F&amp;Q)</h2>
-                <div className="accordion">
+              <div className="space-y-4 font-['F1Regular']">
+                <h1 className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2">Preguntas Frecuentes (FAQ)</h1>
+                <div className="accordion space-y-2 mt-4">
                   {[
                     {
-                      q: "¿What are the cookies?",
-                      a: "Cookies are text files that contain small amounts of information which are downloaded to your device when you visit a website. Cookies are widely used to make websites work more efficiently, as well as to provide information to the site owners."
+                      q: "¿Qué es Motoring Community?",
+                      a: "Es una plataforma comunitaria creada para aficionados al deporte del motor donde consultar clasificaciones oficiales, noticias, datos históricos y debatir en el foro."
                     },
                     {
-                      q: "¿How do we use cookies?",
-                      a: "We use cookies for several reasons, which are detailed below. Unfortunately, in most cases, there are no industry standard options for disabling cookies without completely disabling the functionality and features they add to this site. It is recommended that you leave all cookies enabled if you are unsure whether you need them or not, in case they are used to provide a service that you use."
+                      q: "¿Tiene algún coste o suscripción?",
+                      a: "No. Motoring Community es 100% gratuita y sin ánimo de lucro. Todos los datos se ofrecen con fines educativos y de divulgación."
                     },
                     {
-                      q: "¿What data do we save?",
-                      a: "We collect personal information in various ways, including direct interactions when you provide us with information by creating an account, completing forms on our website or in our applications, or when communicating with us via email, phone, or other means. We also collect information automatically when you use our services, including information about your device and browsing activity, through the use of cookies and other similar technologies."
+                      q: "¿De dónde proceden los datos y estadísticas?",
+                      a: "Los resultados, puntos y posiciones históricas se obtienen de la base de datos de Ergast Developer API y las noticias de NewsAPI."
                     },
                     {
-                      q: "¿How do we use your data?",
-                      a: "We use the information we collect to provide, maintain, and improve our services, as well as to personalize your experience and to communicate with you. This may include sending marketing communications if you have given consent to receive them. We do not sell or rent your personal information to third parties without your explicit consent. However, we may share your information with third-party service providers who assist us in operating our business and providing services on your behalf, provided they commit to maintaining the confidentiality of your information."
+                      q: "¿Cómo se activa el Modo Oscuro o Claro?",
+                      a: "Puedes pulsar en cualquier momento el icono de sol/luna ubicado en la barra de navegación superior tanto en ordenador como en móvil."
                     },
                     {
-                      q: "Data Protection",
-                      a: "We take measures to protect the security of your personal information and to ensure that it is used in accordance with this policy. This includes implementing technical and organizational measures to protect against unauthorized access, disclosure, alteration, or destruction of your personal information."
-                    },
-                    {
-                      q: "User Rights",
-                      a: "You have certain rights regarding your personal data, including the right to access, correct, delete, restrict, or object to the processing of your personal information. If you wish to exercise any of these rights, please contact us using the contact information provided at the end of this policy."
-                    },
-                    {
-                      q: "Politics changes",
-                      a: "We may update this policy from time to time to reflect changes in our data collection and usage practices. We recommend that you periodically review this page for the latest information on our privacy policies and practices."
+                      q: "¿Cómo se protegen mis datos personales?",
+                      a: "Cumplimos con la normativa RGPD europea. No comercializamos con tus datos y tus preferencias se guardan de forma local en tu propio navegador."
                     }
                   ].map((faq, index) => (
-                    <div className="accordion-item" key={index}>
+                    <div className="accordion-item border border-gray-300 dark:border-gray-700 rounded overflow-hidden" key={index}>
                       <h3 
-                        className="accordion-header" 
+                        className="accordion-header p-3 font-bold cursor-pointer flex justify-between items-center" 
                         tabIndex={0} 
                         aria-expanded={openAccordion === index} 
                         aria-controls={`content${index}`} 
@@ -176,10 +240,11 @@ export default function Footer() {
                         onClick={() => toggleAccordion(index)}
                         onKeyDown={(e) => handleAccordionKeyDown(e, index)}
                       >
-                        {faq.q} <span className={`arrow ${openAccordion === index ? "open" : ""}`}>&#9662;</span>
+                        <span>{faq.q}</span>
+                        <span className={`arrow transition-transform duration-200 ${openAccordion === index ? "rotate-180" : ""}`}>&#9662;</span>
                       </h3>
                       {openAccordion === index && (
-                        <div className="accordion-content" id={`content${index}`} aria-labelledby={`header${index}`}>
+                        <div className="accordion-content p-4 text-sm bg-gray-50 dark:bg-[#252528] text-gray-800 dark:text-gray-200" id={`content${index}`} aria-labelledby={`header${index}`}>
                           {faq.a}
                         </div>
                       )}

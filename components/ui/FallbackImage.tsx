@@ -6,7 +6,7 @@ interface FallbackImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   fallbackSrc: string;
 }
 
-export default function FallbackImage({ src, fallbackSrc, alt, ...props }: FallbackImageProps) {
+export default function FallbackImage({ src, fallbackSrc, alt, loading = "lazy", decoding = "async", ...props }: FallbackImageProps) {
   const [imgSrc, setImgSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
 
@@ -17,6 +17,8 @@ export default function FallbackImage({ src, fallbackSrc, alt, ...props }: Fallb
 
   return (
     <img
+      loading={loading}
+      decoding={decoding}
       {...props}
       src={imgSrc || fallbackSrc}
       alt={alt || ''}

@@ -32,7 +32,13 @@ export default async function TeamsPage() {
         backgroundImage="/images/Register-img.jpg"
       />
       <main className="teams-main">
-        <article className="teams-container">
+        {constructors.length === 0 ? (
+          <div className="py-20 px-4 text-center text-gray-700 dark:text-gray-300 font-['F1Regular']">
+            <p className="text-xl sm:text-2xl font-bold">⚠️ No se han podido cargar las escuderías en este momento.</p>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-2">Por favor, comprueba tu conexión a Internet o inténtalo de nuevo en unos minutos.</p>
+          </div>
+        ) : (
+          <article className="teams-container">
           {constructors.map((teamStanding: ConstructorStanding) => {
             const team = teamStanding.Constructor;
             const teamNameSafe = team.name.replace(/\s+/g, "");
@@ -95,6 +101,7 @@ export default async function TeamsPage() {
             );
           })}
         </article>
+        )}
       </main>
       <ScrollToTop />
       <Footer />

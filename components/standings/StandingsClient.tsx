@@ -28,8 +28,8 @@ export default function StandingsClient({ driverStandings, constructorStandings,
   };
 
   return (
-    <div className="flex flex-col items-center bg-[#f3f3f3] w-full pb-10">
-      <article className="w-4/5 mt-[3%] flex flex-col md:flex-row items-center justify-around rounded-[5px] font-[family-name:var(--font-f1-title)] text-lg uppercase text-white bg-[#222222]">
+    <div className="flex flex-col items-center bg-[#f3f3f3] dark:bg-[#121212] w-full pb-10 transition-colors duration-300">
+      <article className="w-[92%] sm:w-[88%] lg:w-4/5 mt-[3%] flex flex-col md:flex-row items-center justify-around rounded-[5px] font-[family-name:var(--font-f1-title)] text-lg uppercase text-white bg-[#222222]">
         <div
           id="DriverStan"
           tabIndex={0}
@@ -66,43 +66,42 @@ export default function StandingsClient({ driverStandings, constructorStandings,
             const teamImageName = CONSTRUCTOR_IMAGE_MAP[teamId.replace(/_/g, "")] || CONSTRUCTOR_IMAGE_MAP[teamId] || teamId;
             const isExpanded = expandedDriver === driver.Driver.driverId;
             const surnameLowercase = driver.Driver.familyName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            const surnameHelmet = driver.Driver.familyName;
 
             return (
               <div key={driver.Driver.driverId} className="w-full flex flex-col items-center mb-[1%]">
                 <div
                   tabIndex={0}
-                  className={`w-4/5 h-[70px] flex flex-row items-center justify-between bg-white cursor-pointer transition-all duration-300 hover:bg-[#222222] hover:text-white focus:bg-[#222222] focus:text-white ${isExpanded ? "rounded-t-[5px]" : "rounded-[5px]"}`}
+                  className={`w-[92%] sm:w-[88%] lg:w-4/5 min-h-[60px] h-auto md:h-[70px] py-2 md:py-0 flex flex-row items-center justify-between bg-white dark:bg-[#1e1e1e] text-black dark:text-white border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-300 hover:bg-[#222222] hover:text-white dark:hover:bg-[#2c2c30] focus:bg-[#222222] focus:text-white ${isExpanded ? "rounded-t-[5px]" : "rounded-[5px]"}`}
                   onClick={() => toggleDriver(driver.Driver.driverId)}
                   onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), toggleDriver(driver.Driver.driverId))}
                 >
-                  <div className="w-[20%] h-full flex flex-row items-center justify-center text-base sm:text-lg md:text-xl">
+                  <div className="w-[18%] sm:w-[20%] h-full flex flex-row items-center justify-center text-sm sm:text-base md:text-xl font-bold">
                     {driver.position}
-                    <div className="w-[7px] h-1/2 ml-[5%] border border-black" style={{ backgroundColor: teamColor }} />
+                    <div className="w-[4px] sm:w-[7px] h-6 sm:h-1/2 ml-2 sm:ml-[5%] border border-black" style={{ backgroundColor: teamColor }} />
                   </div>
-                  <div className="w-[30%] flex flex-row items-center justify-center text-base sm:text-lg md:text-xl">
+                  <div className="w-[35%] sm:w-[30%] flex flex-row items-center justify-center text-xs sm:text-base md:text-xl font-semibold truncate px-1">
                     {driver.Driver.givenName} {driver.Driver.familyName}
                   </div>
-                  <div className="w-[20%] h-full flex flex-row items-center justify-center gap-[5%] text-base sm:text-lg">
-                    {teamName}
+                  <div className="w-[22%] sm:w-[20%] h-full flex flex-row items-center justify-center gap-1.5 sm:gap-[5%] text-xs sm:text-base">
+                    <span className="hidden sm:inline truncate">{teamName}</span>
                     {teamId && (
                       <div 
-                        className="w-[30px] h-[30px] sm:w-[40px] sm:h-[40px] rounded-full flex items-center justify-center flex-shrink-0"
+                        className="w-[26px] h-[26px] sm:w-[35px] sm:h-[35px] rounded-full flex items-center justify-center flex-shrink-0"
                         style={{ backgroundColor: teamColor }}
                       >
-                        <Image src={`/images/Teams/${teamImageName}.png`} alt="Team Logo" width={30} height={30} className="w-[70%] h-[70%] object-contain drop-shadow-md" />
+                        <Image src={`/images/Teams/${teamImageName}.png`} alt="Team Logo" width={26} height={26} className="w-[70%] h-[70%] object-contain drop-shadow-md" />
                       </div>
                     )}
                   </div>
-                  <div className="w-[30%] sm:w-[20%] h-1/2 flex items-center justify-center">
-                    <div className="text-sm sm:text-base md:text-lg rounded-[50px] text-white p-[3%] bg-gray-500 whitespace-nowrap">
+                  <div className="w-[25%] sm:w-[20%] h-full flex items-center justify-center pr-1 sm:pr-0">
+                    <div className="text-xs sm:text-sm md:text-base rounded-full text-white px-2.5 py-1 bg-gray-500 whitespace-nowrap font-bold">
                       {driver.points} PTS.
                     </div>
                   </div>
                 </div>
 
                 {isExpanded && (
-                  <div className="w-4/5 h-auto md:h-[275px] -mt-[0%] mb-[1%] rounded-b-[15px] flex flex-col md:flex-row items-center justify-around bg-[#222222] font-[family-name:var(--font-f1-title)] text-white">
+                  <div className="w-[92%] sm:w-[88%] lg:w-4/5 h-auto md:h-[275px] -mt-[0%] mb-[1%] rounded-b-[15px] flex flex-col md:flex-row items-center justify-around bg-[#222222] font-[family-name:var(--font-f1-title)] text-white">
                     <div className="w-full md:w-[30%] h-64 md:h-full flex items-center justify-center rounded-b-none md:rounded-bl-[15px] overflow-hidden">
                       <Image
                         src={`/images/DriversPNG/${surnameLowercase}.png`}
@@ -173,37 +172,37 @@ export default function StandingsClient({ driverStandings, constructorStandings,
               <div key={teamId} className="w-full flex flex-col items-center mb-[1%]">
                 <div
                   tabIndex={0}
-                  className={`w-4/5 h-[70px] flex flex-row items-center justify-between bg-white cursor-pointer transition-all duration-300 hover:bg-[#222222] hover:text-white focus:bg-[#222222] focus:text-white ${isExpanded ? "rounded-t-[5px]" : "rounded-[5px]"}`}
+                  className={`w-[92%] sm:w-[88%] lg:w-4/5 min-h-[60px] h-auto md:h-[70px] py-2 md:py-0 flex flex-row items-center justify-between bg-white dark:bg-[#1e1e1e] text-black dark:text-white border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-300 hover:bg-[#222222] hover:text-white dark:hover:bg-[#2c2c30] focus:bg-[#222222] focus:text-white ${isExpanded ? "rounded-t-[5px]" : "rounded-[5px]"}`}
                   onClick={() => toggleConstructor(teamId)}
                   onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), toggleConstructor(teamId))}
                 >
-                  <div className="w-[20%] h-full flex flex-row items-center justify-center text-base sm:text-lg md:text-xl">
+                  <div className="w-[18%] sm:w-[20%] h-full flex flex-row items-center justify-center text-sm sm:text-base md:text-xl font-bold">
                     {team.position}
-                    <div className="w-[7px] h-1/2 ml-[5%] border border-black" style={{ backgroundColor: teamColor }} />
+                    <div className="w-[4px] sm:w-[7px] h-6 sm:h-1/2 ml-2 sm:ml-[5%] border border-black" style={{ backgroundColor: teamColor }} />
                   </div>
-                  <div className="w-[20%] flex flex-row items-center justify-center text-base sm:text-xl md:text-2xl lg:text-[1.5em]">
+                  <div className="w-[35%] sm:w-[25%] flex flex-row items-center justify-center text-sm sm:text-lg md:text-2xl font-bold truncate px-1">
                     {teamName}
                   </div>
-                  <div className="hidden md:flex w-[20%] flex-row items-center justify-center text-sm md:text-base text-black/60 group-hover:text-white focus:text-white">
+                  <div className="hidden md:flex w-[20%] flex-row items-center justify-center text-xs sm:text-sm md:text-base text-black/60 group-hover:text-white focus:text-white">
                     {d1.familyName}/{d2.familyName}
                   </div>
-                  <div className="w-[10%] h-full flex flex-row items-center justify-center gap-[5%] text-base sm:text-lg">
+                  <div className="w-[15%] sm:w-[10%] h-full flex flex-row items-center justify-center gap-[5%]">
                     <div 
-                      className="w-[30px] h-[30px] sm:w-[40px] sm:h-[40px] rounded-full flex items-center justify-center flex-shrink-0"
+                      className="w-[26px] h-[26px] sm:w-[35px] sm:h-[35px] rounded-full flex items-center justify-center flex-shrink-0"
                       style={{ backgroundColor: teamColor }}
                     >
-                      <Image src={`/images/Teams/${teamImageName}.png`} alt="Team Logo" width={30} height={30} className="w-[70%] h-[70%] object-contain drop-shadow-md" />
+                      <Image src={`/images/Teams/${teamImageName}.png`} alt="Team Logo" width={26} height={26} className="w-[70%] h-[70%] object-contain drop-shadow-md" />
                     </div>
                   </div>
-                  <div className="w-[30%] sm:w-[20%] h-1/2 flex items-center justify-center">
-                    <div className="text-sm sm:text-base md:text-lg rounded-[50px] text-white p-[3%] bg-gray-500 whitespace-nowrap">
+                  <div className="w-[25%] sm:w-[20%] h-full flex items-center justify-center pr-1 sm:pr-0">
+                    <div className="text-xs sm:text-sm md:text-base rounded-full text-white px-2.5 py-1 bg-gray-500 whitespace-nowrap font-bold">
                       {team.points} PTS.
                     </div>
                   </div>
                 </div>
 
                 {isExpanded && (
-                  <div className="w-4/5 h-auto md:h-[250px] -mt-[0%] mb-[1%] rounded-b-[15px] flex flex-col md:flex-row items-center justify-around bg-[#222222] font-[family-name:var(--font-f1-title)] text-white">
+                  <div className="w-[92%] sm:w-[88%] lg:w-4/5 h-auto md:h-[250px] -mt-[0%] mb-[1%] rounded-b-[15px] flex flex-col md:flex-row items-center justify-around bg-[#222222] font-[family-name:var(--font-f1-title)] text-white">
                     <div
                       className="w-full md:w-[40%] h-48 md:h-full flex items-center justify-center rounded-b-none md:rounded-bl-[15px] bg-white overflow-hidden relative"
                       style={{

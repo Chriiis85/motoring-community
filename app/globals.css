@@ -398,3 +398,29 @@ a {
   position: relative;
   animation: scaleIn 0.3s ease;
 }
+
+.dark .modal-content {
+  background: #1e1e1e;
+  color: white;
+  border: 1px solid #333;
+}
+
+/* Dark mode clean styles */
+.dark body {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark h1, .dark h2, .dark h3, .dark h4 {
+  color: #ffffff;
+}
+
+/* Custom dark scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #00b9ff;
+  border-radius: 4px;
+}

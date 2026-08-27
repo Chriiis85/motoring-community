@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import CookieBanner from "@/components/ui/CookieBanner";
+import OfflineBanner from "@/components/ui/OfflineBanner";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -20,8 +23,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="antialiased">
-        {children}
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://flagcdn.com" />
+        <link rel="dns-prefetch" href="https://api.jolpi.ca" />
+        <link rel="dns-prefetch" href="https://newsapi.org" />
+      </head>
+      <body className="antialiased bg-white dark:bg-[#121212] text-black dark:text-white transition-colors duration-300">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <OfflineBanner />
+          {children}
+          <CookieBanner />
+        </ThemeProvider>
       </body>
     </html>
   );

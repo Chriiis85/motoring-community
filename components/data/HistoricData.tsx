@@ -92,36 +92,36 @@ export default function HistoricData() {
   };
 
   return (
-    <section className="w-full my-[5%] flex items-center justify-center font-[family-name:var(--font-bebas)] bg-[#f3f3f3] text-black tracking-wide">
-      <article className="w-11/12 md:w-4/5 flex flex-col items-center justify-center bg-white shadow-xl overflow-hidden rounded-lg">
+    <section className="w-full my-[5%] flex items-center justify-center font-[family-name:var(--font-bebas)] bg-[#f3f3f3] dark:bg-[#121212] text-black dark:text-white tracking-wide transition-colors duration-300">
+      <article className="w-11/12 md:w-4/5 flex flex-col items-center justify-center bg-white dark:bg-[#1e1e1e] shadow-xl overflow-hidden rounded-lg border border-transparent dark:border-gray-800">
         {/* Filters */}
         <div className="w-full h-auto md:h-[100px] flex flex-col md:flex-row items-center justify-around bg-[#222222] py-4 md:py-0">
           <div className="relative w-[300px] my-[3%] md:my-0">
             <select
               value={year}
               onChange={(e) => setYear(e.target.value)}
-              className="appearance-none w-full text-lg md:text-[1.15rem] py-[0.675em] pr-8 pl-4 bg-white border border-[#caced1] rounded font-[family-name:var(--font-open-sans)] text-black cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] hover:border-black focus:shadow-[0_0_3px_3px_#00b9ff] focus:border-black outline-none"
+              className="appearance-none w-full text-lg md:text-[1.15rem] py-[0.675em] pr-8 pl-4 bg-white dark:bg-[#2c2c30] border border-[#caced1] dark:border-gray-700 rounded font-[family-name:var(--font-open-sans)] text-black dark:text-white cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] outline-none"
               aria-label="Select Year"
             >
               {years.map((y) => (
-                <option key={y} value={y}>{y}</option>
+                <option key={y} value={y} className="bg-white dark:bg-[#222] text-black dark:text-white">{y}</option>
               ))}
             </select>
-            <div className="absolute right-4 top-[45%] pointer-events-none border-x-[0.3rem] border-x-transparent border-t-[0.3rem] border-t-black"></div>
+            <div className="absolute right-4 top-[45%] pointer-events-none border-x-[0.3rem] border-x-transparent border-t-[0.3rem] border-t-black dark:border-t-white"></div>
           </div>
 
           <div className="relative w-[300px] my-[3%] md:my-0">
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="appearance-none w-full text-lg md:text-[1.15rem] py-[0.675em] pr-8 pl-4 bg-white border border-[#caced1] rounded font-[family-name:var(--font-open-sans)] text-black cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] hover:border-black focus:shadow-[0_0_3px_3px_#00b9ff] focus:border-black outline-none"
+              className="appearance-none w-full text-lg md:text-[1.15rem] py-[0.675em] pr-8 pl-4 bg-white dark:bg-[#2c2c30] border border-[#caced1] dark:border-gray-700 rounded font-[family-name:var(--font-open-sans)] text-black dark:text-white cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] outline-none"
               aria-label="Select Category"
             >
-              <option value="Constructors">Constructors Standings</option>
-              <option value="Drivers">Drivers Standings</option>
-              <option value="Race">Race Result</option>
+              <option value="Constructors" className="bg-white dark:bg-[#222] text-black dark:text-white">Constructors Standings</option>
+              <option value="Drivers" className="bg-white dark:bg-[#222] text-black dark:text-white">Drivers Standings</option>
+              <option value="Race" className="bg-white dark:bg-[#222] text-black dark:text-white">Race Result</option>
             </select>
-            <div className="absolute right-4 top-[45%] pointer-events-none border-x-[0.3rem] border-x-transparent border-t-[0.3rem] border-t-black"></div>
+            <div className="absolute right-4 top-[45%] pointer-events-none border-x-[0.3rem] border-x-transparent border-t-[0.3rem] border-t-black dark:border-t-white"></div>
           </div>
 
           {category === "Race" && (
@@ -129,21 +129,21 @@ export default function HistoricData() {
               <select
                 value={raceRound}
                 onChange={(e) => setRaceRound(e.target.value)}
-                className="appearance-none w-full text-lg md:text-[1.15rem] py-[0.675em] pr-8 pl-4 bg-white border border-[#caced1] rounded font-[family-name:var(--font-open-sans)] text-black cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] hover:border-black focus:shadow-[0_0_3px_3px_#00b9ff] focus:border-black outline-none"
+                className="appearance-none w-full text-lg md:text-[1.15rem] py-[0.675em] pr-8 pl-4 bg-white dark:bg-[#2c2c30] border border-[#caced1] dark:border-gray-700 rounded font-[family-name:var(--font-open-sans)] text-black dark:text-white cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] outline-none"
                 aria-label="Select Race"
               >
                 {races.map((r) => (
-                  <option key={r.value} value={r.value}>{r.label}</option>
+                  <option key={r.value} value={r.value} className="bg-white dark:bg-[#222] text-black dark:text-white">{r.label}</option>
                 ))}
               </select>
-              <div className="absolute right-4 top-[45%] pointer-events-none border-x-[0.3rem] border-x-transparent border-t-[0.3rem] border-t-black"></div>
+              <div className="absolute right-4 top-[45%] pointer-events-none border-x-[0.3rem] border-x-transparent border-t-[0.3rem] border-t-black dark:border-t-white"></div>
             </div>
           )}
         </div>
 
         {/* Content Table */}
         <div className="w-full flex flex-col items-center justify-evenly py-[3%]">
-          <h1 className="font-[family-name:var(--font-f1-title)] text-center text-2xl md:text-3xl lg:text-[3em] mb-[3%] px-4">{getTitle()}</h1>
+          <h1 className="font-[family-name:var(--font-f1-title)] text-center text-2xl md:text-3xl lg:text-[3em] mb-[3%] px-4 text-black dark:text-white">{getTitle()}</h1>
           
           <div className="w-[95%] md:w-[90%] overflow-x-auto pb-4">
             {isLoading ? (
@@ -167,24 +167,24 @@ export default function HistoricData() {
                 <tbody>
                   {tableData.length === 0 ? (
                     <tr>
-                      <td colSpan={7} className="p-4 text-center">No data available</td>
+                      <td colSpan={7} className="p-4 text-center text-gray-500 dark:text-gray-400">No data available</td>
                     </tr>
                   ) : (
                     tableData.map((item, index) => (
                       <tr 
                         key={index} 
                         tabIndex={0} 
-                        className="border-b border-[#dddddd] even:bg-[#f3f3f3] last:border-b-2 last:border-[#00b9ff] hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] transition-shadow"
+                        className="border-b border-[#dddddd] dark:border-[#333338] bg-white dark:bg-[#1e1e1e] even:bg-[#f3f3f3] dark:even:bg-[#26262a] text-black dark:text-gray-100 last:border-b-2 last:border-[#00b9ff] hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] transition-shadow"
                       >
-                        <td className="p-2 md:p-[12px_15px]">{item.position}</td>
-                        <td className="p-2 md:p-[12px_15px]">
+                        <td className="p-2 md:p-[12px_15px] font-bold">{item.position}</td>
+                        <td className="p-2 md:p-[12px_15px] font-semibold">
                           {category === "Constructors" ? item.Constructor?.name || "N/A" : `${item.Driver?.givenName || ""} ${item.Driver?.familyName || ""}`.trim() || "N/A"}
                         </td>
                         {category === "Race" && <td className="p-2 md:p-[12px_15px]">{item.Constructor?.name || "N/A"}</td>}
                         {category !== "Constructors" && <td className="p-2 md:p-[12px_15px]">{item.Driver?.nationality || "N/A"}</td>}
                         {category === "Constructors" && <td className="p-2 md:p-[12px_15px]">{item.Constructor?.nationality || "N/A"}</td>}
                         {category === "Race" && <td className="p-2 md:p-[12px_15px]">{item.Time?.time || item.status || "N/A"}</td>}
-                        <td className="p-2 md:p-[12px_15px]">{item.points}</td>
+                        <td className="p-2 md:p-[12px_15px] font-bold">{item.points}</td>
                         {category !== "Race" && <td className="p-2 md:p-[12px_15px]">{item.wins || "0"}</td>}
                       </tr>
                     ))

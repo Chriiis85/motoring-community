@@ -1,20 +1,4 @@
-/*--------------------------------------------------------------IMPORT FONTS-------------------------------------------------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-@font-face {
-  font-family: "F1Title";
-  src: url("/fonts/Formula1-Black.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "F1Regular";
-  src: url("/fonts/Formula1-Regular-1.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "F1RegularBold";
-  src: url("/fonts/Formula1-Bold-4.ttf") format("truetype");
-}
+/* Teams Page Styles */
 
 /*COLORS FOR THE TEAMS*/
 :root {
@@ -67,6 +51,42 @@ h1 {
   flex-wrap: wrap;
   flex-direction: row;
   color: #222222;
+}
+
+.dark .teams-container {
+  color: #ffffff;
+}
+
+.dark body {
+  background-color: #121212;
+}
+
+.dark .team-card-container {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.dark .team-card-title {
+  border-bottom: 2px solid #38383f;
+}
+
+.dark .team-card-title > h1 {
+  color: #ffffff;
+}
+
+.dark .team-card-driver {
+  border-color: #38383f;
+}
+
+.dark .team-card-driver > h1 {
+  color: #ffffff;
+}
+
+.dark .team-card-car {
+  background-color: #141414;
+  border-top-color: #38383f;
+  --color: #282828;
 }
 
 .team-card-container {

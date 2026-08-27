@@ -65,8 +65,29 @@ export default function NewsPage() {
       <main className="flex-grow w-full py-12 px-4 md:px-8 text-white">
         <div className="max-w-[1400px] mx-auto">
           {loading ? (
-            <div className="w-full flex justify-center py-20">
-              <h2 className="text-2xl font-['F1Regular']">Loading Latest News...</h2>
+            <div className="flex flex-col gap-8 animate-pulse">
+              {/* Featured Skeleton */}
+              <div className="w-full h-[450px] md:h-[500px] bg-[#222] rounded-xl border border-gray-800 p-8 md:p-12 flex flex-col justify-end">
+                <div className="w-24 h-6 bg-gray-700 rounded mb-4"></div>
+                <div className="w-3/4 h-10 md:h-12 bg-gray-700 rounded mb-4"></div>
+                <div className="w-1/2 h-5 bg-gray-700/60 rounded mb-4"></div>
+                <div className="w-32 h-4 bg-gray-700/40 rounded"></div>
+              </div>
+
+              {/* Grid Skeletons */}
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                {[1, 2, 3, 4, 5, 6].map((idx) => (
+                  <div key={idx} className="bg-[#222] border-t-4 border-t-[#00b9ff]/40 rounded-b-lg overflow-hidden flex flex-col">
+                    <div className="w-full h-[250px] bg-[#1a1a1a]"></div>
+                    <div className="p-6 flex flex-col gap-3">
+                      <div className="w-20 h-3 bg-gray-700 rounded"></div>
+                      <div className="w-full h-6 bg-gray-700 rounded"></div>
+                      <div className="w-4/5 h-4 bg-gray-700/60 rounded"></div>
+                      <div className="w-28 h-3 bg-gray-700/40 rounded mt-4"></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           ) : articles.length === 0 ? (
             <div className="w-full flex justify-center py-20">

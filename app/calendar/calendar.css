@@ -1,20 +1,4 @@
-/*--------------------------------------------------------------IMPORT FONTS-------------------------------------------------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
-@font-face {
-  font-family: "F1Title";
-  src: url("/fonts/Formula1-Black.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "F1Regular";
-  src: url("/fonts/Formula1-Regular-1.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "F1RegularBold";
-  src: url("/fonts/Formula1-Bold-4.ttf") format("truetype");
-}
+/* Calendar Page Styles */
 
 body {
   width: 100vw;
@@ -362,6 +346,28 @@ span {
   border-bottom: none;
   border-left: none;
   background-color: white; /* Make the back side white too */
+}
+
+.dark .race-container-front,
+.dark .race-container-back {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.dark .race-container-desc > p {
+  color: #d1d5db;
+}
+
+.dark .race-container-sesion-title {
+  color: #ffffff;
+}
+
+.dark .race-container-round {
+  color: #ffffff;
+}
+
+.dark .race-container-title {
+  border-bottom-color: #38383f;
 }
 
 #first-sesion {
