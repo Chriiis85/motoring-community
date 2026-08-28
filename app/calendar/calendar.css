@@ -1,7 +1,7 @@
 /* Calendar Page Styles */
 
 body {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
@@ -263,27 +263,31 @@ span {
   padding-left: 10%;
 }
 
-/*------------------------------------------------------------------------CALENADRIO----------------------------------------------------------*/
 .calendar-season-container {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 1rem;
 }
 
 .calendar-season {
-  width: 90%;
+  width: 100%;
+  max-width: 1400px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 3%;
-  justify-content: space-around;
-  padding: 3%;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  margin: 0 auto;
 }
 
 .race-container {
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  max-width: 380px;
+  height: 390px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -297,7 +301,7 @@ span {
   background-color: transparent; /* Remove background so backface shows */
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-  margin-bottom: 5%;
+  margin: 0 auto;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   position: relative;
@@ -614,15 +618,34 @@ span {
   }
 }
 
-@media (max-width: 1023px) {
-  body {
-    margin-top: 64px;
+@media (max-width: 640px) {
+  .calendar-season {
+    gap: 1.5rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .race-container {
+    max-width: 340px;
+    height: 360px;
   }
 }
 
-@media (max-width: 767px) {
-  body {
-    margin-top: 50px;
+@media (max-width: 380px) {
+  .race-container {
+    max-width: 300px;
+    height: 340px;
+  }
+
+  .race-container-desc > h1 {
+    font-size: 1.2em;
+  }
+
+  .race-container-sesion-title {
+    font-size: 0.85em;
+  }
+
+  .race-container-sesion-hour {
+    font-size: 0.65em;
   }
 }
 

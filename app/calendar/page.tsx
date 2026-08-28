@@ -109,96 +109,94 @@ export default async function CalendarPage() {
             pais = pais.toLowerCase().replace(/\s+/g, '-');
 
             return (
-              <div key={i}>
-                <div id="race-container" className="race-container" tabIndex={0}>
-                  <div className="race-container-front">
-                      <div className="race-container-round">
-                          <h1>ROUND {i + 1}</h1>
-                      </div>
-                      <div className="race-container-title">
-                          <h1>{dia2}-{dia1} {mes.toUpperCase()}</h1>
-                          <FallbackImage 
-                            src={`https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/${pais}-flag.png.transform/2col/image.png`} 
-                            fallbackSrc="/images/transparent.svg"
-                            alt="Img Circuit" 
-                          />
-                      </div>
-                      <div className="race-container-desc">
-                          <h1>{raceName}</h1>
-                          <p>{circuitName}</p>
-                      </div>
-                      <div className="race-container-img">
-                          <FallbackImage 
-                            src={`/images/Tracks/${circuitImg}.png`} 
-                            fallbackSrc="/images/transparent.svg"
-                            alt="Layout Circuit" 
-                          />
-                      </div>
-                  </div>
-                  
-                  <div id="race-container-back" className="race-container-back">
-                      <div className="race-container-round">
-                          <h1>ROUND {i + 1}</h1>
-                      </div>
-                      <div className="race-container-title">
-                          <h1>{dia2}-{dia1} {mes.toUpperCase()}</h1>
-                          <FallbackImage 
-                            src={`https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/${pais}-flag.png.transform/2col/image.png`} 
-                            fallbackSrc="/images/transparent.svg"
-                            alt="Country Flag" 
-                          />
-                      </div>
-                      
-                      {tipoCarrera === "Normal" && (
-                        <>
-                          <div className="race-container-sesion">
-                            <h1 className="race-container-sesion-title">Free Practice 1:</h1>
-                            <p className="race-container-sesion-hour">{renderSessionTime((race as any).FirstPractice?.time, 1)}</p>
-                          </div>
-                          <div className="race-container-sesion">
-                            <h1 className="race-container-sesion-title">Free Practice 2:</h1>
-                            <p className="race-container-sesion-hour">{renderSessionTime((race as any).SecondPractice?.time, 1)}</p>
-                          </div>
-                          <div className="race-container-sesion">
-                            <h1 className="race-container-sesion-title">Free Practice 3:</h1>
-                            <p className="race-container-sesion-hour">{renderSessionTime((race as any).ThirdPractice?.time, 1)}</p>
-                          </div>
-                          <div className="race-container-sesion">
-                            <h1 className="race-container-sesion-title">Qualifying:</h1>
-                            <p className="race-container-sesion-hour">{renderSessionTime((race as any).Qualifying?.time, 1)}</p>
-                          </div>
-                          <div className="race-container-sesion">
-                            <h1 className="race-container-sesion-title">Race:</h1>
-                            <p className="race-container-sesion-hour">{renderSessionTime(race.time, 2)}</p>
-                          </div>
-                        </>
-                      )}
-                      
-                      {tipoCarrera === "Sprint" && (
-                        <>
-                          <div className="race-container-sesion">
-                            <h1 className="race-container-sesion-title">Free Practice 1:</h1>
-                            <p className="race-container-sesion-hour">{renderSessionTime((race as any).FirstPractice?.time, 1)}</p>
-                          </div>
-                          <div className="race-container-sesion">
-                            <h1 className="race-container-sesion-title">Sprint Qualifying:</h1>
-                            <p className="race-container-sesion-hour">{renderSessionTime((race as any).SecondPractice?.time, 1)}</p>
-                          </div>
-                          <div className="race-container-sesion">
-                            <h1 className="race-container-sesion-title">Sprint Race:</h1>
-                            <p className="race-container-sesion-hour">{renderSessionTime((race as any).Sprint?.time, 1)}</p>
-                          </div>
-                          <div className="race-container-sesion">
-                            <h1 className="race-container-sesion-title">Qualifying:</h1>
-                            <p className="race-container-sesion-hour">{renderSessionTime((race as any).Qualifying?.time, 1)}</p>
-                          </div>
-                          <div className="race-container-sesion">
-                            <h1 className="race-container-sesion-title">Race:</h1>
-                            <p className="race-container-sesion-hour">{renderSessionTime(race.time, 2)}</p>
-                          </div>
-                        </>
-                      )}
-                  </div>
+              <div key={i} id="race-container" className="race-container" tabIndex={0}>
+                <div className="race-container-front">
+                    <div className="race-container-round">
+                        <h1>ROUND {i + 1}</h1>
+                    </div>
+                    <div className="race-container-title">
+                        <h1>{dia2}-{dia1} {mes.toUpperCase()}</h1>
+                        <FallbackImage 
+                          src={`https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/${pais}-flag.png.transform/2col/image.png`} 
+                          fallbackSrc="/images/transparent.svg"
+                          alt="Img Circuit" 
+                        />
+                    </div>
+                    <div className="race-container-desc">
+                        <h1>{raceName}</h1>
+                        <p>{circuitName}</p>
+                    </div>
+                    <div className="race-container-img">
+                        <FallbackImage 
+                          src={`/images/Tracks/${circuitImg}.png`} 
+                          fallbackSrc="/images/transparent.svg"
+                          alt="Layout Circuit" 
+                        />
+                    </div>
+                </div>
+                
+                <div id="race-container-back" className="race-container-back">
+                    <div className="race-container-round">
+                        <h1>ROUND {i + 1}</h1>
+                    </div>
+                    <div className="race-container-title">
+                        <h1>{dia2}-{dia1} {mes.toUpperCase()}</h1>
+                        <FallbackImage 
+                          src={`https://media.formula1.com/content/dam/fom-website/2018-redesign-assets/Flags%2016x9/${pais}-flag.png.transform/2col/image.png`} 
+                          fallbackSrc="/images/transparent.svg"
+                          alt="Country Flag" 
+                        />
+                    </div>
+                    
+                    {tipoCarrera === "Normal" && (
+                      <>
+                        <div className="race-container-sesion">
+                          <h1 className="race-container-sesion-title">Free Practice 1:</h1>
+                          <p className="race-container-sesion-hour">{renderSessionTime((race as any).FirstPractice?.time, 1)}</p>
+                        </div>
+                        <div className="race-container-sesion">
+                          <h1 className="race-container-sesion-title">Free Practice 2:</h1>
+                          <p className="race-container-sesion-hour">{renderSessionTime((race as any).SecondPractice?.time, 1)}</p>
+                        </div>
+                        <div className="race-container-sesion">
+                          <h1 className="race-container-sesion-title">Free Practice 3:</h1>
+                          <p className="race-container-sesion-hour">{renderSessionTime((race as any).ThirdPractice?.time, 1)}</p>
+                        </div>
+                        <div className="race-container-sesion">
+                          <h1 className="race-container-sesion-title">Qualifying:</h1>
+                          <p className="race-container-sesion-hour">{renderSessionTime((race as any).Qualifying?.time, 1)}</p>
+                        </div>
+                        <div className="race-container-sesion">
+                          <h1 className="race-container-sesion-title">Race:</h1>
+                          <p className="race-container-sesion-hour">{renderSessionTime(race.time, 2)}</p>
+                        </div>
+                      </>
+                    )}
+                    
+                    {tipoCarrera === "Sprint" && (
+                      <>
+                        <div className="race-container-sesion">
+                          <h1 className="race-container-sesion-title">Free Practice 1:</h1>
+                          <p className="race-container-sesion-hour">{renderSessionTime((race as any).FirstPractice?.time, 1)}</p>
+                        </div>
+                        <div className="race-container-sesion">
+                          <h1 className="race-container-sesion-title">Sprint Qualifying:</h1>
+                          <p className="race-container-sesion-hour">{renderSessionTime((race as any).SecondPractice?.time, 1)}</p>
+                        </div>
+                        <div className="race-container-sesion">
+                          <h1 className="race-container-sesion-title">Sprint Race:</h1>
+                          <p className="race-container-sesion-hour">{renderSessionTime((race as any).Sprint?.time, 1)}</p>
+                        </div>
+                        <div className="race-container-sesion">
+                          <h1 className="race-container-sesion-title">Qualifying:</h1>
+                          <p className="race-container-sesion-hour">{renderSessionTime((race as any).Qualifying?.time, 1)}</p>
+                        </div>
+                        <div className="race-container-sesion">
+                          <h1 className="race-container-sesion-title">Race:</h1>
+                          <p className="race-container-sesion-hour">{renderSessionTime(race.time, 2)}</p>
+                        </div>
+                      </>
+                    )}
                 </div>
               </div>
             );

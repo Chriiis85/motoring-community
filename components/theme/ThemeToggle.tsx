@@ -21,14 +21,14 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
   return (
     <button
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className={`relative p-2 rounded-full border border-white/20 hover:border-[#00b9ff] bg-black/40 hover:bg-black/80 text-white transition-all duration-300 flex items-center justify-center group ${className}`}
+      className={`relative p-2 rounded-full border border-slate-300 dark:border-white/20 hover:border-[#00b9ff] bg-slate-100 dark:bg-black/40 hover:bg-slate-200 dark:hover:bg-black/80 text-slate-800 dark:text-white transition-all duration-300 flex items-center justify-center cursor-pointer group ${className}`}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDark ? (
         <Sun className="h-4 w-4 text-amber-400 group-hover:rotate-90 transition-transform duration-500 drop-shadow-[0_0_6px_rgba(251,191,36,0.6)]" />
       ) : (
-        <Moon className="h-4 w-4 text-[#00b9ff] group-hover:-rotate-12 transition-transform duration-500 drop-shadow-[0_0_6px_rgba(0,185,255,0.6)]" />
+        <Moon className="h-4 w-4 text-[#008cc3] group-hover:-rotate-12 transition-transform duration-500 drop-shadow-[0_0_6px_rgba(0,140,195,0.4)]" />
       )}
     </button>
   );
