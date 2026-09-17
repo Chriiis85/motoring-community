@@ -72,8 +72,8 @@
   left: 0;
   color: transparent;
   background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: none;
+  background-position: center center;
+  background-repeat: no-repeat;
   opacity: 0;
   z-index: 0;
   -webkit-backface-visibility: hidden;
@@ -1096,11 +1096,7 @@ span {
   }
 }
 
-@media (max-width: 1025px) {
-  .slider {
-    margin-top: -10%;
-  }
-}
+
 
 @media (max-width: 1000px) {
   .latest-news-notice {
@@ -1275,9 +1271,7 @@ span {
     font-size: 0.75em;
   }
 
-  .slider {
-    margin-top: -20%;
-  }
+
 }
 @media (max-width: 400px) {
   .about {

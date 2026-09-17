@@ -165,6 +165,7 @@ export default function Footer() {
           onClick={closeModal} 
           role="dialog" 
           aria-modal="true"
+          aria-labelledby="modal-title"
         >
           <div 
             className="bg-white dark:bg-[#1e1e1e] text-black dark:text-white w-full max-w-2xl max-h-[85vh] overflow-y-auto p-6 sm:p-8 rounded-2xl shadow-2xl relative border border-gray-200 dark:border-gray-800" 
@@ -181,7 +182,7 @@ export default function Footer() {
             {/* AVISO LEGAL */}
             {activeModal === "legal" && (
               <div className="space-y-4 font-['F1Regular']">
-                <h1 className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2 text-black dark:text-white">
+                <h1 id="modal-title" className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2 text-black dark:text-white">
                   Aviso Legal y Términos de Uso
                 </h1>
                 
@@ -208,7 +209,7 @@ export default function Footer() {
             {/* POLÍTICA DE PRIVACIDAD */}
             {activeModal === "privacy" && (
               <div className="space-y-4 font-['F1Regular']">
-                <h1 className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2 text-black dark:text-white">
+                <h1 id="modal-title" className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2 text-black dark:text-white">
                   Política de Privacidad (RGPD)
                 </h1>
                 
@@ -234,7 +235,7 @@ export default function Footer() {
             {/* USO DE DATOS & APIS */}
             {activeModal === "data" && (
               <div className="space-y-4 font-['F1Regular']">
-                <h1 className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2 text-black dark:text-white">
+                <h1 id="modal-title" className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2 text-black dark:text-white">
                   Uso de Datos &amp; Servicios de Terceros
                 </h1>
                 
@@ -258,7 +259,7 @@ export default function Footer() {
             {/* POLÍTICA DE COOKIES */}
             {activeModal === "cookies" && (
               <div className="space-y-4 font-['F1Regular']">
-                <h1 className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2 text-black dark:text-white">
+                <h1 id="modal-title" className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2 text-black dark:text-white">
                   Política de Cookies
                 </h1>
                 
@@ -289,7 +290,7 @@ export default function Footer() {
             {/* PREGUNTAS FRECUENTES (FAQ) */}
             {activeModal === "faq" && (
               <div className="space-y-4 font-['F1Regular']">
-                <h1 className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2 text-black dark:text-white">
+                <h1 id="modal-title" className="text-2xl font-bold font-['F1Title'] border-b border-[#00b9ff] pb-2 text-black dark:text-white">
                   Preguntas Frecuentes (FAQ)
                 </h1>
                 <div className="space-y-2 mt-4">

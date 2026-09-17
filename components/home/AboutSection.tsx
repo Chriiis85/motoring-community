@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 export default function AboutSection() {
-  const [opacity, setOpacity] = useState(0);
+  const [opacity, setOpacity] = useState(1);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -36,9 +36,9 @@ export default function AboutSection() {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
         {/* Text column */}
         <article className="w-full lg:w-1/2 flex flex-col justify-center font-['F1Regular']">
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 font-['F1Title'] uppercase tracking-wider text-black dark:text-white">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 font-['F1Title'] uppercase tracking-wider text-black dark:text-white">
             What is Motoring Community?
-          </h1>
+          </h2>
           
           <p className="text-base sm:text-lg mb-4 text-gray-800 dark:text-gray-200 leading-relaxed font-['F1Regular']">
             Welcome to Motoring Community WebPage! In this page you can find all type
@@ -84,8 +84,7 @@ export default function AboutSection() {
           <div className="w-full relative min-h-[300px] sm:min-h-[400px] md:min-h-[460px] rounded-xl overflow-hidden shadow-2xl border-4 border-black dark:border-[#00b9ff]">
             <Image
               src="https://images.ecestaticos.com/GmybLEEqNXeHlXczyzpIegwHZwg=/0x0:2272x1454/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F9b6%2Fd85%2Fe5f%2F9b6d85e5fc0e2eab3a31d978e7fb6208.jpg"
-              alt="Formula 1 Image"
-              title="Formula 1 Image"
+              alt="Formula 1 cars racing on a Grand Prix circuit"
               fill
               className="object-cover"
             />

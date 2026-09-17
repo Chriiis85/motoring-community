@@ -49,6 +49,8 @@ export default async function TeamsPage() {
                 key={team.constructorId}
                 className="team-card-container"
                 tabIndex={0}
+                role="article"
+                aria-label={`Formula One Team: ${team.name}`}
                 style={{
                   border: `solid 5px var(--${teamNameSafe})`,
                   boxShadow: `0 0 20px black, 0 0 1px black, 0 0 20px var(--${teamNameSafe}), 0 0 20px var(--${teamNameSafe}), 0 0 20px var(--${teamNameSafe}), 0 0 10px var(--${teamNameSafe})`,
@@ -57,44 +59,52 @@ export default async function TeamsPage() {
                 }}
               >
                 <div className="team-card-title">
-                  <h1>{team.name}</h1>
+                  <h2>{team.name}</h2>
                   <div 
-                    className="w-[40px] h-[40px] md:w-[50px] md:h-[50px] rounded-full flex items-center justify-center flex-shrink-0"
+                    className="team-logo-badge"
                     style={{ backgroundColor: `var(--${teamNameSafe})` }}
                   >
                     <FallbackImage 
                       src={`/images/Teams/${teamNameSafe}.png`} 
                       fallbackSrc="/images/transparent.svg" 
-                      alt="Team Logo"
+                      alt={`${team.name} official logo`}
                       style={{ width: '70%', height: '70%', objectFit: 'contain' }}
                     />
                   </div>
                 </div>
                 
-                {teamDrivers.map((d: DriverStanding, index: number) => {
-                  const driverName = `${d.Driver.givenName} ${d.Driver.familyName}`;
-                  const surnameLowercase = d.Driver.familyName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-                  
-                  return (
-                    <div key={index} className="team-card-driver">
-                      <h1>{driverName}</h1>
-                      <div className="w-[70px] h-[70px] overflow-hidden rounded-full border-2" style={{ borderColor: `var(--${teamNameSafe})`, backgroundColor: '#e1e1e1' }}>
-                        <FallbackImage 
-                          src={`/images/DriversPNG/${surnameLowercase}.png`} 
-                          fallbackSrc="/images/transparent.svg" 
-                          alt="Driver Image" 
-                          style={{ width: '100%', height: '120%', objectFit: 'cover', objectPosition: 'top' }}
-                        />
+                <div className="team-card-drivers-list">
+                  {teamDrivers.map((d: DriverStanding, index: number) => {
+                    const driverName = `${d.Driver.givenName} ${d.Driver.familyName}`;
+                    const surnameLowercase = d.Driver.familyName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    
+                    return (
+                      <div key={index} className="team-card-driver">
+                        <div className="driver-info">
+                          <span className="driver-firstname">{d.Driver.givenName}</span>
+                          <h3 className="driver-lastname">{d.Driver.familyName}</h3>
+                        </div>
+                        <div 
+                          className="driver-avatar-frame" 
+                          style={{ borderColor: `var(--${teamNameSafe})` }}
+                        >
+                          <FallbackImage 
+                            src={`/images/DriversPNG/${surnameLowercase}.png`} 
+                            fallbackSrc="/images/transparent.svg" 
+                            alt={`Driver ${driverName} portrait`} 
+                            style={{ width: '100%', height: '120%', objectFit: 'cover', objectPosition: 'top' }}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
 
                 <div className="team-card-car">
                   <FallbackImage 
                     src={`/images/Cars/${teamNameSafe}.png`} 
                     fallbackSrc="/images/transparent.svg" 
-                    alt="Car Image" 
+                    alt={`${team.name} race car`} 
                   />
                 </div>
               </div>

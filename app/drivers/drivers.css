@@ -81,213 +81,246 @@ h1 {
 
 .card-driver-container {
   width: 95%;
-  max-width: 1500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 5%;
-  margin: 0 auto;
+  max-width: 1440px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  row-gap: 44px;
+  column-gap: 34px;
+  padding: 0 1.25rem;
+  margin: 35px auto 45px auto;
 }
 
-.card-driver{
+.card-driver {
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  max-width: 400px;
-  min-height: 500px;
+  min-height: 480px;
   height: auto;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   font-family: "F1Title";
-  border-radius: 5px;
-  margin-bottom: 10%;
-  border: 2px solid black;
+  border-radius: 12px;
+  margin-bottom: 0;
+  border: 2px solid rgba(255, 255, 255, 0.15);
   background-position: center;
-  background-size: 300%;
+  background-size: 260%;
   background-repeat: no-repeat;
-  transition: 0.3s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.card-driver:hover, .card-driver:focus{
-  transform: scale(1.05);
+.card-driver:hover, 
+.card-driver:focus {
+  transform: translateY(-6px) scale(1.02);
+  outline: none;
 }
 
-.card-driver-info{
-  width: 100%;
-  height: 50%;
+/* Vertical Column for Driver Details */
+.card-driver-column {
+  position: relative;
+  z-index: 5;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 20%;
   flex-direction: column;
-  text-align: center;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 22px;
+  box-sizing: border-box;
 }
 
-.driverNumber{
-  width: 100%;
-  padding-top: 50px;
+.driver-number-badge {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: row;
-  font-size: 2em;
-  color: white;
-}
-
-.driverNumber>h1:nth-child(1){
-  width: 120px;
-  margin-left: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.driverNumber>h1:nth-child(2){
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 40px;
-  padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.driver-data{
-  width: 100%;
-  height: 20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  gap: 15px;
-  margin-top: 20px;
+  align-items: flex-start;
+  gap: 4px;
 }
 
-.driverHelmet, .driverFlag {
-  width: 120px;
+.driver-number {
+  font-family: "F1Title", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 0.9;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+.driver-code {
+  font-family: "F1RegularBold", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+}
+
+.driver-team-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 0;
-  margin-left: 20px;
-  align-self: flex-start;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
 }
 
-.driverFlag>img{
-  width: 60px;
-  border-radius: 10px;
-}
-
-.driverTeam{
-  width: 100%;
+.driver-country-flag {
+  width: 46px;
+  height: 30px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
   display: flex;
   align-items: center;
-  justify-content:flex-start;
-  padding-left: 55px;
+  justify-content: center;
 }
 
-.driverTeam>img{
-  width: 70px;
-  border-radius: 10px;
-}
-
-.card-driver-name{
+.driver-country-flag img {
   width: 100%;
-  height: 20%;
-  z-index: 99;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Driver Name on Bottom-Right */
+.card-driver-name {
+  position: relative;
+  width: 100%;
+  height: auto;
+  z-index: 5;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding-right: 30px;
-  padding-bottom: 20px;
+  padding-right: 22px;
+  padding-bottom: 22px;
   box-sizing: border-box;
 }
 
-.card-driver-name>.name{
-  font-size: 1.5em;
-  color: white;
-  padding-left: 0;
+.card-driver-name > .name {
+  font-family: "F1Regular", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #e5e7eb;
+  padding: 0;
   margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 }
 
-.card-driver-name>.surname{
-  font-size: 2.75em;
-  color: white;
-  padding-left: 0;
+.card-driver-name > .surname {
+  font-family: "F1Title", sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  padding: 0;
   margin: 0;
   line-height: 1;
+  word-break: break-word;
+  text-align: right;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.95);
 }
 
-.driver-image{
+/* Driver Cutout Silhouette */
+.driver-image {
   position: absolute;
-  z-index: 99;
+  z-index: 1;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  width: 75%;
+  width: 78%;
   max-width: 380px;
   height: auto;
   aspect-ratio: 1;
   margin-left: auto;
   bottom: -10px;
-  right: -30px;
+  right: -25px;
+  pointer-events: none;
 }
 
-.driver-image>img{
+.driver-image > img {
   width: 100%;
   max-width: 130%;
   opacity: 1;
 }
 
-/*--------------------------------------------------------------------RESPONSIVE-------------------------------------------------------------*/
-@media (max-width: 768px) {
-  .card-driver { max-width: 350px; }
-  .card-driver-name > .surname { font-size: 2em; }
-  .driver-image { 
-    bottom: -10px; 
+/* Responsive */
+@media (max-width: 1080px) {
+  .card-driver-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    row-gap: 32px;
+  }
+}
+
+@media (max-width: 680px) {
+  .card-driver-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 95%;
+  }
+
+  .card-driver {
+    min-height: 440px;
+  }
+
+  .card-driver-name > .surname {
+    font-size: 2.1rem;
+  }
+
+  .driver-image {
+    bottom: -10px;
     width: 80%;
     right: -20px;
   }
 }
 
-@media (max-width: 600px) {
-  .card-driver{
-    width: 100%;
-    max-width: 320px;
-    min-height: 400px;
-    margin-right: 0;
-    margin-left: 0;
+@media (max-width: 480px) {
+  .card-driver {
+    max-width: 100%;
+    min-height: 420px;
   }
-  .driverNumber{
-    font-size: 1.5em;
+
+  .card-driver-column {
+    padding: 16px;
+    gap: 12px;
   }
-  .driverHelmet>img{
-    width: 70px;
+
+  .driver-number {
+    font-size: 2.3rem;
   }
-  .driverFlag>img{
+
+  .driver-team-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .driver-country-flag {
     width: 40px;
-    margin-left: -5px;
-    border-radius: 5px;
+    height: 26px;
   }
-  .card-driver-name > .name{
-    font-size: 1.2em;  
+
+  .card-driver-name {
+    padding-right: 16px;
+    padding-bottom: 16px;
   }
-  .card-driver-name > .surname{
-    font-size: 1.7em;  
+
+  .card-driver-name > .name {
+    font-size: 1rem;
   }
-  .driver-image{
+
+  .card-driver-name > .surname {
+    font-size: 1.8rem;
+  }
+
+  .driver-image {
     bottom: -10px;
     width: 85%;
-    max-width: none;
-    right: -25px;
-  }
-  .driver-image > img{
-    width: 100%;
+    right: -20px;
   }
 }

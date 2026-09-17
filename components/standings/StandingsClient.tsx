@@ -29,36 +29,46 @@ export default function StandingsClient({ driverStandings, constructorStandings,
 
   return (
     <div className="flex flex-col items-center bg-[#f3f3f3] dark:bg-[#121212] w-full pb-10 transition-colors duration-300">
-      <article className="w-[92%] sm:w-[88%] lg:w-4/5 mt-[3%] flex flex-col md:flex-row items-center justify-around rounded-[5px] font-[family-name:var(--font-f1-title)] text-lg uppercase text-white bg-[#222222]">
-        <div
-          id="DriverStan"
+      <div 
+        role="tablist" 
+        aria-label="Standings Category Selection"
+        className="w-[92%] sm:w-[88%] lg:w-4/5 mt-[3%] flex flex-col md:flex-row items-center justify-around rounded-[5px] font-[family-name:var(--font-f1-title)] text-lg uppercase text-white bg-[#222222]"
+      >
+        <button
+          id="driver-tab"
+          role="tab"
+          aria-selected={activeTab === "drivers"}
+          aria-controls="drivers-panel"
           tabIndex={0}
-          className="w-[90%] md:w-[45%] xl:w-[28%] h-20 md:h-[50px] flex flex-col items-center justify-around transition-all duration-200 cursor-pointer hover:bg-white hover:text-black focus:bg-white focus:text-black relative"
+          className="w-[90%] md:w-[45%] xl:w-[28%] h-20 md:h-[50px] flex flex-col items-center justify-around transition-all duration-200 cursor-pointer hover:bg-white hover:text-black focus:bg-white focus:text-black relative bg-transparent border-none text-white outline-none"
           onClick={() => setActiveTab("drivers")}
-          onKeyDown={(e) => e.key === "Enter" && setActiveTab("drivers")}
+          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), setActiveTab("drivers"))}
         >
-          <h1 className="mt-2 md:mt-0">Drivers Standings</h1>
+          <span className="mt-2 md:mt-0 font-[family-name:var(--font-f1-title)] text-lg">Drivers Standings</span>
           {activeTab === "drivers" && (
             <div className="absolute bottom-0 md:-bottom-[4px] w-[300px] md:w-[350px] xl:w-[20%] h-[4px] bg-[#00b9ff]" />
           )}
-        </div>
-        <div
-          id="ConstStan"
+        </button>
+        <button
+          id="constructor-tab"
+          role="tab"
+          aria-selected={activeTab === "constructors"}
+          aria-controls="constructors-panel"
           tabIndex={0}
-          className="w-[90%] md:w-[45%] xl:w-[28%] h-20 md:h-[50px] flex flex-col items-center justify-around transition-all duration-200 cursor-pointer hover:bg-white hover:text-black focus:bg-white focus:text-black relative"
+          className="w-[90%] md:w-[45%] xl:w-[28%] h-20 md:h-[50px] flex flex-col items-center justify-around transition-all duration-200 cursor-pointer hover:bg-white hover:text-black focus:bg-white focus:text-black relative bg-transparent border-none text-white outline-none"
           onClick={() => setActiveTab("constructors")}
-          onKeyDown={(e) => e.key === "Enter" && setActiveTab("constructors")}
+          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), setActiveTab("constructors"))}
         >
-          <h1 className="mt-2 md:mt-0">Constructors Standings</h1>
+          <span className="mt-2 md:mt-0 font-[family-name:var(--font-f1-title)] text-lg">Constructors Standings</span>
           {activeTab === "constructors" && (
             <div className="absolute bottom-0 md:-bottom-[4px] w-[300px] md:w-[350px] xl:w-[20%] h-[4px] bg-[#00b9ff]" />
           )}
-        </div>
-      </article>
+        </button>
+      </div>
 
       {/* Driver Standings */}
       {activeTab === "drivers" && (
-        <article className="w-full mt-[1%] mb-[2%] flex flex-col items-center justify-center text-center gap-[1%] font-[family-name:var(--font-f1-bold)]">
+        <section id="drivers-panel" role="tabpanel" aria-labelledby="driver-tab" className="w-full mt-[1%] mb-[2%] flex flex-col items-center justify-center text-center gap-[1%] font-[family-name:var(--font-f1-bold)]">
           {driverStandings.map((driver) => {
             const teamId = driver.Constructors[0]?.constructorId || "";
             const teamName = driver.Constructors[0]?.name || "Unknown";
@@ -71,6 +81,9 @@ export default function StandingsClient({ driverStandings, constructorStandings,
               <div key={driver.Driver.driverId} className="w-full flex flex-col items-center mb-[1%]">
                 <div
                   tabIndex={0}
+                  role="button"
+                  aria-expanded={isExpanded}
+                  aria-label={`Position ${driver.position}: ${driver.Driver.givenName} ${driver.Driver.familyName}, ${teamName}, ${driver.points} points`}
                   className={`w-[92%] sm:w-[88%] lg:w-4/5 min-h-[60px] h-auto md:h-[70px] py-2 md:py-0 flex flex-row items-center justify-between bg-white dark:bg-[#1e1e1e] text-black dark:text-white border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-300 hover:bg-[#222222] hover:text-white dark:hover:bg-[#2c2c30] focus:bg-[#222222] focus:text-white ${isExpanded ? "rounded-t-[5px]" : "rounded-[5px]"}`}
                   onClick={() => toggleDriver(driver.Driver.driverId)}
                   onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), toggleDriver(driver.Driver.driverId))}
@@ -79,8 +92,8 @@ export default function StandingsClient({ driverStandings, constructorStandings,
                     {driver.position}
                     <div className="w-[4px] sm:w-[7px] h-6 sm:h-1/2 ml-2 sm:ml-[5%] border border-black" style={{ backgroundColor: teamColor }} />
                   </div>
-                  <div className="w-[35%] sm:w-[30%] flex flex-row items-center justify-center text-xs sm:text-base md:text-xl font-semibold truncate px-1">
-                    {driver.Driver.givenName} {driver.Driver.familyName}
+                  <div className="flex-1 min-w-0 flex flex-row items-center justify-center text-xs sm:text-base md:text-xl font-semibold px-1 text-center">
+                    <span className="leading-tight">{driver.Driver.givenName} {driver.Driver.familyName}</span>
                   </div>
                   <div className="w-[22%] sm:w-[20%] h-full flex flex-row items-center justify-center gap-1.5 sm:gap-[5%] text-xs sm:text-base">
                     <span className="hidden sm:inline truncate">{teamName}</span>
@@ -152,12 +165,12 @@ export default function StandingsClient({ driverStandings, constructorStandings,
               </div>
             );
           })}
-        </article>
+        </section>
       )}
 
       {/* Constructor Standings */}
       {activeTab === "constructors" && (
-        <article className="w-full mt-[1%] mb-[2%] flex flex-col items-center justify-center text-center font-[family-name:var(--font-f1-bold)]">
+        <section id="constructors-panel" role="tabpanel" aria-labelledby="constructor-tab" className="w-full mt-[1%] mb-[2%] flex flex-col items-center justify-center text-center font-[family-name:var(--font-f1-bold)]">
           {constructorStandings.map((team) => {
             const teamId = team.Constructor.constructorId;
             const teamName = team.Constructor.name;
@@ -172,6 +185,9 @@ export default function StandingsClient({ driverStandings, constructorStandings,
               <div key={teamId} className="w-full flex flex-col items-center mb-[1%]">
                 <div
                   tabIndex={0}
+                  role="button"
+                  aria-expanded={isExpanded}
+                  aria-label={`Constructor standing ${team.position}: ${teamName}, ${team.points} points`}
                   className={`w-[92%] sm:w-[88%] lg:w-4/5 min-h-[60px] h-auto md:h-[70px] py-2 md:py-0 flex flex-row items-center justify-between bg-white dark:bg-[#1e1e1e] text-black dark:text-white border border-transparent dark:border-gray-800 cursor-pointer transition-all duration-300 hover:bg-[#222222] hover:text-white dark:hover:bg-[#2c2c30] focus:bg-[#222222] focus:text-white ${isExpanded ? "rounded-t-[5px]" : "rounded-[5px]"}`}
                   onClick={() => toggleConstructor(teamId)}
                   onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), toggleConstructor(teamId))}
@@ -180,8 +196,8 @@ export default function StandingsClient({ driverStandings, constructorStandings,
                     {team.position}
                     <div className="w-[4px] sm:w-[7px] h-6 sm:h-1/2 ml-2 sm:ml-[5%] border border-black" style={{ backgroundColor: teamColor }} />
                   </div>
-                  <div className="w-[35%] sm:w-[25%] flex flex-row items-center justify-center text-sm sm:text-lg md:text-2xl font-bold truncate px-1">
-                    {teamName}
+                  <div className="flex-1 min-w-0 flex flex-row items-center justify-center text-xs sm:text-base md:text-xl font-bold px-1 text-center">
+                    <span className="leading-tight">{teamName}</span>
                   </div>
                   <div className="hidden md:flex w-[20%] flex-row items-center justify-center text-xs sm:text-sm md:text-base text-black/60 group-hover:text-white focus:text-white">
                     {d1.familyName}/{d2.familyName}
@@ -272,7 +288,7 @@ export default function StandingsClient({ driverStandings, constructorStandings,
               </div>
             );
           })}
-        </article>
+        </section>
       )}
     </div>
   );

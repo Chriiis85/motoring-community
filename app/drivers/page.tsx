@@ -37,6 +37,8 @@ export default async function DriversPage() {
               <div
                 key={i}
                 tabIndex={0}
+                role="article"
+                aria-label={`Driver ${givenName} ${familyName}, Number ${permanentNumber}, Team ${team}`}
                 className="card-driver"
                 style={{
                   position: 'relative',
@@ -49,41 +51,37 @@ export default async function DriversPage() {
                   <FallbackImage 
                     src={`/images/DriversPNG/${surnameLowercase}.png`} 
                     fallbackSrc="/images/transparent.svg" 
-                    alt="Driver Image"
+                    alt={`Portrait of ${givenName} ${familyName}`}
                     style={{ width: '130%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
                   />
                 </div>
-                <div className="card-driver-info">
-                  <div className="driverNumber">
-                    <h1>{permanentNumber}</h1>
-                    <h1>{code}</h1>
+                <div className="card-driver-column">
+                  <div className="driver-number-badge">
+                    <span className="driver-number">{permanentNumber}</span>
+                    {code && <span className="driver-code">{code}</span>}
                   </div>
-                  <div className="driver-data">
-                    <div className="driverHelmet">
-                      <div 
-                        className="w-[40px] h-[40px] md:w-[60px] md:h-[60px] rounded-full flex items-center justify-center flex-shrink-0"
-                        style={{ backgroundColor: `var(--${team})` }}
-                      >
-                        <FallbackImage 
-                          src={`/images/Teams/${team}.png`} 
-                          fallbackSrc="/images/transparent.svg" 
-                          alt={`${team} Logo`}
-                          style={{ width: '70%', height: '70%', objectFit: 'contain' }}
-                        />
-                      </div>
-                    </div>
-                    <div className="driverFlag">
-                      <FallbackImage 
-                        src={`https://flagcdn.com/w80/${nationalityToCountryCode(nationality).toLowerCase()}.png`} 
-                        fallbackSrc="/images/transparent.svg" 
-                        alt="Country Flag" 
-                      />
-                    </div>
+                  <div 
+                    className="driver-team-logo"
+                    style={{ backgroundColor: `var(--${team})` }}
+                  >
+                    <FallbackImage 
+                      src={`/images/Teams/${team}.png`} 
+                      fallbackSrc="/images/transparent.svg" 
+                      alt={`${team} constructor logo`}
+                      style={{ width: '70%', height: '70%', objectFit: 'contain' }}
+                    />
+                  </div>
+                  <div className="driver-country-flag">
+                    <FallbackImage 
+                      src={`https://flagcdn.com/w80/${nationalityToCountryCode(nationality).toLowerCase()}.png`} 
+                      fallbackSrc="/images/transparent.svg" 
+                      alt={`${nationality} nationality flag`} 
+                    />
                   </div>
                 </div>
                 <div className="card-driver-name">
-                  <h1 className="name">{givenName}</h1>
-                  <h1 className="surname">{familyName}</h1>
+                  <h2 className="name">{givenName}</h2>
+                  <h2 className="surname">{familyName}</h2>
                 </div>
               </div>
             );

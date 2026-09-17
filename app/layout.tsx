@@ -31,7 +31,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://newsapi.org" />
       </head>
       <body className="antialiased bg-white dark:bg-[#121212] text-black dark:text-white transition-colors duration-300">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <OfflineBanner />
           {children}
           <CookieBanner />

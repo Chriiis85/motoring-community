@@ -77,7 +77,7 @@ export default function CountdownTimer() {
   const trackImageName = nextRace ? getTrackImageName(nextRace.raceName) : 'ChineseGrandPrix';
 
   return (
-    <section className="next-race bg-black py-[10px] lg:py-[20px] border-b border-[#38383f] shadow-[rgba(149,157,165,0.2)_0px_8px_24px]">
+    <section aria-label="Formula 1 next race countdown" className="next-race bg-black py-[10px] lg:py-[20px] border-b border-[#38383f] shadow-[rgba(149,157,165,0.2)_0px_8px_24px]">
       <div className="next-race-container w-full px-[10px] mx-auto font-f1-regular sm:max-w-[576px] md:max-w-[768px] lg:max-w-[986px] xl:max-w-[1320px]">
         <div className="row flex flex-wrap -mx-[10px]">
           {/* Race Info */}
@@ -91,7 +91,7 @@ export default function CountdownTimer() {
                   <FallbackImage
                     src={`/images/Tracks/${trackImageName}.png`}
                     fallbackSrc="/images/transparent.svg"
-                    alt="F1 next Track"
+                    alt={nextRace ? `Circuit layout for ${nextRace.raceName}` : "Formula 1 race track"}
                     width={75}
                     height={75}
                     className="w-[40px] md:w-[50px] xl:w-[75px]"
@@ -107,36 +107,37 @@ export default function CountdownTimer() {
           </div>
           
           {/* Countdown Clock */}
-          <div className="col-md-5 col-lg-4 col-xl-3 relative w-full px-[10px] md:flex-none md:w-[41.66667%] lg:w-[33.33333%] xl:w-[25%]">
-            <div className="next-race-clock table w-full mt-[2px] md:mt-0">
-              <div className="countdown-clock table-cell p-[10px] bg-[#1f1f27] rounded-l-[10px] align-middle">
-                <div className="title-bar font-f1-regular text-[13px] leading-[15px] tracking-[0.5px] font-normal p-[5px] bg-[#38383f] text-white rounded-[10px] mb-[10px] max-w-[165px] mx-auto uppercase text-center">
+          <div className="col-md-5 col-lg-4 col-xl-3 relative w-full px-[10px] md:flex-none md:w-[41.66667%] lg:w-[33.33333%] xl:w-[25%] mt-3 md:mt-0">
+            <div className="flex flex-row items-stretch justify-center w-full max-w-md mx-auto shadow-md rounded-[10px] overflow-hidden">
+              {/* Clock: Days, Hours, Mins */}
+              <div className="flex-grow flex flex-col justify-center items-center p-2.5 bg-[#1f1f27]">
+                <div className="w-full font-f1-regular text-[11px] sm:text-[13px] leading-tight tracking-[0.5px] font-normal py-1 px-2 bg-[#38383f] text-white rounded-[8px] mb-2 max-w-[140px] uppercase text-center">
                   Race Start
                 </div>
-                <div className="clock table mx-auto whitespace-nowrap [font-feature-settings:'tnum']">
-                  <div className="days table-cell text-white px-[10px] text-center">
-                    <p className="countdown-text m-0 font-f1-regular text-[22px] leading-[26px] md:text-[20px] md:leading-[24px] lg:text-[25px] lg:leading-[30px] xl:text-[32px] xl:leading-[36px]">{timeLeft.days || '-'}</p>
-                    <span className="font-f1-regular text-[12px] leading-[15px] tracking-[0.5px] font-normal uppercase block text-[#949498]">days</span>
+                <div className="flex items-center justify-around w-full whitespace-nowrap [font-feature-settings:'tnum']">
+                  <div className="flex-1 text-white px-1 sm:px-2 text-center">
+                    <p className="countdown-text m-0 font-f1-regular text-lg sm:text-2xl lg:text-xl xl:text-2xl font-bold leading-tight">{timeLeft.days || '-'}</p>
+                    <span className="font-f1-regular text-[10px] sm:text-[12px] leading-tight tracking-wider uppercase block text-[#949498]">days</span>
                   </div>
-                  <div className="hours table-cell text-white px-[10px] text-center border-l border-[#38383f]">
-                    <p className="countdown-text m-0 font-f1-regular text-[22px] leading-[26px] md:text-[20px] md:leading-[24px] lg:text-[25px] lg:leading-[30px] xl:text-[32px] xl:leading-[36px]">{timeLeft.hours || '-'}</p>
-                    <span className="font-f1-regular text-[12px] leading-[15px] tracking-[0.5px] font-normal uppercase block text-[#949498]">hrs</span>
+                  <div className="flex-1 text-white px-1 sm:px-2 text-center border-l border-[#38383f]">
+                    <p className="countdown-text m-0 font-f1-regular text-lg sm:text-2xl lg:text-xl xl:text-2xl font-bold leading-tight">{timeLeft.hours || '-'}</p>
+                    <span className="font-f1-regular text-[10px] sm:text-[12px] leading-tight tracking-wider uppercase block text-[#949498]">hrs</span>
                   </div>
-                  <div className="minutes table-cell text-white px-[10px] text-center border-l border-[#38383f] md:pr-0">
-                    <p className="countdown-text m-0 font-f1-regular text-[22px] leading-[26px] md:text-[20px] md:leading-[24px] lg:text-[25px] lg:leading-[30px] xl:text-[32px] xl:leading-[36px]">{timeLeft.minutes || '-'}</p>
-                    <span className="font-f1-regular text-[12px] leading-[15px] tracking-[0.5px] font-normal uppercase block text-[#949498]">mins</span>
+                  <div className="flex-1 text-white px-1 sm:px-2 text-center border-l border-[#38383f]">
+                    <p className="countdown-text m-0 font-f1-regular text-lg sm:text-2xl lg:text-xl xl:text-2xl font-bold leading-tight">{timeLeft.minutes || '-'}</p>
+                    <span className="font-f1-regular text-[10px] sm:text-[12px] leading-tight tracking-wider uppercase block text-[#949498]">mins</span>
                   </div>
                 </div>
               </div>
-              <div id="round" className="countdown-clock table-cell align-middle border-l-[5px] border-black rounded-r-[10px] rounded-l-none bg-[#38383f] mr-[5%]">
-                <div id="round-title" className="title-bar font-f1-regular text-[13px] leading-[15px] tracking-[0.5px] font-normal p-[5px] bg-[#1f1f27] text-white rounded-[10px] mb-[10px] max-w-[165px] mx-auto uppercase text-center">
+
+              {/* Round Box */}
+              <div className="w-20 sm:w-24 flex flex-col justify-center items-center p-2.5 bg-[#38383f] border-l-2 border-black/40">
+                <div className="w-full font-f1-regular text-[11px] sm:text-[13px] leading-tight tracking-[0.5px] font-normal py-1 px-1 bg-[#1f1f27] text-white rounded-[8px] mb-2 uppercase text-center">
                   Race
                 </div>
-                <div className="clock table mx-auto whitespace-nowrap [font-feature-settings:'tnum']">
-                  <div id="round-text" className="days table-cell text-white pl-[10%] pr-[10px] text-center">
-                    <p className="countdown-text m-0 font-f1-regular text-[22px] leading-[26px] md:text-[20px] md:leading-[24px] lg:text-[25px] lg:leading-[30px] xl:text-[32px] xl:leading-[36px]">{nextRace?.round || '-'}</p>
-                    <span className="font-f1-regular text-[12px] leading-[15px] tracking-[0.5px] font-normal uppercase block text-[#949498]">Round</span>
-                  </div>
+                <div className="text-white text-center whitespace-nowrap [font-feature-settings:'tnum']">
+                  <p className="countdown-text m-0 font-f1-regular text-lg sm:text-2xl lg:text-xl xl:text-2xl font-bold leading-tight">{nextRace?.round || '-'}</p>
+                  <span className="font-f1-regular text-[10px] sm:text-[12px] leading-tight tracking-wider uppercase block text-[#949498]">Round</span>
                 </div>
               </div>
             </div>

@@ -380,12 +380,15 @@ span {
 
 .race-container-sesion {
   width: 95%;
-  height: 10%;
-  margin-top: 2%;
+  height: 11%;
+  margin-top: 1.5%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 6px;
+  box-sizing: border-box;
 }
 
 .race-container-sesion > h1,
@@ -394,20 +397,31 @@ span {
 }
 
 .race-container-sesion-title {
-  width: 65%;
-  font-size: 1.1em;
+  flex: 1;
+  min-width: 0;
+  font-size: clamp(0.75rem, 2.2vw, 0.92rem);
   font-family: "F1RegularBold";
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
 }
 
 .race-container-sesion-hour {
-  width: 35%;
-  padding: 2% 5%;
+  flex-shrink: 0;
+  min-width: 96px;
+  padding: 3px 6px;
   text-align: center;
   color: white;
   border-radius: 5px;
-  font-size: 0.7em;
+  font-size: clamp(0.65rem, 1.8vw, 0.75rem);
   font-family: "F1RegularBold";
   background-color: #38383f;
+  white-space: nowrap;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .race-container:hover {
@@ -453,25 +467,30 @@ span {
 
 .race-container-desc {
   width: 95%;
-  height: 30%;
+  min-height: 28%;
+  height: auto;
+  padding: 8px 0;
   display: flex;
-  align-items: left;
+  align-items: flex-start;
   justify-content: center;
   flex-direction: column;
   border-bottom: 1px solid gray;
+  gap: 4px;
 }
 
 .race-container-desc > h1 {
-  font-size: 1.5em;
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
   font-family: "F1RegularBold";
   margin: 0;
+  line-height: 1.2;
 }
 
 .race-container-desc > p {
-  font-size: 1em;
+  font-size: clamp(0.75rem, 2.2vw, 0.9rem);
   font-family: "F1Regular";
   text-transform: uppercase;
   margin: 0;
+  line-height: 1.25;
 }
 
 .race-container-img {
@@ -550,11 +569,12 @@ span {
 
 @media (max-width: 400px) {
   .race-container-sesion-title {
-    width: 60%;
-    font-size: 1em;
+    font-size: 0.8em;
   }
-  .race-container-sesion {
-    gap: 0%;
+  .race-container-sesion-hour {
+    font-size: 0.65em;
+    min-width: 86px;
+    padding: 2px 4px;
   }
 }
 

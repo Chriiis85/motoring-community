@@ -173,8 +173,10 @@ export default function NewsPage() {
                 {visibleCount < articles.length && (
                   <div className="w-full flex justify-center mt-12">
                     <button 
+                      type="button"
+                      aria-label="Cargar más noticias / Load more news"
                       onClick={() => setVisibleCount(v => v + 9)}
-                      className="bg-[#222] text-white px-8 py-3 font-['F1RegularBold'] text-lg rounded border border-[#00b9ff] hover:bg-[#00b9ff] hover:text-black transition-all duration-300"
+                      className="bg-[#222] text-white px-8 py-3 font-['F1RegularBold'] text-lg rounded border border-[#00b9ff] hover:bg-[#00b9ff] hover:text-black transition-all duration-300 cursor-pointer"
                     >
                       LOAD MORE NEWS
                     </button>

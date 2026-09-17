@@ -13,7 +13,7 @@ export default function AboutPage() {
       />
       <main className="flex-grow w-full py-10 px-4 md:px-8 conic-mesh-bg">
         <article className="max-w-4xl mx-auto bg-white dark:bg-[#1a1a1a] p-8 md:p-12 border-2 border-black dark:border-gray-700 rounded-[15px] shadow-[0_5px_15px_rgba(0,0,0,0.35)] font-medium text-lg leading-relaxed text-[#282828] dark:text-gray-100 transition-colors duration-300">
-          <h1 className="text-3xl md:text-5xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">About Formula One</h1>
+          <h2 className="text-3xl md:text-5xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">About Formula One</h2>
           <p className="mb-6">
             Formula One, commonly known as Formula 1 or F1, is the highest class
             of international racing for open-wheel single-seater formula racing
@@ -34,7 +34,7 @@ export default function AboutPage() {
             one tracks, the highest grade rating the FIA issues for tracks.
           </p>
 
-          <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">The Constructors</h1>
+          <h2 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">The Constructors</h2>
           <p className="mb-6">
             A Formula One constructor is the entity credited for designing the
             chassis and the engine. If both are designed by the same company, that
@@ -65,7 +65,7 @@ export default function AboutPage() {
             </Link>
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">The Drivers</h1>
+          <h2 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">The Drivers</h2>
           <p className="mb-6">
             Every team in Formula One must run two cars in every session in a
             Grand Prix weekend, and every team may use up to four drivers in a
@@ -96,7 +96,7 @@ export default function AboutPage() {
             </Link>
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">The Race Calendar</h1>
+          <h2 className="text-3xl md:text-4xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">The Race Calendar</h2>
           <p className="mb-6">
             Every year, several Grand Prix races are organized in different parts
             of the world. In the 2026 season, the number is 24 Grand Prix races,
