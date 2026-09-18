@@ -44,7 +44,7 @@ export default async function DriversPage() {
                   position: 'relative',
                   overflow: 'hidden',
                   boxShadow: `0 0 2px black, 0 0 10px black, 0 0 20px var(--${team}), 0 0 30px var(--${team}), 0 0 40px var(--${team}), 0 0 50px var(--${team})`,
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/Helmets/${encodeURI(familyName)}.png')`
+                  backgroundImage: `url('/images/Helmets/${encodeURI(familyName)}.png')`
                 }}
               >
                 <div className="driver-image">

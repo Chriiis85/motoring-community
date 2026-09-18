@@ -92,7 +92,7 @@ export default async function TeamsPage() {
                             src={`/images/DriversPNG/${surnameLowercase}.png`} 
                             fallbackSrc="/images/transparent.svg" 
                             alt={`Driver ${driverName} portrait`} 
-                            style={{ width: '100%', height: '120%', objectFit: 'cover', objectPosition: 'top' }}
+                            className="driver-avatar-img"
                           />
                         </div>
                       </div>
