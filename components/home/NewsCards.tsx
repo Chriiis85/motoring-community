@@ -20,7 +20,9 @@ export default function NewsCards() {
         const response = await fetch('/api/news');
         const data = await response.json();
         if (data.articles && data.articles.length >= 4) {
-          const validArticles = data.articles.filter((a: Article) => a.urlToImage && !a.title.includes('[Removed]'));
+          const validArticles = data.articles
+            .filter((a: Article) => a.urlToImage && !a.title.includes('[Removed]'))
+            .sort((a: Article, b: Article) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
           setArticles(validArticles.slice(0, 4));
         }
       } catch (error) {

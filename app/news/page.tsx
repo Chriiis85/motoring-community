@@ -26,7 +26,9 @@ export default function NewsPage() {
         const response = await fetch('/api/news');
         const data = await response.json();
         if (data.articles) {
-          const validArticles = data.articles.filter((a: Article) => a.urlToImage && !a.title.includes('[Removed]'));
+          const validArticles = data.articles
+            .filter((a: Article) => a.urlToImage && !a.title.includes('[Removed]'))
+            .sort((a: Article, b: Article) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
           setArticles(validArticles); 
         }
       } catch (error) {
