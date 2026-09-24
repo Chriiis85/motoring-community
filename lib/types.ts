@@ -61,6 +61,7 @@ export interface Race {
   Qualifying?: { date: string; time: string };
   Sprint?: { date: string; time: string };
   SprintQualifying?: { date: string; time: string };
+  SprintShootout?: { date: string; time: string };
 }
 
 export interface RaceResult {

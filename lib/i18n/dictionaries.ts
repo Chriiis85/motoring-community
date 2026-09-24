@@ -40,7 +40,24 @@ export const dictionaries = {
     nationality: "Nationality",
     timeStatus: "Time/Status",
     points: "Points",
-    wins: "Wins"
+    wins: "Wins",
+
+    // Calendar Sessions & Legend
+    freePractice1: "Free Practice 1",
+    freePractice2: "Free Practice 2",
+    freePractice3: "Free Practice 3",
+    sprintQualifying: "Sprint Qualifying",
+    sprintRace: "Sprint Race",
+    qualifying: "Qualifying",
+    race: "Race",
+    round: "Round",
+    spainTime: "Spain Time",
+    spainTimeNotice: "All times displayed in Spain peninsular time (CET / CEST)",
+    sessionPast: "Finished",
+    sessionLive: "Live",
+    sessionUpcoming: "Upcoming",
+    raceFinished: "Finished",
+    raceNext: "Next Race"
   },
   es: {
     // Header
@@ -83,7 +100,24 @@ export const dictionaries = {
     nationality: "Nacionalidad",
     timeStatus: "Tiempo/Estado",
     points: "Puntos",
-    wins: "Victorias"
+    wins: "Victorias",
+
+    // Calendar Sessions & Legend
+    freePractice1: "Libres 1",
+    freePractice2: "Libres 2",
+    freePractice3: "Libres 3",
+    sprintQualifying: "Clasif. Sprint",
+    sprintRace: "Carrera Sprint",
+    qualifying: "Clasificación",
+    race: "Carrera",
+    round: "Ronda",
+    spainTime: "Hora España",
+    spainTimeNotice: "Todos los horarios en hora peninsular española (CET / CEST)",
+    sessionPast: "Finalizada",
+    sessionLive: "En Directo",
+    sessionUpcoming: "Próxima",
+    raceFinished: "Finalizado",
+    raceNext: "Próxima Carrera"
   }
 };
 
