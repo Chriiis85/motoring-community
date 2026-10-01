@@ -1,25 +1,69 @@
 'use client';
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type ModalType = "none" | "legal" | "privacy" | "data" | "cookies" | "faq";
 
 export default function Footer() {
   const [activeModal, setActiveModal] = useState<ModalType>("none");
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLAnchorElement | null>(null);
 
-  // Close modal when pressing ESC
+  // Close modal when pressing ESC and handle focus trap
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setActiveModal("none");
+      if (e.key === "Escape") {
+        setActiveModal("none");
+      }
+      
+      // Focus trap
+      if (activeModal !== "none" && e.key === "Tab" && modalRef.current) {
+        const focusableElements = modalRef.current.querySelectorAll(
+          'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
+        );
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            lastElement.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            firstElement.focus();
+            e.preventDefault();
+          }
+        }
+      }
     };
+    
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [activeModal]);
 
-  const openModal = (e: React.MouseEvent, type: ModalType) => {
+  // Focus modal when opened, return focus when closed
+  useEffect(() => {
+    if (activeModal !== "none") {
+      setTimeout(() => {
+        if (modalRef.current) {
+          modalRef.current.focus();
+        }
+      }, 50);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+      if (triggerRef.current) {
+        triggerRef.current.focus();
+      }
+    }
+  }, [activeModal]);
+
+  const openModal = (e: React.MouseEvent<HTMLAnchorElement>, type: ModalType) => {
     e.preventDefault();
+    triggerRef.current = e.currentTarget;
     setActiveModal(type);
   };
 
@@ -168,7 +212,9 @@ export default function Footer() {
           aria-labelledby="modal-title"
         >
           <div 
-            className="bg-white dark:bg-[#1e1e1e] text-black dark:text-white w-full max-w-2xl max-h-[85vh] overflow-y-auto p-6 sm:p-8 rounded-2xl shadow-2xl relative border border-gray-200 dark:border-gray-800" 
+            ref={modalRef}
+            tabIndex={-1}
+            className="bg-white dark:bg-[#1e1e1e] text-black dark:text-white w-full max-w-2xl max-h-[85vh] overflow-y-auto p-6 sm:p-8 rounded-2xl shadow-2xl relative border border-gray-200 dark:border-gray-800 outline-none" 
             onClick={(e) => e.stopPropagation()}
           >
             <button 

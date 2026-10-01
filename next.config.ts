@@ -4,10 +4,12 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
+      { protocol: 'https', hostname: 'flagcdn.com' },
+      { protocol: 'https', hostname: 'media.formula1.com' },
+      { protocol: 'https', hostname: 'encrypted-tbn0.gstatic.com' },
+      { protocol: 'https', hostname: 'images.ecestaticos.com' },
+      { protocol: 'https', hostname: 'f1-fansite.com' },
+      { protocol: 'https', hostname: 'img2.rtve.es' }
     ],
   },
   async headers() {
@@ -42,10 +44,6 @@ const nextConfig: NextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin'
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block'
           }
         ]
       }

@@ -55,7 +55,7 @@ export default function NewsCards() {
     return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   };
 
-  if (articles.length === 0) {
+  if (articles.length < 4) {
     return (
       <section className="latest-news-container w-full flex items-center justify-center flex-col py-8 px-4">
         <h1 className="m-0 mt-[3%] text-2xl sm:text-3xl lg:text-[2.5em] font-['F1RegularBold'] text-center text-black dark:text-white">FORMULA ONE NEWS</h1>

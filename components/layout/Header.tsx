@@ -1,7 +1,6 @@
 'use client';
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
@@ -16,7 +15,7 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileF1SubmenuOpen, setIsMobileF1SubmenuOpen] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
 
   // Close mobile menu and dropdown on route change
@@ -25,6 +24,13 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
     setIsDropdownOpen(false);
     setIsMobileF1SubmenuOpen(false);
   }, [pathname]);
+
+  // Clear timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -37,10 +43,16 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
     }, 300);
   };
 
+  const handleBlur = (e: React.FocusEvent) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      handleMouseLeave();
+    }
+  };
+
   return (
     <>
       {/* ── Fixed Navbar Header ────────────────────────────────────────────── */}
-      <header className="fixed top-0 left-0 w-full z-[99999] bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md border-b border-slate-200/90 dark:border-gray-800/80 shadow-xs dark:shadow-2xl transition-all duration-300" style={{ zIndex: 99999 }}>
+      <header className="fixed top-0 left-0 w-full z-[99999] bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md border-b border-slate-200/90 dark:border-gray-800/80 shadow-xs dark:shadow-2xl transition-all duration-300">
         <div className="w-full max-w-7xl 2xl:max-w-8xl mx-auto h-16 sm:h-20 flex items-center justify-between px-3 sm:px-6 lg:px-8">
           
           {/* ── Logo Brand ─────────────────────────────────────────────────── */}
@@ -51,7 +63,7 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
               className="text-slate-950 dark:text-white text-xs sm:text-base md:text-lg lg:text-xl font-black tracking-wider sm:tracking-widest hover:text-[#008cc3] dark:hover:text-[#00b9ff] transition-all duration-300 whitespace-nowrap flex items-center gap-1.5 sm:gap-2 group"
             >
               <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#008cc3] dark:bg-[#00b9ff] group-hover:scale-125 transition-transform duration-300 shrink-0"></span>
-              <span>MOTORING <span className="text-[#008cc3] dark:text-[#00b9ff]">COMMUNITY</span></span>
+              <span>MOTORING <span className="text-[#008cc3] dark:text-[#00b9ff] me-5">COMMUNITY</span></span>
             </Link>
           </div>
 
@@ -62,6 +74,8 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
               className="relative py-2"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
+              onFocus={handleMouseEnter}
+              onBlur={handleBlur}
             >
               <button 
                 type="button"
@@ -69,8 +83,6 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
                 aria-haspopup="true"
                 aria-label="Formula One submenu"
                 className="cursor-pointer px-3 py-2 rounded-lg text-slate-700 dark:text-gray-200 hover:text-[#008cc3] dark:hover:text-[#00b9ff] hover:bg-slate-100 dark:hover:bg-white/5 transition-all duration-200 flex items-center gap-1.5 whitespace-nowrap"
-                onFocus={handleMouseEnter}
-                onBlur={handleMouseLeave}
               >
                 FORMULA ONE
                 <svg aria-hidden="true" className={`w-3.5 h-3.5 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180 text-[#008cc3] dark:text-[#00b9ff]' : 'text-slate-400 dark:text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,7 +96,7 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
               >
                 <div className="space-y-1.5 border-r border-slate-200/80 dark:border-gray-800/80 pr-4">
                   <div className="text-[11px] font-black tracking-widest text-[#008cc3] dark:text-[#00b9ff] uppercase pb-1 mb-1 border-b border-slate-100 dark:border-gray-800">
-                    Información F1
+                    F1 INFORMATION
                   </div>
                   <Link href="/about" className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-sm text-slate-700 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
                     <span className="text-[#008cc3] dark:text-[#00b9ff] font-bold">›</span> About Formula One
@@ -96,7 +108,7 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
 
                 <div className="space-y-1.5 pl-2">
                   <div className="text-[11px] font-black tracking-widest text-[#008cc3] dark:text-[#00b9ff] uppercase pb-1 mb-1 border-b border-slate-100 dark:border-gray-800">
-                    Temporada Actual
+                    ACTUAL SEASON
                   </div>
                   <Link href="/drivers" className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-sm text-slate-700 dark:text-gray-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">
                     <span className="text-[#008cc3] dark:text-[#00b9ff] font-bold">›</span> Season Drivers
@@ -134,7 +146,7 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
           </nav>
 
           {/* ── Desktop Right Controls (lg+) ────────────────────────────────── */}
-          <div className="hidden lg:flex items-center gap-3 xl:gap-4 flex-shrink-0">
+          <div className="hidden lg:flex items-center gap-3 xl:gap-4 flex-shrink-0 ms-5">
             <Link 
               href="/login" 
               className="bg-[#00b9ff] hover:bg-[#009edc] text-black font-extrabold px-4 xl:px-5 py-2 rounded-xl text-xs xl:text-sm tracking-wider uppercase transition-all duration-200 shadow-md shadow-[#00b9ff]/20 hover:shadow-lg whitespace-nowrap"

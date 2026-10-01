@@ -1,5 +1,3 @@
-'use client';
-
 
 import './home.css';
 import Header from "@/components/layout/Header";

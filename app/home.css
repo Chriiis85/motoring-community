@@ -85,12 +85,12 @@
 
 .slideshow li:nth-child(1) span {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(https://media.revistagq.com/photos/620e38dcc789a63cc825a53f/16:9/w_2560%2Cc_limit/drive-to-survive-4-netflix-fecha.jpeg);
+    url("/images/hero/hero-1.jpeg");
 }
 
 .slideshow li:nth-child(2) span {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(https://f1chronicle.com/wp-content/uploads/2022/05/220062-emilia-romagna-gp-2022-race-scaled-1920x1080.jpg);
+    url("/images/hero/hero-2.jpg");
   -webkit-animation-delay: 6s;
   -moz-animation-delay: 6s;
   animation-delay: 6s;
@@ -98,7 +98,7 @@
 
 .slideshow li:nth-child(3) span {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(https://i.redd.it/8mmfuvapzyr71.jpg);
+    url("/images/hero/hero-3.jpg");
   -webkit-animation-delay: 12s;
   -moz-animation-delay: 12s;
   animation-delay: 12s;
@@ -106,7 +106,7 @@
 
 .slideshow li:nth-child(4) span {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(https://images.daznservices.com/di/library/DAZN_News/ff/b5/2023-03-03-alonso-aston-martin-f1-formula-1_wzn823p6f5hv1nnscf81hhaol.jpg?t=-1415982858);
+    url("/images/hero/hero-4.jpg");
   -webkit-animation-delay: 18s;
   -moz-animation-delay: 18s;
   animation-delay: 18s;
@@ -750,7 +750,7 @@ span {
       rgba(0, 0, 0, 0.75),
       rgba(0, 0, 0, 1)
     ),
-    url(https://media.revistagq.com/photos/620e38dcc789a63cc825a53f/16:9/w_2560%2Cc_limit/drive-to-survive-4-netflix-fecha.jpeg);
+    url("/images/hero/hero-1.jpeg");
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -809,7 +809,7 @@ span {
       rgba(0, 0, 0, 0.75),
       rgba(0, 0, 0, 1)
     ),
-    url(https://media.revistagq.com/photos/620e38dcc789a63cc825a53f/16:9/w_2560%2Cc_limit/drive-to-survive-4-netflix-fecha.jpeg);
+    url("/images/hero/hero-1.jpeg");
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -867,7 +867,7 @@ span {
       rgba(0, 0, 0, 0.75),
       rgba(0, 0, 0, 1)
     ),
-    url(https://media.revistagq.com/photos/620e38dcc789a63cc825a53f/16:9/w_2560%2Cc_limit/drive-to-survive-4-netflix-fecha.jpeg);
+    url("/images/hero/hero-1.jpeg");
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -901,7 +901,7 @@ span {
       rgba(0, 0, 0, 0.75),
       rgba(0, 0, 0, 1)
     ),
-    url(https://media.revistagq.com/photos/620e38dcc789a63cc825a53f/16:9/w_2560%2Cc_limit/drive-to-survive-4-netflix-fecha.jpeg);
+    url("/images/hero/hero-1.jpeg");
   background-size: cover;
   background-position: center;
   overflow: hidden;

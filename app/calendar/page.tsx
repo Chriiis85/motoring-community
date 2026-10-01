@@ -153,7 +153,7 @@ export default async function CalendarPage() {
               }
 
               const circuitImg = raceName.replace(/\s+/g, "");
-              const tipoCarrera = race.Sprint ? "Sprint" : "Normal";
+              const tipoCarrera = (race.Sprint || race.SprintQualifying || race.SprintShootout) ? "Sprint" : "Normal";
               
               let pais = race.Circuit.Location.country;
               if (pais === "UK") pais = "united-kingdom";
@@ -226,12 +226,17 @@ export default async function CalendarPage() {
                   <div className="race-container-front">
                       <div className="race-container-round">
                           <h2>ROUND {i + 1}</h2>
-                          {isRacePast && (
-                            <span className="race-status-pill race-status-past">{t("raceFinished")}</span>
-                          )}
-                          {!isRacePast && isRaceNext && (
-                            <span className="race-status-pill race-status-next">{t("raceNext")}</span>
-                          )}
+                          <div style={{display: 'flex', gap: '6px'}}>
+                            {tipoCarrera === "Sprint" && (
+                              <span className="race-status-pill race-status-sprint">SPRINT</span>
+                            )}
+                            {isRacePast && (
+                              <span className="race-status-pill race-status-past">{t("raceFinished")}</span>
+                            )}
+                            {!isRacePast && isRaceNext && (
+                              <span className="race-status-pill race-status-next">{t("raceNext")}</span>
+                            )}
+                          </div>
                       </div>
                       <div className="race-container-title">
                           <span>{dia2}-{dia1} {mes}</span>

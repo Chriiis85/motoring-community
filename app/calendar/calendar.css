@@ -650,6 +650,17 @@ span {
   box-shadow: 0 0 8px rgba(225, 6, 0, 0.4);
 }
 
+.race-status-sprint {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #38383f;
+}
+
+.dark .race-status-sprint {
+  background-color: #38383f;
+  color: #ffffff;
+}
+
 .race-container-title {
   width: 95%;
   height: 18%;
