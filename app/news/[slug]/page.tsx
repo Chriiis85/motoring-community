@@ -5,19 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import Link from 'next/link';
-
-interface Article {
-  title: string;
-  author: string;
-  publishedAt: string;
-  urlToImage: string;
-  url: string;
-  description: string;
-  content: string;
-  source: {
-    name: string;
-  };
-}
+import { Article, createNewsSlug, FALLBACK_ARTICLES } from '@/lib/news';
 
 export default function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const unwrappedParams = React.use(params);
@@ -26,46 +14,86 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchArticle = async () => {
       try {
         const response = await fetch('/api/news');
         const data = await response.json();
-        
-        if (data.articles) {
-          // Function to generate slug identically to how it was created
-          const getSlug = (title: string) => {
-            return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-          };
+        const targetSlug = decodeURIComponent(unwrappedParams.slug).toLowerCase().trim();
 
-          const foundArticle = data.articles.find((a: Article) => getSlug(a.title) === unwrappedParams.slug);
-          
-          if (foundArticle) {
-            setArticle(foundArticle);
+        const findMatch = (articlesList: Article[]) => {
+          return articlesList.find((a: Article) => {
+            const articleSlug = createNewsSlug(a.title);
+            return (
+              articleSlug === targetSlug ||
+              targetSlug.includes(articleSlug) ||
+              articleSlug.includes(targetSlug)
+            );
+          });
+        };
+
+        let found: Article | undefined;
+
+        if (data.articles && Array.isArray(data.articles)) {
+          found = findMatch(data.articles);
+        }
+
+        if (!found) {
+          found = findMatch(FALLBACK_ARTICLES);
+        }
+
+        if (isMounted) {
+          if (found) {
+            setArticle(found);
+            setError(false);
           } else {
             setError(true);
           }
         }
       } catch (err) {
         console.error('Error fetching article:', err);
-        setError(true);
+        if (isMounted) {
+          const targetSlug = decodeURIComponent(unwrappedParams.slug).toLowerCase().trim();
+          const fallbackFound = FALLBACK_ARTICLES.find((a: Article) => {
+            const articleSlug = createNewsSlug(a.title);
+            return articleSlug === targetSlug || targetSlug.includes(articleSlug) || articleSlug.includes(targetSlug);
+          });
+          if (fallbackFound) {
+            setArticle(fallbackFound);
+            setError(false);
+          } else {
+            setError(true);
+          }
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchArticle();
+
+    return () => {
+      isMounted = false;
+    };
   }, [unwrappedParams.slug]);
 
   const formatDate = (dateString: string) => {
     if (!dateString) return '';
-    return new Date(dateString).toLocaleDateString('en-GB', {
-      weekday: 'long',
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
+    try {
+      return new Date(dateString).toLocaleDateString('en-GB', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+    } catch {
+      return '';
+    }
   };
 
   if (loading) {
@@ -112,7 +140,8 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
   }
 
   // Clean up content from NewsAPI (remove the [+xxxx chars] at the end)
-  const cleanContent = article.content ? article.content.replace(/\[\+\d+ chars\]$/, '') : '';
+  const cleanContent = article.content ? article.content.replace(/\[\+\d+ chars\]$/, '').trim() : '';
+  const hasExtraContent = cleanContent && cleanContent !== article.description && !cleanContent.includes(article.description);
 
   return (
     <div className="min-h-screen flex flex-col font-['F1Regular'] bg-[#1a1a1a]">
@@ -152,7 +181,7 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
               {article.description}
             </p>
             
-            {cleanContent && (
+            {hasExtraContent && (
               <p className="text-gray-400 leading-relaxed mb-8">
                 {cleanContent}
               </p>

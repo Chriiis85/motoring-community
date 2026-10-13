@@ -2,37 +2,59 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-
-interface Article {
-  title: string;
-  author: string;
-  publishedAt: string;
-  urlToImage: string;
-  url: string;
-}
+import { Article, createNewsSlug, FALLBACK_ARTICLES } from '@/lib/news';
 
 export default function NewsCards() {
   const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchNews = async () => {
       try {
         const response = await fetch('/api/news');
         const data = await response.json();
-        if (data.articles && data.articles.length >= 4) {
-          const validArticles = data.articles
-            .filter((a: Article) => a.urlToImage && !a.title.includes('[Removed]'))
-            .sort((a: Article, b: Article) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-          setArticles(validArticles.slice(0, 4));
+
+        if (isMounted) {
+          if (data.articles && Array.isArray(data.articles) && data.articles.length > 0) {
+            const validArticles = data.articles
+              .filter((a: Article) => a.urlToImage && !a.title.includes('[Removed]'))
+              .sort((a: Article, b: Article) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+            if (validArticles.length >= 4) {
+              setArticles(validArticles.slice(0, 4));
+            } else if (validArticles.length > 0) {
+              const combined = [
+                ...validArticles,
+                ...FALLBACK_ARTICLES.filter((f: Article) => !validArticles.some((v: Article) => v.title === f.title))
+              ];
+              setArticles(combined.slice(0, 4));
+            } else {
+              setArticles(FALLBACK_ARTICLES.slice(0, 4));
+            }
+          } else {
+            setArticles(FALLBACK_ARTICLES.slice(0, 4));
+          }
         }
       } catch (error) {
         console.error('Error fetching news:', error);
+        if (isMounted) {
+          setArticles(FALLBACK_ARTICLES.slice(0, 4));
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchNews();
     const interval = setInterval(fetchNews, 300000);
-    return () => clearInterval(interval);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
   }, []);
 
   const formatDate = (dateString: string) => {
@@ -44,18 +66,9 @@ export default function NewsCards() {
     });
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent, url: string) => {
-    if (e.key === ' ' || e.key === 'Enter') {
-      e.preventDefault();
-      window.location.href = url;
-    }
-  };
+  const displayArticles = articles.length >= 4 ? articles : FALLBACK_ARTICLES.slice(0, 4);
 
-  const getSlug = (title: string) => {
-    return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-  };
-
-  if (articles.length < 4) {
+  if (loading && articles.length === 0) {
     return (
       <section className="latest-news-container w-full flex items-center justify-center flex-col py-8 px-4">
         <h1 className="m-0 mt-[3%] text-2xl sm:text-3xl lg:text-[2.5em] font-['F1RegularBold'] text-center text-black dark:text-white">FORMULA ONE NEWS</h1>
@@ -108,16 +121,13 @@ export default function NewsCards() {
         <div className="latest-news-notice w-full flex items-center justify-between flex-col lg:flex-row gap-6 mt-6 mb-6">
           
           {/* Main Large Card */}
-          <div 
-            tabIndex={0} 
-            role="link"
-            aria-label={`Read story: ${articles[0].title}`}
+          <Link 
+            href={`/news/${createNewsSlug(displayArticles[0].title)}`}
+            aria-label={`Read story: ${displayArticles[0].title}`}
             className="latest-news-notice1 relative w-full lg:w-[48%] h-[380px] sm:h-[480px] lg:h-[600px] flex items-center justify-end flex-col transition-all duration-300 ease-in-out bg-cover bg-center overflow-hidden bg-black cursor-pointer hover:scale-[0.98] group border-b-4 border-b-[#00b9ff] rounded focus:ring-2 focus:ring-[#00b9ff] outline-none"
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 1)),url('${articles[0].urlToImage}')`
+              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 1)),url('${displayArticles[0].urlToImage}')`
             }}
-            onClick={() => window.location.href = `/news/${getSlug(articles[0].title)}`}
-            onKeyDown={(e) => handleKeyDown(e, `/news/${getSlug(articles[0].title)}`)}
           >
             {/* Read More Hover Element */}
             <div aria-hidden="true" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#00b9ff] text-white font-['F1RegularBold'] px-6 py-3 rounded-full z-20">
@@ -125,23 +135,20 @@ export default function NewsCards() {
             </div>
             
             <div className="latest-news-notice1-info relative z-10 w-[90%] flex flex-col justify-end text-white mb-6">
-              <h2 className="text-xl sm:text-2xl md:text-3xl mb-2 group-hover:text-[#00b9ff] transition-colors leading-tight">{articles[0].title}</h2>
-              <p className="text-gray-400 font-['F1RegularBold'] text-xs sm:text-sm">By {articles[0].author || 'F1 News'} | {formatDate(articles[0].publishedAt)}</p>
+              <h2 className="text-xl sm:text-2xl md:text-3xl mb-2 group-hover:text-[#00b9ff] transition-colors leading-tight">{displayArticles[0].title}</h2>
+              <p className="text-gray-400 font-['F1RegularBold'] text-xs sm:text-sm">By {displayArticles[0].author || 'F1 News'} | {formatDate(displayArticles[0].publishedAt)}</p>
             </div>
-          </div>
+          </Link>
 
           <div className="latest-news-notice2 w-full lg:w-[48%] h-auto lg:h-[600px] flex flex-col justify-between gap-6">
             {/* Medium Top Card */}
-            <div 
-              tabIndex={0} 
-              role="link"
-              aria-label={`Read story: ${articles[1].title}`}
+            <Link 
+              href={`/news/${createNewsSlug(displayArticles[1].title)}`}
+              aria-label={`Read story: ${displayArticles[1].title}`}
               className="latest-news-notice3 relative w-full h-[240px] sm:h-[280px] lg:h-[48%] min-h-[220px] flex items-center justify-end flex-col transition-all duration-300 ease-in-out bg-cover bg-center overflow-hidden bg-black cursor-pointer hover:scale-[0.98] group border-b-4 border-b-[#00b9ff] rounded focus:ring-2 focus:ring-[#00b9ff] outline-none"
               style={{
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 1)),url('${articles[1].urlToImage}')`
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 1)),url('${displayArticles[1].urlToImage}')`
               }}
-              onClick={() => window.location.href = `/news/${getSlug(articles[1].title)}`}
-              onKeyDown={(e) => handleKeyDown(e, `/news/${getSlug(articles[1].title)}`)}
             >
               {/* Read More Hover Element */}
               <div aria-hidden="true" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#00b9ff] text-white text-sm font-['F1RegularBold'] px-4 py-2 rounded-full z-20">
@@ -149,23 +156,20 @@ export default function NewsCards() {
               </div>
 
               <div className="latest-news-notice3-info relative z-10 w-[90%] flex flex-col justify-end text-white mb-4">
-                <h3 className="text-lg sm:text-xl mb-1 group-hover:text-[#00b9ff] transition-colors leading-tight line-clamp-2">{articles[1].title}</h3>
-                <p className="text-gray-400 font-['F1RegularBold'] text-xs">By {articles[1].author || 'F1 News'} | {formatDate(articles[1].publishedAt)}</p>
+                <h3 className="text-lg sm:text-xl mb-1 group-hover:text-[#00b9ff] transition-colors leading-tight line-clamp-2">{displayArticles[1].title}</h3>
+                <p className="text-gray-400 font-['F1RegularBold'] text-xs">By {displayArticles[1].author || 'F1 News'} | {formatDate(displayArticles[1].publishedAt)}</p>
               </div>
-            </div>
+            </Link>
 
             <div className="latest-news-notice4 w-full h-auto lg:h-[48%] flex flex-col sm:flex-row justify-between gap-4">
               {/* Small Bottom Left Card */}
-              <div 
-                tabIndex={0} 
-                role="link"
-                aria-label={`Read story: ${articles[2].title}`}
+              <Link 
+                href={`/news/${createNewsSlug(displayArticles[2].title)}`}
+                aria-label={`Read story: ${displayArticles[2].title}`}
                 className="latest-news-notice5 relative w-full sm:w-[48%] h-[200px] sm:h-[220px] lg:h-full flex items-center justify-end flex-col transition-all duration-300 ease-in-out bg-cover bg-center overflow-hidden bg-black cursor-pointer hover:scale-[0.98] group border-b-4 border-b-[#00b9ff] rounded focus:ring-2 focus:ring-[#00b9ff] outline-none"
                 style={{
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 1)),url('${articles[2].urlToImage}')`
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 1)),url('${displayArticles[2].urlToImage}')`
                 }}
-                onClick={() => window.location.href = `/news/${getSlug(articles[2].title)}`}
-                onKeyDown={(e) => handleKeyDown(e, `/news/${getSlug(articles[2].title)}`)}
               >
                 {/* Read More Hover Element */}
                 <div aria-hidden="true" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#00b9ff] text-white text-xs font-['F1RegularBold'] px-3 py-1 rounded-full z-20">
@@ -173,22 +177,19 @@ export default function NewsCards() {
                 </div>
 
                 <div className="latest-news-notice4-info relative z-10 w-[90%] flex flex-col justify-end text-white mb-3">
-                  <h3 className="text-sm mb-1 group-hover:text-[#00b9ff] transition-colors line-clamp-2 leading-snug">{articles[2].title}</h3>
-                  <p className="text-gray-400 font-['F1RegularBold'] text-[10px] uppercase">By {articles[2].author || 'F1 News'} · {formatDate(articles[2].publishedAt)}</p>
+                  <h3 className="text-sm mb-1 group-hover:text-[#00b9ff] transition-colors line-clamp-2 leading-snug">{displayArticles[2].title}</h3>
+                  <p className="text-gray-400 font-['F1RegularBold'] text-[10px] uppercase">By {displayArticles[2].author || 'F1 News'} · {formatDate(displayArticles[2].publishedAt)}</p>
                 </div>
-              </div>
+              </Link>
               
               {/* Small Bottom Right Card */}
-              <div 
-                tabIndex={0} 
-                role="link"
-                aria-label={`Read story: ${articles[3].title}`}
+              <Link 
+                href={`/news/${createNewsSlug(displayArticles[3].title)}`}
+                aria-label={`Read story: ${displayArticles[3].title}`}
                 className="latest-news-notice6 relative w-full sm:w-[48%] h-[200px] sm:h-[220px] lg:h-full flex items-center justify-end flex-col transition-all duration-300 ease-in-out bg-cover bg-center overflow-hidden bg-black cursor-pointer hover:scale-[0.98] group border-b-4 border-b-[#00b9ff] rounded focus:ring-2 focus:ring-[#00b9ff] outline-none"
                 style={{
-                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 1)),url('${articles[3].urlToImage}')`
+                  backgroundImage: `linear-gradient(rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 1)),url('${displayArticles[3].urlToImage}')`
                 }}
-                onClick={() => window.location.href = `/news/${getSlug(articles[3].title)}`}
-                onKeyDown={(e) => handleKeyDown(e, `/news/${getSlug(articles[3].title)}`)}
               >
                 {/* Read More Hover Element */}
                 <div aria-hidden="true" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#00b9ff] text-white text-xs font-['F1RegularBold'] px-3 py-1 rounded-full z-20">
@@ -196,10 +197,10 @@ export default function NewsCards() {
                 </div>
 
                 <div className="latest-news-notice4-info relative z-10 w-[90%] flex flex-col justify-end text-white mb-3">
-                  <h3 className="text-sm mb-1 group-hover:text-[#00b9ff] transition-colors line-clamp-2 leading-snug">{articles[3].title}</h3>
-                  <p className="text-gray-400 font-['F1RegularBold'] text-[10px] uppercase">By {articles[3].author || 'F1 News'} · {formatDate(articles[3].publishedAt)}</p>
+                  <h3 className="text-sm mb-1 group-hover:text-[#00b9ff] transition-colors line-clamp-2 leading-snug">{displayArticles[3].title}</h3>
+                  <p className="text-gray-400 font-['F1RegularBold'] text-[10px] uppercase">By {displayArticles[3].author || 'F1 News'} · {formatDate(displayArticles[3].publishedAt)}</p>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

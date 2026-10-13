@@ -5,15 +5,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
 import ScrollToTop from '@/components/ui/ScrollToTop';
-
-interface Article {
-  title: string;
-  author: string;
-  publishedAt: string;
-  urlToImage: string;
-  url: string;
-  description: string;
-}
+import { Article, createNewsSlug, FALLBACK_ARTICLES } from '@/lib/news';
 
 export default function NewsPage() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -21,37 +13,58 @@ export default function NewsPage() {
   const [visibleCount, setVisibleCount] = useState(10);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchNews = async () => {
       try {
         const response = await fetch('/api/news');
         const data = await response.json();
-        if (data.articles) {
-          const validArticles = data.articles
-            .filter((a: Article) => a.urlToImage && !a.title.includes('[Removed]'))
-            .sort((a: Article, b: Article) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-          setArticles(validArticles); 
+
+        if (isMounted) {
+          if (data.articles && Array.isArray(data.articles) && data.articles.length > 0) {
+            const validArticles = data.articles
+              .filter((a: Article) => a.urlToImage && !a.title.includes('[Removed]'))
+              .sort((a: Article, b: Article) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+            if (validArticles.length > 0) {
+              setArticles(validArticles);
+            } else {
+              setArticles(FALLBACK_ARTICLES);
+            }
+          } else {
+            setArticles(FALLBACK_ARTICLES);
+          }
         }
       } catch (error) {
         console.error('Error fetching news:', error);
+        if (isMounted) {
+          setArticles(FALLBACK_ARTICLES);
+        }
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     };
 
     fetchNews();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const formatDate = (dateString: string) => {
     if (!dateString) return '';
-    return new Date(dateString).toLocaleDateString('en-GB', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric'
-    });
-  };
-
-  const getSlug = (title: string) => {
-    return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    try {
+      return new Date(dateString).toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      });
+    } catch {
+      return '';
+    }
   };
 
   const featuredArticle = articles[0];
@@ -100,7 +113,7 @@ export default function NewsPage() {
               {/* Featured Article */}
               {featuredArticle && (
                 <Link 
-                  href={`/news/${getSlug(featuredArticle.title)}`}
+                  href={`/news/${createNewsSlug(featuredArticle.title)}`}
                   className="group relative w-full h-[500px] flex items-end overflow-hidden rounded-xl border-2 border-transparent hover:border-[#00b9ff] transition-all duration-300 shadow-2xl"
                 >
                   <div 
@@ -140,7 +153,7 @@ export default function NewsPage() {
                     {gridArticles.map((article, i) => (
                       <Link 
                         key={i} 
-                        href={`/news/${getSlug(article.title)}`}
+                        href={`/news/${createNewsSlug(article.title)}`}
                         className="group flex flex-col bg-[#222] border-t-4 border-t-[#00b9ff] rounded-b-lg overflow-hidden hover:-translate-y-2 hover:shadow-[0_10px_20px_rgba(0,185,255,0.2)] transition-all duration-300"
                       >
                         <div className="relative w-full h-[250px] overflow-hidden bg-black">

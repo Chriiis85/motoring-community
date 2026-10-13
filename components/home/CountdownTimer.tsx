@@ -116,15 +116,15 @@ export default function CountdownTimer() {
                 </div>
                 <div className="flex items-center justify-around w-full whitespace-nowrap [font-feature-settings:'tnum']">
                   <div className="flex-1 text-white px-1 sm:px-2 text-center">
-                    <p className="countdown-text m-0 font-f1-regular text-lg sm:text-2xl lg:text-xl xl:text-2xl font-bold leading-tight">{timeLeft.days || '-'}</p>
+                    <p className="countdown-text m-0 font-f1-regular text-lg sm:text-2xl lg:text-xl xl:text-2xl font-bold leading-tight">{nextRace ? timeLeft.days : '-'}</p>
                     <span className="font-f1-regular text-[10px] sm:text-[12px] leading-tight tracking-wider uppercase block text-[#949498]">days</span>
                   </div>
                   <div className="flex-1 text-white px-1 sm:px-2 text-center border-l border-[#38383f]">
-                    <p className="countdown-text m-0 font-f1-regular text-lg sm:text-2xl lg:text-xl xl:text-2xl font-bold leading-tight">{timeLeft.hours || '-'}</p>
+                    <p className="countdown-text m-0 font-f1-regular text-lg sm:text-2xl lg:text-xl xl:text-2xl font-bold leading-tight">{nextRace ? timeLeft.hours : '-'}</p>
                     <span className="font-f1-regular text-[10px] sm:text-[12px] leading-tight tracking-wider uppercase block text-[#949498]">hrs</span>
                   </div>
                   <div className="flex-1 text-white px-1 sm:px-2 text-center border-l border-[#38383f]">
-                    <p className="countdown-text m-0 font-f1-regular text-lg sm:text-2xl lg:text-xl xl:text-2xl font-bold leading-tight">{timeLeft.minutes || '-'}</p>
+                    <p className="countdown-text m-0 font-f1-regular text-lg sm:text-2xl lg:text-xl xl:text-2xl font-bold leading-tight">{nextRace ? timeLeft.minutes : '-'}</p>
                     <span className="font-f1-regular text-[10px] sm:text-[12px] leading-tight tracking-wider uppercase block text-[#949498]">mins</span>
                   </div>
                 </div>

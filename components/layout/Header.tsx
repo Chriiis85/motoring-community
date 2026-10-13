@@ -125,21 +125,21 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
 
             <Link 
               href="/standings" 
-              className="px-3 py-2 rounded-lg text-slate-700 dark:text-gray-200 hover:text-[#008cc3] dark:hover:text-[#00b9ff] hover:bg-slate-100 dark:hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
+              className="px-3 py-2 rounded-lg text-slate-700 dark:text-gray-200 hover:!text-[#008cc3] dark:hover:!text-[#00b9ff] hover:bg-slate-100 dark:hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
             >
               SEASON STANDINGS
             </Link>
 
             <Link 
               href="/data" 
-              className="px-3 py-2 rounded-lg text-slate-700 dark:text-gray-200 hover:text-[#008cc3] dark:hover:text-[#00b9ff] hover:bg-slate-100 dark:hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
+              className="px-3 py-2 rounded-lg text-slate-700 dark:text-gray-200 hover:!text-[#008cc3] dark:hover:!text-[#00b9ff] hover:bg-slate-100 dark:hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
             >
               HISTORIC DATA
             </Link>
 
             <Link 
               href="/forum" 
-              className="px-3 py-2 rounded-lg text-slate-700 dark:text-gray-200 hover:text-[#008cc3] dark:hover:text-[#00b9ff] hover:bg-slate-100 dark:hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
+              className="px-3 py-2 rounded-lg text-slate-700 dark:text-gray-200 hover:!text-[#008cc3] dark:hover:!text-[#00b9ff] hover:bg-slate-100 dark:hover:bg-white/5 transition-all duration-200 whitespace-nowrap"
             >
               FORUM
             </Link>
@@ -254,13 +254,13 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
               )}
             </div>
 
-            <Link href="/standings" className="py-2.5 text-sm sm:text-base font-bold text-slate-800 dark:text-gray-200 hover:text-[#008cc3] dark:hover:text-[#00b9ff] border-b border-slate-100 dark:border-gray-800 transition-colors">
+            <Link href="/standings" className="py-2.5 text-sm sm:text-base font-bold text-slate-800 dark:text-gray-200 hover:!text-[#008cc3] dark:hover:!text-[#00b9ff] border-b border-slate-100 dark:border-gray-800 transition-colors">
               SEASON STANDINGS
             </Link>
-            <Link href="/data" className="py-2.5 text-sm sm:text-base font-bold text-slate-800 dark:text-gray-200 hover:text-[#008cc3] dark:hover:text-[#00b9ff] border-b border-slate-100 dark:border-gray-800 transition-colors">
+            <Link href="/data" className="py-2.5 text-sm sm:text-base font-bold text-slate-800 dark:text-gray-200 hover:!text-[#008cc3] dark:hover:!text-[#00b9ff] border-b border-slate-100 dark:border-gray-800 transition-colors">
               HISTORIC DATA
             </Link>
-            <Link href="/forum" className="py-2.5 text-sm sm:text-base font-bold text-slate-800 dark:text-gray-200 hover:text-[#008cc3] dark:hover:text-[#00b9ff] border-b border-slate-100 dark:border-gray-800 transition-colors">
+            <Link href="/forum" className="py-2.5 text-sm sm:text-base font-bold text-slate-800 dark:text-gray-200 hover:!text-[#008cc3] dark:hover:!text-[#00b9ff] border-b border-slate-100 dark:border-gray-800 transition-colors">
               FORUM
             </Link>
 
