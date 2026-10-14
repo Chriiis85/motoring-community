@@ -1,6 +1,19 @@
 import { Article, createNewsSlug, cleanText, FALLBACK_ARTICLES } from '@/lib/news';
 import { NextResponse } from 'next/server';
 
+interface RawNewsArticle {
+  title?: string;
+  author?: string;
+  publishedAt?: string;
+  urlToImage?: string;
+  url?: string;
+  description?: string;
+  content?: string;
+  source?: {
+    name?: string;
+  };
+}
+
 function parseRssXml(xml: string, sourceName: string): Article[] {
   const items: Article[] = [];
   const itemRegex = /<item>([\s\S]*?)<\/item>/gi;
@@ -101,17 +114,21 @@ export async function GET() {
 
       if (response.ok) {
         const data = await response.json();
+
         if (data.status === 'ok' && Array.isArray(data.articles) && data.articles.length > 0) {
-          const validArticles: Article[] = data.articles
-            .filter((a: any) => a.title && a.urlToImage && !a.title.includes('[Removed]'))
-            .map((a: any) => ({
+          const rawArticles = data.articles as RawNewsArticle[];
+          const validArticles: Article[] = rawArticles
+            .filter((a): a is RawNewsArticle & { title: string; urlToImage: string; publishedAt: string; url: string } =>
+              Boolean(a.title && a.urlToImage && a.publishedAt && a.url && !a.title.includes('[Removed]'))
+            )
+            .map((a) => ({
               title: cleanText(a.title),
-              author: cleanText(a.author) || 'F1 Staff',
+              author: cleanText(a.author || '') || 'F1 Staff',
               publishedAt: a.publishedAt,
               urlToImage: a.urlToImage,
               url: a.url,
-              description: cleanText(a.description),
-              content: cleanText(a.content || a.description),
+              description: cleanText(a.description || ''),
+              content: cleanText(a.content || a.description || ''),
               source: {
                 name: a.source?.name || 'F1 News',
               },

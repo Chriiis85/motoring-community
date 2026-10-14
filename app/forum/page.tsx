@@ -52,9 +52,11 @@ const mockPosts = [
 
 export default function ForumPage() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [showNotice, setShowNotice] = useState(false);
   
   const handleNewTheme = () => {
-    alert("New Post creation is not available in the mock version.");
+    setShowNotice(true);
+    setTimeout(() => setShowNotice(false), 4500);
   };
 
   return (
@@ -64,10 +66,17 @@ export default function ForumPage() {
       <main className="flex flex-col items-center justify-start min-h-[60vh] w-full bg-[#f3f3f3] conic-mesh-bg pt-[150px] md:pt-[180px] pb-12">
         <article className="w-full pt-[3%] pb-[3%] flex flex-col items-center justify-center">
           
-          {/* Alert Message */}
-          <div className="w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] max-w-5xl bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500 text-amber-900 dark:text-amber-300 p-4 mb-6 rounded shadow-sm text-center" role="alert">
-            <p className="font-bold">⚠️ Aviso / Warning</p>
-            <p>Esta sección es solo una demostración visual y actualmente no tiene funcionalidad real.</p>
+          {/* Notification on action */}
+          {showNotice && (
+            <div className="w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] max-w-5xl bg-[#008cc3]/10 dark:bg-[#00b9ff]/10 border-l-4 border-[#00b9ff] text-[#008cc3] dark:text-[#00b9ff] p-4 mb-4 rounded shadow-sm text-center font-medium animate-in fade-in duration-200">
+              ℹ️ La creación de nuevos temas estará disponible para usuarios registrados en la próxima versión interactiva.
+            </div>
+          )}
+
+          {/* Preview Mode Banner */}
+          <div className="w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] max-w-5xl bg-amber-50/90 dark:bg-amber-950/30 border-l-4 border-amber-500 text-amber-900 dark:text-amber-200 p-4 mb-6 rounded shadow-sm text-center text-sm md:text-base" role="note">
+            <p className="font-bold">🏁 Foro de la Comunidad · Modo Vista Previa</p>
+            <p className="text-xs md:text-sm mt-1 opacity-90">Los hilos de debate mostrados son de muestra para la comunidad F1. El registro e interacción completa se activarán en el siguiente despliegue.</p>
           </div>
 
           {/* Main Bar */}

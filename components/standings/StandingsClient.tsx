@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { DriverStanding, ConstructorStanding, getTeamColor, CONSTRUCTOR_IMAGE_MAP, nationalityToCountry, nationalityToCountryCode, calculateAge } from "@/lib/types";
+import { DriverStanding, ConstructorStanding, getTeamColor, CONSTRUCTOR_IMAGE_MAP, nationalityToCountryCode, calculateAge } from "@/lib/types";
 
 interface StandingsClientProps {
   driverStandings: DriverStanding[];
@@ -21,10 +21,6 @@ export default function StandingsClient({ driverStandings, constructorStandings,
 
   const toggleConstructor = (constructorId: string) => {
     setExpandedConstructor(expandedConstructor === constructorId ? null : constructorId);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (

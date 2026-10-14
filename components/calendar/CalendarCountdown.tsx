@@ -10,10 +10,13 @@ interface CalendarCountdownProps {
 
 export default function CalendarCountdown({ date, time, round }: CalendarCountdownProps) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0 });
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = React.useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   useEffect(() => {
-    setIsMounted(true);
     const calculateTimeLeft = () => {
       const now = new Date().getTime();
       const raceTime = new Date(`${date}T${time || '00:00:00Z'}`).getTime();

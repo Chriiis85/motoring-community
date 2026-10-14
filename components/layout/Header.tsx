@@ -19,11 +19,13 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
   const pathname = usePathname();
 
   // Close mobile menu and dropdown on route change
-  useEffect(() => {
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
     setIsMobileMenuOpen(false);
     setIsDropdownOpen(false);
     setIsMobileF1SubmenuOpen(false);
-  }, [pathname]);
+  }
 
   // Clear timeout on unmount
   useEffect(() => {

@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import { getNextRace, getRaceCalendar } from '@/lib/f1-api';
+import { getRaceCalendar } from '@/lib/f1-api';
 import { getTrackImageName } from '@/lib/types';
 import { Race } from '@/lib/types';
 import FallbackImage from '@/components/ui/FallbackImage';

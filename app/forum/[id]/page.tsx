@@ -52,10 +52,10 @@ export default function ForumPostDetail({ params }: { params: Promise<{ id: stri
             <Header />
             <main className="flex-grow w-full min-h-[60vh] flex flex-col items-center pt-[150px] md:pt-[180px] pb-10 conic-mesh-bg">
                 
-                {/* Alert Message */}
-                <div className="w-[90%] max-w-5xl bg-amber-50 dark:bg-amber-950/40 border-l-4 border-amber-500 text-amber-900 dark:text-amber-300 p-4 mb-6 rounded shadow-sm text-center" role="alert">
-                  <p className="font-bold">⚠️ Aviso / Warning</p>
-                  <p>Esta sección es solo una demostración visual y actualmente no tiene funcionalidad real.</p>
+                {/* Preview Banner */}
+                <div className="w-[90%] max-w-5xl bg-amber-50/90 dark:bg-amber-950/30 border-l-4 border-amber-500 text-amber-900 dark:text-amber-200 p-4 mb-6 rounded shadow-sm text-center text-sm md:text-base" role="note">
+                  <p className="font-bold">🏁 Hilo de Discusión · Modo Demostración</p>
+                  <p className="text-xs md:text-sm mt-1 opacity-90">Puedes interactuar enviando respuestas en esta sesión local para probar la experiencia del foro.</p>
                 </div>
 
                 {/* Info Bar */}

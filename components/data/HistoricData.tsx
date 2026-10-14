@@ -1,11 +1,35 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 
 interface Option {
   value: string;
   label: string;
+}
+
+interface HistoricItem {
+  position: string;
+  points: string;
+  wins?: string;
+  status?: string;
+  Driver?: {
+    givenName?: string;
+    familyName?: string;
+    nationality?: string;
+  };
+  Constructor?: {
+    name?: string;
+    nationality?: string;
+  };
+  Time?: {
+    time?: string;
+  };
+}
+
+interface JolpicaRace {
+  round: string;
+  raceName: string;
+  date: string;
 }
 
 export default function HistoricData() {
@@ -13,73 +37,100 @@ export default function HistoricData() {
   const [category, setCategory] = useState<string>("Drivers");
   const [raceRound, setRaceRound] = useState<string>("1");
   const [races, setRaces] = useState<Option[]>([]);
-  const [tableData, setTableData] = useState<any[]>([]);
+  const [tableData, setTableData] = useState<HistoricItem[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const years = Array.from({ length: 2026 - 1950 + 1 }, (_, i) => 2026 - i);
 
   useEffect(() => {
-    fetchRaces(year);
+    let ignore = false;
+
+    async function loadRaces() {
+      try {
+        const res = await fetch(`https://api.jolpi.ca/ergast/f1/${year}.json`);
+        const data = await res.json();
+        if (ignore) return;
+        const racesData: JolpicaRace[] = data.MRData.RaceTable.Races || [];
+        
+        const today = new Date();
+        const formattedToday = today.toISOString().split("T")[0];
+        
+        const pastRaces = racesData
+          .filter((r) => r.date < formattedToday)
+          .map((r) => ({
+            value: r.round,
+            label: r.raceName
+          }));
+        
+        setRaces(pastRaces);
+        if (pastRaces.length > 0) {
+          setRaceRound(pastRaces[pastRaces.length - 1].value);
+        }
+      } catch (error) {
+        console.error("Error fetching races:", error);
+      }
+    }
+
+    loadRaces();
+
+    return () => {
+      ignore = true;
+    };
   }, [year]);
 
   useEffect(() => {
-    fetchData();
-  }, [year, category, raceRound]);
+    let ignore = false;
 
-  const fetchRaces = async (selectedYear: string) => {
-    try {
-      const res = await fetch(`https://api.jolpi.ca/ergast/f1/${selectedYear}.json`);
-      const data = await res.json();
-      const racesData = data.MRData.RaceTable.Races || [];
-      
-      const today = new Date();
-      const formattedToday = today.toISOString().split("T")[0];
-      
-      const pastRaces = racesData.filter((r: any) => r.date < formattedToday).map((r: any) => ({
-        value: r.round,
-        label: r.raceName
-      }));
-      
-      setRaces(pastRaces);
-      if (pastRaces.length > 0) {
-        setRaceRound(pastRaces[pastRaces.length - 1].value);
+    async function loadData() {
+      setIsLoading(true);
+      setTableData([]);
+      try {
+        let url = "";
+        if (category === "Constructors") {
+          url = `https://api.jolpi.ca/ergast/f1/${year}/constructorStandings.json`;
+        } else if (category === "Drivers") {
+          url = `https://api.jolpi.ca/ergast/f1/${year}/driverStandings.json`;
+        } else if (category === "Race") {
+          url = `https://api.jolpi.ca/ergast/f1/${year}/${raceRound}/results.json`;
+        }
+
+        if (!url) {
+          if (!ignore) setIsLoading(false);
+          return;
+        }
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (ignore) return;
+
+        if (category === "Constructors") {
+          setTableData(data.MRData.StandingsTable.StandingsLists[0]?.ConstructorStandings || []);
+        } else if (category === "Drivers") {
+          setTableData(data.MRData.StandingsTable.StandingsLists[0]?.DriverStandings || []);
+        } else if (category === "Race") {
+          setTableData(data.MRData.RaceTable.Races[0]?.Results || []);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        if (!ignore) {
+          setIsLoading(false);
+        }
       }
-    } catch (error) {
-      console.error("Error fetching races:", error);
     }
-  };
 
-  const fetchData = async () => {
-    setIsLoading(true);
-    setTableData([]);
-    try {
-      let url = "";
-      if (category === "Constructors") {
-        url = `https://api.jolpi.ca/ergast/f1/${year}/constructorStandings.json`;
-      } else if (category === "Drivers") {
-        url = `https://api.jolpi.ca/ergast/f1/${year}/driverStandings.json`;
-      } else if (category === "Race") {
-        url = `https://api.jolpi.ca/ergast/f1/${year}/${raceRound}/results.json`;
+    // Run as microtask to avoid synchronous render cascade
+    queueMicrotask(() => {
+      if (!ignore) {
+        void loadData();
       }
+    });
 
-      if (!url) return;
-
-      const res = await fetch(url);
-      const data = await res.json();
-
-      if (category === "Constructors") {
-        setTableData(data.MRData.StandingsTable.StandingsLists[0]?.ConstructorStandings || []);
-      } else if (category === "Drivers") {
-        setTableData(data.MRData.StandingsTable.StandingsLists[0]?.DriverStandings || []);
-      } else if (category === "Race") {
-        setTableData(data.MRData.RaceTable.Races[0]?.Results || []);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+    return () => {
+      ignore = true;
+    };
+  }, [category, year, raceRound]);
 
   const getTitle = () => {
     if (category === "Constructors") return `${year} Constructors Standings`;

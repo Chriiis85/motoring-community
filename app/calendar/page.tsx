@@ -139,7 +139,7 @@ export default async function CalendarPage() {
               const circuitName = race.Circuit.circuitName;
               
               // Dates formatting
-              const [rYear, rMonth, rDay] = race.date.split("-").map(Number);
+              const [, rMonth, rDay] = race.date.split("-").map(Number);
               const dia1 = rDay.toString().padStart(2, "0");
               const monthNames = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
               const mes = monthNames[rMonth - 1] || "";

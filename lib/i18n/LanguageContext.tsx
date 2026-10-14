@@ -1,16 +1,15 @@
 'use client';
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { Language } from './dictionaries';
 
 const LanguageContext = createContext<{ lang: Language; setLang: (l: Language) => void }>({ lang: 'en', setLang: () => {} });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLangState] = useState<Language>('en');
-
-  useEffect(() => {
+  const [lang, setLangState] = useState<Language>(() => {
+    if (typeof document === 'undefined') return 'en';
     const locale = document.cookie.split('; ').find(row => row.startsWith('NEXT_LOCALE='))?.split('=')[1] as Language;
-    if (locale) setLangState(locale);
-  }, []);
+    return locale === 'es' ? 'es' : 'en';
+  });
 
   const setLang = (newLang: Language) => {
     document.cookie = `NEXT_LOCALE=${newLang}; path=/; max-age=31536000`;

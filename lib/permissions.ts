@@ -78,7 +78,7 @@ export async function requestScreenWakeLock(): Promise<{ release: () => Promise<
   }
 
   try {
-    const wakeLock = await (navigator as any).wakeLock.request('screen');
+    const wakeLock = await navigator.wakeLock.request('screen');
     return {
       release: async () => {
         if (wakeLock) {
