@@ -86,6 +86,7 @@ export default function LoginPage() {
               src="/images/Login-img.jpg"
               alt="Motoring Community Login"
               fill
+              sizes="(max-width: 768px) 0px, 42vw"
               className="object-cover z-0"
               priority
             />

@@ -86,6 +86,7 @@ export default function AboutSection() {
               src="https://images.ecestaticos.com/GmybLEEqNXeHlXczyzpIegwHZwg=/0x0:2272x1454/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F9b6%2Fd85%2Fe5f%2F9b6d85e5fc0e2eab3a31d978e7fb6208.jpg"
               alt="Formula 1 cars racing on a Grand Prix circuit"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
           </div>

@@ -132,6 +132,7 @@ export default function RegisterPage() {
               src="/images/Register-img.jpg"
               alt="Motoring Community Register"
               fill
+              sizes="(max-width: 1024px) 0px, 38vw"
               className="object-cover z-0"
               priority
             />

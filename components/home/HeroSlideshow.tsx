@@ -31,6 +31,7 @@ export default function HeroSlideshow() {
               src="/images/Devices.png" 
               alt="Motoring Community on all devices"
               fill
+              sizes="(max-width: 640px) 260px, (max-width: 768px) 360px, (max-width: 1024px) 460px, 560px"
               className="object-contain"
               priority
             />

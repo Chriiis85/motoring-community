@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   description:
     "Welcome to Motoring Community! Find all data, news, standings and information about Formula One Championship seasons past and present.",
   keywords: ["Formula 1", "F1", "motorsport", "racing", "standings", "drivers", "teams", "calendar"],
+  icons: {
+    icon: [
+      { url: "/images/tyre.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/images/tyre.png" },
+    ],
+    shortcut: "/images/tyre.png",
+  },
   openGraph: {
     title: "Motoring Community",
     description: "The home of all the race fans, where we can meet together.",
@@ -24,6 +34,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/images/tyre.png" type="image/png" sizes="any" />
+        <link rel="alternate icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/images/tyre.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://flagcdn.com" />
