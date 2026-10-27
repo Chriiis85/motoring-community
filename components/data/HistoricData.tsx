@@ -143,15 +143,15 @@ export default function HistoricData() {
   };
 
   return (
-    <section className="w-full my-[4%] flex items-center justify-center font-['F1Regular'] bg-[#f3f3f3] dark:bg-[#121212] text-black dark:text-white tracking-wide transition-colors duration-300">
-      <article className="w-11/12 md:w-4/5 flex flex-col items-center justify-center bg-white dark:bg-[#1e1e1e] shadow-xl overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
+    <section className="w-full max-w-full overflow-x-hidden min-w-0 my-[4%] flex items-center justify-center font-['F1Regular'] bg-[#f3f3f3] dark:bg-[#121212] text-black dark:text-white tracking-wide transition-colors duration-300">
+      <article className="w-11/12 md:w-4/5 max-w-full min-w-0 flex flex-col items-center justify-center bg-white dark:bg-[#1e1e1e] shadow-xl overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800">
         {/* Filters */}
         <div className="w-full h-auto md:h-[80px] flex flex-col md:flex-row items-center justify-around bg-[#222222] py-4 md:py-0 px-4 gap-3">
           <div className="relative w-full max-w-[280px]">
             <select
               value={year}
               onChange={(e) => setYear(e.target.value)}
-              className="appearance-none w-full text-xs sm:text-sm py-2.5 pr-8 pl-3 bg-white dark:bg-[#2c2c30] border border-[#caced1] dark:border-gray-700 rounded font-['F1Regular'] text-black dark:text-white cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] outline-none transition-shadow"
+              className="appearance-none w-full text-base sm:text-sm py-2.5 pr-8 pl-3 bg-white dark:bg-[#2c2c30] border border-[#caced1] dark:border-gray-700 rounded font-['F1Regular'] text-black dark:text-white cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] outline-none transition-shadow"
               aria-label="Select Year"
             >
               {years.map((y) => (
@@ -165,7 +165,7 @@ export default function HistoricData() {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="appearance-none w-full text-xs sm:text-sm py-2.5 pr-8 pl-3 bg-white dark:bg-[#2c2c30] border border-[#caced1] dark:border-gray-700 rounded font-['F1Regular'] text-black dark:text-white cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] outline-none transition-shadow"
+              className="appearance-none w-full text-base sm:text-sm py-2.5 pr-8 pl-3 bg-white dark:bg-[#2c2c30] border border-[#caced1] dark:border-gray-700 rounded font-['F1Regular'] text-black dark:text-white cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] outline-none transition-shadow"
               aria-label="Select Category"
             >
               <option value="Constructors" className="bg-white dark:bg-[#222] text-black dark:text-white">Constructors Standings</option>
@@ -180,7 +180,7 @@ export default function HistoricData() {
               <select
                 value={raceRound}
                 onChange={(e) => setRaceRound(e.target.value)}
-                className="appearance-none w-full text-xs sm:text-sm py-2.5 pr-8 pl-3 bg-white dark:bg-[#2c2c30] border border-[#caced1] dark:border-gray-700 rounded font-['F1Regular'] text-black dark:text-white cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] outline-none transition-shadow"
+                className="appearance-none w-full text-base sm:text-sm py-2.5 pr-8 pl-3 bg-white dark:bg-[#2c2c30] border border-[#caced1] dark:border-gray-700 rounded font-['F1Regular'] text-black dark:text-white cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] outline-none transition-shadow"
                 aria-label="Select Race"
               >
                 {races.map((r) => (
@@ -193,7 +193,7 @@ export default function HistoricData() {
         </div>
 
         {/* Content Table */}
-        <div className="w-full flex flex-col items-center justify-evenly py-6 px-3 sm:px-6">
+        <div className="w-full max-w-full min-w-0 flex flex-col items-center justify-evenly py-6 px-3 sm:px-6">
           <h2 className="font-[family-name:var(--font-f1-title)] text-center text-xl sm:text-2xl md:text-3xl mb-5 px-4 text-black dark:text-white uppercase tracking-wider">{getTitle()}</h2>
           
           <div role="region" aria-label="Historic Formula One data table" tabIndex={0} className="w-full overflow-x-auto pb-4 outline-none focus:ring-1 focus:ring-[#00b9ff] rounded">

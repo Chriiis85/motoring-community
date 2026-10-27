@@ -24,7 +24,7 @@ export default function StandingsClient({ driverStandings, constructorStandings,
   };
 
   return (
-    <div className="flex flex-col items-center bg-[#f3f3f3] dark:bg-[#121212] w-full pb-10 transition-colors duration-300">
+    <div className="flex flex-col items-center bg-[#f3f3f3] dark:bg-[#121212] w-full max-w-full overflow-x-hidden min-w-0 pb-10 transition-colors duration-300">
       <div 
         role="tablist" 
         aria-label="Standings Category Selection"
@@ -42,7 +42,7 @@ export default function StandingsClient({ driverStandings, constructorStandings,
         >
           <span className="mt-2 md:mt-0 font-[family-name:var(--font-f1-title)] text-lg">Drivers Standings</span>
           {activeTab === "drivers" && (
-            <div className="absolute bottom-0 md:-bottom-[4px] w-[300px] md:w-[350px] xl:w-[20%] h-[4px] bg-[#00b9ff]" />
+            <div className="absolute bottom-0 md:-bottom-[4px] w-3/4 max-w-[300px] md:max-w-[350px] xl:w-[20%] h-[4px] bg-[#00b9ff]" />
           )}
         </button>
         <button
@@ -57,7 +57,7 @@ export default function StandingsClient({ driverStandings, constructorStandings,
         >
           <span className="mt-2 md:mt-0 font-[family-name:var(--font-f1-title)] text-lg">Constructors Standings</span>
           {activeTab === "constructors" && (
-            <div className="absolute bottom-0 md:-bottom-[4px] w-[300px] md:w-[350px] xl:w-[20%] h-[4px] bg-[#00b9ff]" />
+            <div className="absolute bottom-0 md:-bottom-[4px] w-3/4 max-w-[300px] md:max-w-[350px] xl:w-[20%] h-[4px] bg-[#00b9ff]" />
           )}
         </button>
       </div>

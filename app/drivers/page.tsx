@@ -16,7 +16,7 @@ export default async function DriversPage() {
         pageTitle={"Formula One 2026 Drivers"}
         backgroundImage="/images/Login-img.jpg"
       />
-      <main className="drivers-main" aria-labelledby="main-title">
+      <main className="drivers-main w-full max-w-full overflow-x-hidden min-w-0" aria-labelledby="main-title">
         {standings.length === 0 ? (
           <div className="py-20 px-4 text-center text-gray-700 dark:text-gray-300 font-['F1Regular']">
             <p className="text-xl sm:text-2xl font-bold">⚠️ No se han podido cargar los pilotos en este momento.</p>

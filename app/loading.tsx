@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function GlobalLoading() {
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#121212]/95 backdrop-blur-sm text-white font-['F1Regular']">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#121212]/95 backdrop-blur-sm text-white font-['F1Regular'] w-full max-w-full overflow-hidden">
       <div className="relative flex flex-col items-center">
         {/* Animated F1 Speed Ring */}
         <div className="relative w-24 h-24 flex items-center justify-center mb-6">

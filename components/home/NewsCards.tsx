@@ -70,7 +70,7 @@ export default function NewsCards() {
 
   if (loading && articles.length === 0) {
     return (
-      <section className="latest-news-container w-full flex items-center justify-center flex-col py-8 px-4">
+      <section className="latest-news-container w-full max-w-full overflow-x-hidden min-w-0 flex items-center justify-center flex-col py-8 px-4">
         <h1 className="m-0 mt-[3%] text-2xl sm:text-3xl lg:text-[2.5em] font-['F1RegularBold'] text-center text-black dark:text-white">FORMULA ONE NEWS</h1>
         <article className="latest-news w-full max-w-[1400px] flex items-center justify-center font-['F1Regular'] flex-col">
           <div className="latest-news-notice w-full flex items-center justify-between flex-col lg:flex-row gap-6 mt-6 mb-6">
@@ -115,7 +115,7 @@ export default function NewsCards() {
   }
 
   return (
-    <section className="latest-news-container w-full flex items-center justify-center flex-col py-8 px-4">
+    <section className="latest-news-container w-full max-w-full overflow-x-hidden min-w-0 flex items-center justify-center flex-col py-8 px-4">
       <h1 className="m-0 mt-[3%] text-2xl sm:text-3xl lg:text-[2.5em] font-['F1RegularBold'] text-center text-black dark:text-white">FORMULA ONE NEWS</h1>
       <article className="latest-news w-full max-w-[1400px] flex items-center justify-center font-['F1Regular'] flex-col">
         <div className="latest-news-notice w-full flex items-center justify-between flex-col lg:flex-row gap-6 mt-6 mb-6">

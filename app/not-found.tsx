@@ -5,9 +5,9 @@ import Footer from '@/components/layout/Footer';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col font-['F1Regular'] bg-white dark:bg-[#121212] text-black dark:text-white transition-colors duration-300">
+    <div className="min-h-screen flex flex-col font-['F1Regular'] bg-white dark:bg-[#121212] text-black dark:text-white transition-colors duration-300 w-full max-w-full overflow-x-hidden">
       <Header variant="main" />
-      <main className="flex-grow flex items-center justify-center py-24 px-4 text-center">
+      <main className="flex-grow w-full max-w-full overflow-x-hidden min-w-0 flex items-center justify-center py-24 px-4 text-center">
         <div className="max-w-lg mx-auto bg-[#f8f8f8] dark:bg-[#1e1e1e] border-2 border-gray-300 dark:border-gray-800 rounded-2xl p-8 sm:p-12 shadow-2xl">
           <div className="text-6xl sm:text-7xl font-bold font-['F1Title'] text-[#00b9ff] mb-4">
             404

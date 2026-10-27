@@ -5,13 +5,13 @@ import ScrollToTop from "@/components/ui/ScrollToTop";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#f3f3f3] dark:bg-[#121212] transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-[#f3f3f3] dark:bg-[#121212] transition-colors duration-300 w-full max-w-full overflow-x-hidden">
       <Header
         variant="page"
         pageTitle="About Formula One 2026"
         backgroundImage="https://www.f1-fansite.com/wp-content/uploads/2023/06/SI202306040579.jpg"
       />
-      <main className="flex-grow w-full py-10 px-4 md:px-8 conic-mesh-bg">
+      <main className="flex-grow w-full max-w-full overflow-x-hidden min-w-0 py-10 px-4 md:px-8 conic-mesh-bg">
         <article className="max-w-4xl mx-auto bg-white dark:bg-[#1a1a1a] p-8 md:p-12 border-2 border-black dark:border-gray-700 rounded-[15px] shadow-[0_5px_15px_rgba(0,0,0,0.35)] font-medium text-lg leading-relaxed text-[#282828] dark:text-gray-100 transition-colors duration-300">
           <h2 className="text-3xl md:text-5xl font-[family-name:var(--font-f1-title)] mb-6 uppercase tracking-wider text-black dark:text-white">About Formula One</h2>
           <p className="mb-6">

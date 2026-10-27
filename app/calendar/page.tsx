@@ -93,7 +93,7 @@ export default async function CalendarPage() {
         backgroundImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ2FSs_yYHn2hXM7rtVhaGMr0_KAInpOcy1Lof38NJyh_7UzOk1iM8sOo&s=10"
       />
 
-      <section className="next-race" aria-labelledby="next-race-title">
+      <section className="next-race w-full max-w-full overflow-x-hidden min-w-0" aria-labelledby="next-race-title">
         <div className="next-race-container">
           <div className="row">
             <div className="col-md-7 col-lg-8 col-xl-9">
@@ -130,7 +130,7 @@ export default async function CalendarPage() {
         </div>
       </section>
 
-      <main className="calendar-main">
+      <main className="calendar-main w-full max-w-full overflow-x-hidden min-w-0">
     
         <section className="calendar-season-container" aria-labelledby="calendar-title">
           <article className="calendar-season">

@@ -6,7 +6,7 @@ import ScrollToTop from "@/components/ui/ScrollToTop";
 export default async function DataPage() {
   
   return (
-    <main className="min-h-screen flex flex-col bg-[#f3f3f3] dark:bg-[#121212] transition-colors duration-300">
+    <main className="min-h-screen flex flex-col bg-[#f3f3f3] dark:bg-[#121212] transition-colors duration-300 w-full max-w-full overflow-x-hidden min-w-0">
       <Header
         variant="page"
         pageTitle={"HISTORIC DATA"}

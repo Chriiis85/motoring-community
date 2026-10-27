@@ -76,7 +76,7 @@ export default function CountdownTimer() {
   const trackImageName = nextRace ? getTrackImageName(nextRace.raceName) : 'ChineseGrandPrix';
 
   return (
-    <section aria-label="Formula 1 next race countdown" className="next-race bg-black py-[10px] lg:py-[20px] border-b border-[#38383f] shadow-[rgba(149,157,165,0.2)_0px_8px_24px]">
+    <section aria-label="Formula 1 next race countdown" className="next-race w-full max-w-full overflow-x-hidden min-w-0 bg-black py-[10px] lg:py-[20px] border-b border-[#38383f] shadow-[rgba(149,157,165,0.2)_0px_8px_24px]">
       <div className="next-race-container w-full px-[10px] mx-auto font-f1-regular sm:max-w-[576px] md:max-w-[768px] lg:max-w-[986px] xl:max-w-[1320px]">
         <div className="row flex flex-wrap -mx-[10px]">
           {/* Race Info */}

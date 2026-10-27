@@ -43,11 +43,13 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.jolpi.ca" />
         <link rel="dns-prefetch" href="https://newsapi.org" />
       </head>
-      <body className="antialiased bg-white dark:bg-[#121212] text-black dark:text-white transition-colors duration-300">
+      <body className="antialiased bg-white dark:bg-[#121212] text-black dark:text-white transition-colors duration-300 relative w-full max-w-full overflow-x-hidden min-h-screen flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          <OfflineBanner />
-          {children}
-          <CookieBanner />
+          <div className="w-full max-w-full overflow-x-hidden min-w-0 flex flex-col flex-grow relative">
+            <OfflineBanner />
+            {children}
+            <CookieBanner />
+          </div>
         </ThemeProvider>
       </body>
     </html>

@@ -30,7 +30,7 @@ export default function CookieBanner() {
     <div 
       role="region" 
       aria-label="Consentimiento de Cookies" 
-      className="fixed bottom-0 left-0 right-0 z-[999] p-4 sm:p-6 bg-[#1a1a1a]/95 text-white border-t-2 border-[#00b9ff] backdrop-blur-md shadow-[0_-10px_30px_rgba(0,0,0,0.5)] font-['F1Regular'] animate-in fade-in slide-in-from-bottom-5 duration-300"
+      className="fixed bottom-0 left-0 right-0 w-full max-w-full overflow-x-hidden z-[999] p-4 sm:p-6 bg-[#1a1a1a]/95 text-white border-t-2 border-[#00b9ff] backdrop-blur-md shadow-[0_-10px_30px_rgba(0,0,0,0.5)] font-['F1Regular'] animate-in fade-in slide-in-from-bottom-5 duration-300"
     >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
         {/* Information Text */}

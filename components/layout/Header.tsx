@@ -54,7 +54,7 @@ export default function Header({ variant = "main", pageTitle = "", backgroundIma
   return (
     <>
       {/* ── Fixed Navbar Header ────────────────────────────────────────────── */}
-      <header className="fixed top-0 left-0 w-full z-[99999] bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md border-b border-slate-200/90 dark:border-gray-800/80 shadow-xs dark:shadow-2xl transition-all duration-300">
+      <header className="fixed top-0 left-0 w-full max-w-full overflow-x-hidden z-[99999] bg-white/95 dark:bg-[#121212]/95 backdrop-blur-md border-b border-slate-200/90 dark:border-gray-800/80 shadow-xs dark:shadow-2xl transition-all duration-300">
         <div className="w-full max-w-7xl 2xl:max-w-8xl mx-auto h-16 sm:h-20 flex items-center justify-between px-3 sm:px-6 lg:px-8">
           
           {/* ── Logo Brand ─────────────────────────────────────────────────── */}

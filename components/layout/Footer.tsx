@@ -54,7 +54,7 @@ export default function Footer() {
       }, 50);
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
       if (triggerRef.current) {
         triggerRef.current.focus();
       }
@@ -84,7 +84,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer id="footer" className="w-full bg-[#181818] border-t-2 border-[#00b9ff] text-white pt-12 pb-6 px-4 sm:px-8 md:px-12 font-['F1Regular'] relative z-40">
+      <footer id="footer" className="w-full max-w-full overflow-x-hidden min-w-0 bg-[#181818] border-t-2 border-[#00b9ff] text-white pt-12 pb-6 px-4 sm:px-8 md:px-12 font-['F1Regular'] relative z-40">
         
         {/* Main Grid Container */}
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 pb-8 border-b border-gray-800">

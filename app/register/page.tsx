@@ -109,8 +109,8 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-['F1Regular']">
-      <main className="flex-grow flex items-center justify-center relative overflow-hidden bg-[#f3f3f3] dark:bg-[#121212] min-h-[100vh] py-[6vh] px-4">
+    <div className="min-h-screen flex flex-col font-['F1Regular'] w-full max-w-full overflow-x-hidden">
+      <main className="flex-grow w-full max-w-full min-w-0 flex items-center justify-center relative overflow-hidden bg-[#f3f3f3] dark:bg-[#121212] min-h-[100vh] py-[6vh] px-4">
         <div 
           className="absolute inset-0 z-0 opacity-80"
           style={{
@@ -177,7 +177,7 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   placeholder="e.g. max_verstappen1"
                   required 
-                  className={`w-full h-[40px] px-3.5 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-sm font-medium transition-all border ${
+                  className={`w-full h-[40px] px-3.5 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-base sm:text-sm font-medium transition-all border ${
                     errors.username 
                       ? 'border-red-500 shadow-[0_0_0_1px_#ef4444]' 
                       : 'border-gray-300 dark:border-gray-700 focus:border-[#00b9ff] focus:shadow-[0_0_0_2px_#00b9ff]'
@@ -201,7 +201,7 @@ export default function RegisterPage() {
                   onChange={handleChange}
                   placeholder="e.g. driver@formula1.com"
                   required 
-                  className={`w-full h-[40px] px-3.5 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-sm font-medium transition-all border ${
+                  className={`w-full h-[40px] px-3.5 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-base sm:text-sm font-medium transition-all border ${
                     errors.email 
                       ? 'border-red-500 shadow-[0_0_0_1px_#ef4444]' 
                       : 'border-gray-300 dark:border-gray-700 focus:border-[#00b9ff] focus:shadow-[0_0_0_2px_#00b9ff]'
@@ -226,7 +226,7 @@ export default function RegisterPage() {
                     onChange={handleChange}
                     placeholder="Fernando"
                     required 
-                    className={`w-full h-[40px] px-3.5 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-sm font-medium transition-all border ${
+                    className={`w-full h-[40px] px-3.5 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-base sm:text-sm font-medium transition-all border ${
                       errors.name 
                         ? 'border-red-500 shadow-[0_0_0_1px_#ef4444]' 
                         : 'border-gray-300 dark:border-gray-700 focus:border-[#00b9ff] focus:shadow-[0_0_0_2px_#00b9ff]'
@@ -249,7 +249,7 @@ export default function RegisterPage() {
                     onChange={handleChange}
                     placeholder="Alonso"
                     required 
-                    className={`w-full h-[40px] px-3.5 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-sm font-medium transition-all border ${
+                    className={`w-full h-[40px] px-3.5 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-base sm:text-sm font-medium transition-all border ${
                       errors.surname 
                         ? 'border-red-500 shadow-[0_0_0_1px_#ef4444]' 
                         : 'border-gray-300 dark:border-gray-700 focus:border-[#00b9ff] focus:shadow-[0_0_0_2px_#00b9ff]'
@@ -275,7 +275,7 @@ export default function RegisterPage() {
                     onChange={handleChange}
                     placeholder="••••••••"
                     required 
-                    className={`w-full h-[40px] px-3.5 pr-11 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-sm font-medium transition-all border ${
+                    className={`w-full h-[40px] px-3.5 pr-11 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-base sm:text-sm font-medium transition-all border ${
                       errors.password 
                         ? 'border-red-500 shadow-[0_0_0_1px_#ef4444]' 
                         : 'border-gray-300 dark:border-gray-700 focus:border-[#00b9ff] focus:shadow-[0_0_0_2px_#00b9ff]'
@@ -315,7 +315,7 @@ export default function RegisterPage() {
                     onChange={handleChange}
                     placeholder="••••••••"
                     required 
-                    className={`w-full h-[40px] px-3.5 pr-11 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-sm font-medium transition-all border ${
+                    className={`w-full h-[40px] px-3.5 pr-11 outline-none rounded-[5px] bg-[#f1f1f1] dark:bg-[#2c2c30] text-[#111] dark:text-white text-base sm:text-sm font-medium transition-all border ${
                       errors.confirmPassword 
                         ? 'border-red-500 shadow-[0_0_0_1px_#ef4444]' 
                         : 'border-gray-300 dark:border-gray-700 focus:border-[#00b9ff] focus:shadow-[0_0_0_2px_#00b9ff]'

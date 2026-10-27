@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function HeroSlideshow() {
   return (
-    <section className="relative w-full min-h-[480px] sm:min-h-[560px] lg:min-h-screen flex items-center justify-center overflow-hidden bg-[#181818] pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-8 md:px-12">
+    <section className="relative w-full max-w-full min-w-0 min-h-[480px] sm:min-h-[560px] lg:min-h-screen flex items-center justify-center overflow-hidden bg-[#181818] pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-8 md:px-12">
       {/* Background Slideshow */}
       <div aria-hidden="true" className="slider absolute inset-0 w-full h-full filter blur-[2px] z-0 pointer-events-none">
         <ul className="slideshow w-full h-full list-none m-0 p-0">

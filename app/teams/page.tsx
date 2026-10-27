@@ -31,7 +31,7 @@ export default async function TeamsPage() {
         pageTitle={"Formula One 2026 Constructors"}
         backgroundImage="/images/Register-img.jpg"
       />
-      <main className="teams-main">
+      <main className="teams-main w-full max-w-full overflow-x-hidden min-w-0">
         {constructors.length === 0 ? (
           <div className="py-20 px-4 text-center text-gray-700 dark:text-gray-300 font-['F1Regular']">
             <p className="text-xl sm:text-2xl font-bold">⚠️ No se han podido cargar las escuderías en este momento.</p>

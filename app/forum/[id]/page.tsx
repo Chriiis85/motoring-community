@@ -48,9 +48,9 @@ export default function ForumPostDetail({ params }: { params: Promise<{ id: stri
     };
 
     return (
-        <div className="min-h-screen flex flex-col overflow-x-hidden bg-[#f3f3f3] dark:bg-[#121212] transition-colors duration-300">
+        <div className="min-h-screen flex flex-col w-full max-w-full overflow-x-hidden bg-[#f3f3f3] dark:bg-[#121212] transition-colors duration-300">
             <Header />
-            <main className="flex-grow w-full min-h-[60vh] flex flex-col items-center pt-[150px] md:pt-[180px] pb-10 conic-mesh-bg">
+            <main className="flex-grow w-full max-w-full overflow-x-hidden min-w-0 min-h-[60vh] flex flex-col items-center pt-[150px] md:pt-[180px] pb-10 conic-mesh-bg">
                 
                 {/* Preview Banner */}
                 <div className="w-[90%] max-w-5xl bg-amber-50/90 dark:bg-amber-950/30 border-l-4 border-amber-500 text-amber-900 dark:text-amber-200 p-4 mb-6 rounded shadow-sm text-center text-sm md:text-base" role="note">
@@ -59,7 +59,7 @@ export default function ForumPostDetail({ params }: { params: Promise<{ id: stri
                 </div>
 
                 {/* Info Bar */}
-                <div className="w-[90%] max-w-5xl flex flex-row items-center justify-between text-center text-white mb-6">
+                <div className="w-[90%] max-w-5xl flex flex-col sm:flex-row items-center justify-between text-center text-white mb-6 gap-3">
                     <h1 className="text-base sm:text-xl md:text-2xl font-bold text-black dark:text-white drop-shadow-md bg-white/90 dark:bg-[#1e1e1e]/90 border border-transparent dark:border-gray-700 px-4 py-2 rounded">Theme: {resolvedParams.id ? `Discussion #${resolvedParams.id}` : '2024 Spanish GP Discussion'}</h1>
                     <Link href="/forum">
                         <button className="bg-[#222] dark:bg-[#00b9ff] text-white dark:text-black rounded px-5 py-2 font-bold hover:shadow-[0_0_3px_3px_#00b9ff] hover:bg-black dark:hover:bg-white transition-all">
@@ -100,7 +100,7 @@ export default function ForumPostDetail({ params }: { params: Promise<{ id: stri
                     <h2 className="text-2xl font-bold mb-4 font-[family-name:var(--font-f1-title)] tracking-wider text-black dark:text-white">Leave a Reply</h2>
                     <form onSubmit={handleReplySubmit} className="flex flex-col gap-4">
                         <textarea 
-                            className="w-full h-[150px] border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#2a2a2e] text-black dark:text-white rounded-[5px] p-[12px] text-base resize-none focus:outline-none focus:border-[#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] transition-all duration-200 placeholder:text-gray-400"
+                            className="w-full h-[150px] border-2 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#2a2a2e] text-black dark:text-white rounded-[5px] p-[12px] text-base sm:text-sm resize-none focus:outline-none focus:border-[#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] transition-all duration-200 placeholder:text-gray-400"
                             placeholder="Write your reply here..."
                             value={replyText}
                             onChange={(e) => setReplyText(e.target.value)}

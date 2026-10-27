@@ -63,7 +63,7 @@ export default function ForumPage() {
     <div className="flex flex-col min-h-screen bg-light">
       <Header />
       
-      <main className="flex flex-col items-center justify-start min-h-[60vh] w-full bg-[#f3f3f3] conic-mesh-bg pt-[150px] md:pt-[180px] pb-12">
+      <main className="flex flex-col items-center justify-start min-h-[60vh] w-full max-w-full overflow-x-hidden min-w-0 bg-[#f3f3f3] conic-mesh-bg pt-[150px] md:pt-[180px] pb-12">
         <article className="w-full pt-[3%] pb-[3%] flex flex-col items-center justify-center">
           
           {/* Notification on action */}
@@ -86,7 +86,7 @@ export default function ForumPage() {
               <div className="w-full relative group">
                 <select 
                   aria-label="Order forum posts by"
-                  className="appearance-none w-full text-sm md:text-base py-2.5 pr-8 pl-3 bg-white dark:bg-[#2c2c30] border border-[#caced1] dark:border-gray-700 rounded text-black dark:text-white cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] focus:outline-none transition-shadow"
+                  className="appearance-none w-full text-base sm:text-sm py-2.5 pr-8 pl-3 bg-white dark:bg-[#2c2c30] border border-[#caced1] dark:border-gray-700 rounded text-black dark:text-white cursor-pointer hover:shadow-[0_0_3px_3px_#00b9ff] focus:shadow-[0_0_3px_3px_#00b9ff] focus:outline-none transition-shadow"
                 >
                   <option value="Default" className="bg-white dark:bg-[#222] text-black dark:text-white">Default</option>
                   <option value="Popularity" className="bg-white dark:bg-[#222] text-black dark:text-white">Popularity</option>
@@ -113,7 +113,7 @@ export default function ForumPage() {
                   type="search" 
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full h-full py-0 pr-4 pl-9 border-2 border-transparent rounded-lg outline-none bg-[#f3f3f4] dark:bg-[#2c2c30] text-[#0d0c22] dark:text-white text-sm md:text-base transition-all duration-300 placeholder:text-[#9e9ea7] hover:border-cyan hover:bg-white dark:hover:bg-[#2c2c30] hover:shadow-[0_0_0_4px_rgba(0,185,255,0.1)] focus:border-cyan focus:bg-white dark:focus:bg-[#2c2c30] focus:shadow-[0_0_0_4px_rgba(0,185,255,0.1)]" 
+                  className="w-full h-full py-0 pr-4 pl-9 border-2 border-transparent rounded-lg outline-none bg-[#f3f3f4] dark:bg-[#2c2c30] text-[#0d0c22] dark:text-white text-base sm:text-sm transition-all duration-300 placeholder:text-[#9e9ea7] hover:border-cyan hover:bg-white dark:hover:bg-[#2c2c30] hover:shadow-[0_0_0_4px_rgba(0,185,255,0.1)] focus:border-cyan focus:bg-white dark:focus:bg-[#2c2c30] focus:shadow-[0_0_0_4px_rgba(0,185,255,0.1)]" 
                 />
               </div>
             </div>

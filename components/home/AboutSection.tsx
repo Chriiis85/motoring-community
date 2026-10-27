@@ -30,7 +30,7 @@ export default function AboutSection() {
   return (
     <section 
       ref={sectionRef}
-      className="w-full py-12 sm:py-16 px-4 sm:px-8 md:px-12 transition-opacity duration-500 bg-white dark:bg-[#121212] text-black dark:text-white border-t border-gray-200 dark:border-gray-800"
+      className="w-full max-w-full overflow-x-hidden min-w-0 py-12 sm:py-16 px-4 sm:px-8 md:px-12 transition-opacity duration-500 bg-white dark:bg-[#121212] text-black dark:text-white border-t border-gray-200 dark:border-gray-800"
       style={{ opacity }}
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">

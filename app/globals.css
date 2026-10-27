@@ -135,15 +135,25 @@
 
 /* ===== BASE STYLES ===== */
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+html,
 body {
-  width: 100%;
   max-width: 100%;
-  margin: 0;
   overflow-x: hidden;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  margin: 0;
   font-family: "F1Regular", sans-serif;
   background-color: #ffffff;
   color: #222222;
@@ -154,6 +164,20 @@ body {
 
 main {
   flex-grow: 1;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+
+/* iOS Safari Auto-Zoom Prevention (ensures >= 16px font-size on mobile) */
+@media (max-width: 639px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="button"]):not([type="submit"]):not([type="reset"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
 }
 
 h1 {

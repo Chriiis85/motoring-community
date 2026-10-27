@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="min-h-screen">
+      <main className="min-h-screen w-full max-w-full overflow-x-hidden min-w-0 flex flex-col">
         <HeroSlideshow />
         <CountdownTimer />
         <NewsCards />

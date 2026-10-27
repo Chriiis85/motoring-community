@@ -354,6 +354,10 @@
 }
 
 .next-race {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
   background-color: #000000;
   padding: 10px 0;
   border-bottom: 1px solid #38383f;
@@ -657,7 +661,7 @@ span {
 }
 
 .minutes {
-  padding-right: 100px;
+  padding-right: 10px;
 }
 
 #round {

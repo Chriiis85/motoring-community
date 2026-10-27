@@ -32,7 +32,7 @@ export default function OfflineBanner() {
     <div 
       role="alert" 
       aria-live="assertive"
-      className="fixed top-0 left-0 right-0 z-[9999] bg-red-600 text-white font-['F1Regular'] py-2.5 px-4 text-center text-xs sm:text-sm font-semibold shadow-lg flex items-center justify-center gap-2 animate-in slide-in-from-top-full duration-300"
+      className="fixed top-0 left-0 right-0 w-full max-w-full overflow-x-hidden z-[9999] bg-red-600 text-white font-['F1Regular'] py-2.5 px-4 text-center text-xs sm:text-sm font-semibold shadow-lg flex items-center justify-center gap-2 animate-in slide-in-from-top-full duration-300"
     >
       <span className="text-base">⚠️</span>
       <span>

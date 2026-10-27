@@ -98,9 +98,9 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
 
   if (loading) {
     return (
-      <div className="min-h-screen flex flex-col font-['F1Regular'] bg-[#1a1a1a]">
+      <div className="min-h-screen flex flex-col font-['F1Regular'] bg-[#1a1a1a] w-full max-w-full overflow-x-hidden">
         <Header variant="main" />
-        <main className="flex-grow w-full py-12 px-4 md:px-8 text-white relative z-10 pt-20">
+        <main className="flex-grow w-full max-w-full overflow-x-hidden min-w-0 py-12 px-4 md:px-8 text-white relative z-10 pt-20">
           <article className="max-w-[1000px] mx-auto bg-[#222] p-8 md:p-16 rounded-xl border-t-4 border-t-[#00b9ff]/40 shadow-2xl animate-pulse">
             <div className="w-28 h-4 bg-gray-700 rounded mb-8"></div>
             <div className="flex flex-col items-center mb-10 gap-4">
@@ -125,9 +125,9 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
 
   if (error || !article) {
     return (
-      <div className="min-h-screen flex flex-col font-['F1Regular'] bg-[#1a1a1a]">
+      <div className="min-h-screen flex flex-col font-['F1Regular'] bg-[#1a1a1a] w-full max-w-full overflow-x-hidden">
         <Header variant="main" />
-        <main className="flex-grow flex flex-col items-center justify-center text-white gap-6">
+        <main className="flex-grow w-full max-w-full overflow-x-hidden min-w-0 flex flex-col items-center justify-center text-white gap-6">
           <h2 className="text-3xl font-['F1RegularBold']">Article Not Found</h2>
           <p className="text-gray-400">The article you are looking for might have been removed or does not exist.</p>
           <Link href="/news" className="bg-[#00b9ff] text-black px-6 py-2 rounded font-bold hover:bg-white transition-colors">
@@ -144,14 +144,14 @@ export default function ArticlePage({ params }: { params: Promise<{ slug: string
   const hasExtraContent = cleanContent && cleanContent !== article.description && !cleanContent.includes(article.description);
 
   return (
-    <div className="min-h-screen flex flex-col font-['F1Regular'] bg-[#1a1a1a]">
+    <div className="min-h-screen flex flex-col font-['F1Regular'] bg-[#1a1a1a] w-full max-w-full overflow-x-hidden">
       <Header
         variant="page"
         pageTitle="LATEST NEWS"
         backgroundImage={article.urlToImage}
       />
       
-      <main className="flex-grow w-full py-12 px-4 md:px-8 text-white relative z-10 pt-20">
+      <main className="flex-grow w-full max-w-full overflow-x-hidden min-w-0 py-12 px-4 md:px-8 text-white relative z-10 pt-20">
         <article className="max-w-[1000px] mx-auto bg-[#222] p-8 md:p-16 rounded-xl border-t-4 border-t-[#00b9ff] shadow-2xl relative -mt-32">
           
           <div className="mb-8 flex justify-start">
